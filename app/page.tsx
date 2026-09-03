@@ -9,9 +9,11 @@ import JsonLd from '@/components/seo/JsonLd';
 import { 
   getBaseMetadata, 
   getWebApplicationSchema, 
-  getFaqPageSchema 
+  getFaqPageSchema,
+  getImageObjectSchema,
+  SITE_URL 
 } from '@/lib/seo';
-import { ShieldCheck, Zap, Sparkles, TrendingUp } from 'lucide-react';
+import { ShieldCheck, Zap, Sparkles, TrendingUp, CheckCircle2 } from 'lucide-react';
 
 export const metadata: Metadata = getBaseMetadata();
 
@@ -45,11 +47,19 @@ const HOMEPAGE_FAQS: FaqItem[] = [
 export default function HomePage() {
   const webAppSchema = getWebApplicationSchema();
   const faqSchema = getFaqPageSchema(HOMEPAGE_FAQS);
+  const imageSchema = getImageObjectSchema({
+    url: `${SITE_URL}/images/how-runway-calculator-works-step-by-step-guide.jpg`,
+    name: 'How Runway Calculator Works',
+    description: 'Visual step-by-step workflow infographic explaining how to calculate startup cash runway, net burn rate, and financial survival horizons.',
+    width: 1024,
+    height: 682
+  });
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50/50 text-slate-900 selection:bg-indigo-500 selection:text-white">
       <JsonLd data={webAppSchema} />
       <JsonLd data={faqSchema} />
+      <JsonLd data={imageSchema} />
       
       <Header />
 
@@ -90,21 +100,62 @@ export default function HomePage() {
         </section>
 
         {/* Primary Calculator Section */}
-        <section className="py-8 sm:py-12">
+        <section id="calculator" className="py-8 sm:py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <RunwayCalculator />
           </div>
         </section>
 
+        {/* How It Works Visual Infographic Section */}
+        <section id="how-it-works" className="py-12 sm:py-16 bg-slate-50/70 border-t border-slate-200 scroll-mt-16">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div className="text-center max-w-3xl mx-auto space-y-3">
+              <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200/60 text-xs font-semibold text-indigo-700">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Visual Workflow &amp; Methodology</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                How the Runway Calculator Works
+              </h2>
+              <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto">
+                Plan today and secure your runway tomorrow. Follow the 6-step calculation pipeline below to model your burn rate, project cash survival, and make confident growth decisions.
+              </p>
+            </div>
+
+            {/* Infographic Image Container */}
+            <figure className="rounded-2xl overflow-hidden border border-slate-200/90 shadow-md bg-white transition-all hover:shadow-xl">
+              <img
+                src="/images/how-runway-calculator-works-step-by-step-guide.jpg"
+                alt="How Runway Calculator Works: 6-step visual guide to calculate startup cash runway, net burn rate, and cash depletion dates"
+                title="How Runway Calculator Works – Step-by-Step Cash Runway Forecasting"
+                width={1024}
+                height={682}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto object-cover select-none"
+              />
+              <figcaption className="p-4 sm:p-5 bg-white border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-600">
+                <span>
+                  <strong>Figure 1.1:</strong> Complete 6-step visual methodology for calculating startup runway, burn rate, and cash depletion.
+                </span>
+                <span className="text-indigo-600 font-semibold shrink-0 flex items-center">
+                  <ShieldCheck className="w-4 h-4 mr-1 text-emerald-500" />
+                  100% Client-Side Private Computation
+                </span>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
         {/* In-Depth Educational Guide */}
-        <section className="py-12 sm:py-16 border-t border-slate-200 bg-white">
+        <section id="runway-guide" className="py-12 sm:py-16 border-t border-slate-200 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <GuideContent />
           </div>
         </section>
 
         {/* Semantic FAQ Section */}
-        <section className="py-12 sm:py-16 border-t border-slate-200 bg-slate-50/50">
+        <section id="faq" className="py-12 sm:py-16 border-t border-slate-200 bg-slate-50/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <FaqAccordion faqs={HOMEPAGE_FAQS} />
           </div>

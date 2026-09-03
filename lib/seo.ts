@@ -183,3 +183,26 @@ export function getFaqPageSchema(faqs: { question: string; answer: string }[]) {
     }))
   };
 }
+
+/**
+ * Generate Schema.org ImageObject JSON-LD
+ */
+export function getImageObjectSchema(image: {
+  url: string;
+  name: string;
+  description: string;
+  width?: number;
+  height?: number;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ImageObject',
+    contentUrl: image.url,
+    url: image.url,
+    name: image.name,
+    description: image.description,
+    width: image.width || 1024,
+    height: image.height || 682
+  };
+}
+
