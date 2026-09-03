@@ -15,6 +15,8 @@ import {
 } from '@/lib/seo';
 import { ShieldCheck, DollarSign, Sparkles } from 'lucide-react';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Cash Runway Calculator – Calculate Cash Reserves & Burn',
   description: 'Free cash runway calculator. Calculate how many months your liquid cash reserves will last with emergency buffers, monthly outflows, and incoming receipts.',

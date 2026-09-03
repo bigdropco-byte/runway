@@ -15,6 +15,8 @@ import {
 } from '@/lib/seo';
 import { Compass, Sparkles } from 'lucide-react';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Runway Number Calculator – Magnetic Heading to Runway ID',
   description: 'Free runway number calculator. Convert magnetic compass headings to official FAA/ICAO runway numbers, parallel suffixes (L/C/R), and reciprocal approach ends.',

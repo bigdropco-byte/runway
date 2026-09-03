@@ -9,6 +9,9 @@ import JsonLd from '@/components/seo/JsonLd';
 import { 
   getBaseMetadata, 
   getWebApplicationSchema, 
+  getWebSiteSchema,
+  getOrganizationSchema,
+  getHowToSchema,
   getFaqPageSchema,
   getImageObjectSchema,
   SITE_URL 
@@ -45,7 +48,10 @@ const HOMEPAGE_FAQS: FaqItem[] = [
 ];
 
 export default function HomePage() {
+  const websiteSchema = getWebSiteSchema();
+  const orgSchema = getOrganizationSchema();
   const webAppSchema = getWebApplicationSchema();
+  const howToSchema = getHowToSchema();
   const faqSchema = getFaqPageSchema(HOMEPAGE_FAQS);
   const imageSchema = getImageObjectSchema({
     url: `${SITE_URL}/images/how-runway-calculator-works-step-by-step-guide.jpg`,
@@ -57,7 +63,10 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50/50 text-slate-900 selection:bg-indigo-500 selection:text-white">
+      <JsonLd data={websiteSchema} />
+      <JsonLd data={orgSchema} />
       <JsonLd data={webAppSchema} />
+      <JsonLd data={howToSchema} />
       <JsonLd data={faqSchema} />
       <JsonLd data={imageSchema} />
       

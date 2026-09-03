@@ -15,6 +15,8 @@ import {
 } from '@/lib/seo';
 import { Target, Sparkles } from 'lucide-react';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Runway Extension Calculator – Reverse Goal Solver',
   description: 'Calculate the exact dollar expense cuts, revenue targets, or capital infusion needed to extend your startup runway to 12, 18, or 24 months.',

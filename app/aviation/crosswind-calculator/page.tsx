@@ -15,6 +15,8 @@ import {
 } from '@/lib/seo';
 import { Wind, Compass, Sparkles } from 'lucide-react';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Runway Crosswind Calculator – Wind & Headwind Component',
   description: 'Free runway crosswind calculator. Calculate exact crosswind and headwind/tailwind components, maximum demonstrated limits, and gust factors with visual compass.',

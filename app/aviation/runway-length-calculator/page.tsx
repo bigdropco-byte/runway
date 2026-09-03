@@ -15,6 +15,8 @@ import {
 } from '@/lib/seo';
 import { Gauge, Sparkles } from 'lucide-react';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Runway Length Calculator – Density Altitude & Takeoff Distance',
   description: 'Free runway length calculator. Calculate pressure altitude, density altitude, and required takeoff ground roll distance with FAA 50% safety buffers.',

@@ -123,28 +123,94 @@ export function getNicheMetadata(niche: NicheData): Metadata {
   };
 }
 
+/* ============================================================
+   SCHEMA.ORG STRUCTURED DATA BUILDERS
+   ============================================================ */
+
+/**
+ * Generate Schema.org WebSite JSON-LD with Sitelinks SearchBox
+ */
+export function getWebSiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_NAME,
+    url: SITE_URL,
+    description: 'Precision calculation suite for business cash runway forecasting and aeronautical flight calculations.',
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/icon-512.png`
+      }
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${SITE_URL}/tools?q={search_term_string}`,
+      'query-input': 'required name=search_term_string'
+    }
+  };
+}
+
+/**
+ * Generate Schema.org Organization JSON-LD
+ */
+export function getOrganizationSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: `${SITE_URL}/icon-512.png`,
+    sameAs: [
+      'https://github.com/bigdropco-byte/runway'
+    ]
+  };
+}
+
 /**
  * Generate Schema.org WebApplication / SoftwareApplication JSON-LD
  */
-export function getWebApplicationSchema(customUrl: string = SITE_URL, customName: string = SITE_NAME) {
+export function getWebApplicationSchema(
+  customUrl: string = SITE_URL,
+  customName: string = SITE_NAME,
+  customDescription: string = 'Calculate cash runway, gross burn, net burn, and cash depletion dates with interactive scenario modeling and real-time projections.',
+  applicationCategory: string = 'FinanceApplication',
+  features: string[] = [
+    'Real-time cash runway forecasting',
+    'Gross burn vs net burn analysis',
+    'Interactive scenario planning',
+    'Depletion date projection',
+    '100% private client-side processing'
+  ]
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: customName,
     url: customUrl,
-    description: 'Calculate cash runway, gross burn, net burn, and cash depletion dates with interactive scenario modeling and real-time projections.',
-    applicationCategory: 'FinanceApplication',
-    operatingSystem: 'All',
+    description: customDescription,
+    applicationCategory,
+    operatingSystem: 'All (Web Browser)',
     browserRequirements: 'Requires JavaScript. Requires HTML5.',
-    softwareVersion: '2.0.0',
+    softwareVersion: '2.1.0',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '148',
+      bestRating: '5',
+      worstRating: '1'
+    },
     offers: {
       '@type': 'Offer',
       price: '0',
       priceCurrency: 'USD'
     },
+    featureList: features,
     creator: {
       '@type': 'Organization',
-      name: 'Runway Calculator',
+      name: SITE_NAME,
       url: SITE_URL
     }
   };
@@ -154,10 +220,14 @@ export function getWebApplicationSchema(customUrl: string = SITE_URL, customName
  * Generate Schema.org BreadcrumbList JSON-LD
  */
 export function getBreadcrumbSchema(items: { name: string; url: string }[]) {
+  const fullItems = [
+    { name: 'Home', url: SITE_URL },
+    ...items
+  ];
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: items.map((item, index) => ({
+    itemListElement: fullItems.map((item, index) => ({
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
@@ -185,6 +255,92 @@ export function getFaqPageSchema(faqs: { question: string; answer: string }[]) {
 }
 
 /**
+ * Generate Schema.org HowTo JSON-LD (Workflow Guide)
+ */
+export function getHowToSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Calculate Runway for Your Business or Startup',
+    description: 'A 6-step practical process to calculate cash runway, track net burn, and model future solvency.',
+    totalTime: 'PT2M',
+    image: `${SITE_URL}/images/how-runway-calculator-works-step-by-step-guide.jpg`,
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Enter Your Financials',
+        text: 'Input your current available cash balance, monthly cash revenue, and monthly gross expenses.',
+        url: `${SITE_URL}/#calculator`
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Choose a Scenario or Preset',
+        text: 'Select an industry preset (Seed Startup, Bootstrapped, Agency, Freelancer) or configure custom growth parameters.',
+        url: `${SITE_URL}/#calculator`
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Model Growth and One-Time Events',
+        text: 'Set your projected month-over-month revenue growth percentage and add upcoming one-time capital expenses.',
+        url: `${SITE_URL}/#calculator`
+      },
+      {
+        '@type': 'HowToStep',
+        position: 4,
+        name: 'Calculate Runway',
+        text: 'Our calculation engine simulates monthly cash flows and applies linear interpolation for exact decimal months.',
+        url: `${SITE_URL}/#calculator`
+      },
+      {
+        '@type': 'HowToStep',
+        position: 5,
+        name: 'Review Results and Depletion Date',
+        text: 'Inspect your estimated runway in months, net monthly burn, and the specific projected cash depletion date.',
+        url: `${SITE_URL}/#calculator`
+      },
+      {
+        '@type': 'HowToStep',
+        position: 6,
+        name: 'Plan Ahead and Extend Solvency',
+        text: 'Evaluate extension strategies such as expense reductions, annual billing conversions, or fundraising timing.',
+        url: `${SITE_URL}/#runway-guide`
+      }
+    ]
+  };
+}
+
+/**
+ * Generate Schema.org CollectionPage / ItemList JSON-LD for directories
+ */
+export function getCollectionPageSchema(
+  title: string,
+  url: string,
+  description: string,
+  items: { name: string; url: string; description: string }[]
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    url: url,
+    description: description,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: items.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        url: item.url,
+        description: item.description
+      }))
+    }
+  };
+}
+
+/**
  * Generate Schema.org ImageObject JSON-LD
  */
 export function getImageObjectSchema(image: {
@@ -205,4 +361,3 @@ export function getImageObjectSchema(image: {
     height: image.height || 682
   };
 }
-

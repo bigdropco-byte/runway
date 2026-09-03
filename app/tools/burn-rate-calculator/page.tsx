@@ -15,6 +15,8 @@ import {
 } from '@/lib/seo';
 import { Flame, Sparkles } from 'lucide-react';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Burn Rate Calculator – Gross Burn, Net Burn & Multiple',
   description: 'Free burn rate calculator. Calculate your monthly gross burn, net burn rate, cash depletion velocity, and SaaS Burn Multiple efficiency.',

@@ -15,6 +15,8 @@ import {
 } from '@/lib/seo';
 import { FileSpreadsheet, Sparkles } from 'lucide-react';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Runway Calculator Excel Template – Free Model Download',
   description: 'Free runway calculator Excel template and CSV generator. Download a pre-built 24-month financial runway projection model with built-in formulas.',

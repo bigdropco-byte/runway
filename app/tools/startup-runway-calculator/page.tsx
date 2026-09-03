@@ -15,6 +15,8 @@ import {
 } from '@/lib/seo';
 import { Sparkles, Rocket } from 'lucide-react';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Startup Runway Calculator – Venture Burn & Survival Time',
   description: 'Free startup runway calculator. Calculate cash runway in months, forecast depletion dates, model VC funding timing, and manage hiring burn.',

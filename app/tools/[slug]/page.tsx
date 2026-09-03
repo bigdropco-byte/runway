@@ -8,6 +8,7 @@ import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import JsonLd from '@/components/seo/JsonLd';
 import RunwayCalculator from '@/components/calculator/RunwayCalculator';
 import FaqAccordion from '@/components/content/FaqAccordion';
+import RelatedTools from '@/components/layout/RelatedTools';
 import { ALL_NICHES, getNicheBySlug } from '@/lib/niches';
 import { 
   getNicheMetadata, 
@@ -211,6 +212,9 @@ export default async function NicheCalculatorPage({ params }: NichePageProps) {
                 description={`Common questions and financial benchmarks for ${niche.name.toLowerCase()}.`}
               />
             </section>
+
+            {/* Core Financial Tools Interlinking */}
+            <RelatedTools currentUrl={`/tools/${niche.slug}`} category="financial" />
 
             {/* Related Niches Section */}
             {relatedNiches.length > 0 && (

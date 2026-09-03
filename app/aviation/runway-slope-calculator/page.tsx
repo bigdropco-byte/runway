@@ -15,6 +15,8 @@ import {
 } from '@/lib/seo';
 import { Mountain, Sparkles } from 'lucide-react';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Runway Slope Calculator – Gradient & Elevation Difference',
   description: 'Free runway slope calculator. Calculate runway gradient percentage, threshold elevation changes, and performance adjustments for takeoff and landing rollout.',
