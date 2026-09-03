@@ -14,6 +14,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+import CookieBanner from "@/components/layout/CookieBanner";
+
 export const metadata: Metadata = getBaseMetadata();
 
 export const viewport: Viewport = {
@@ -35,6 +37,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen flex flex-col bg-white text-slate-900 font-sans">
         {children}
+        <CookieBanner />
       </body>
     </html>
   );

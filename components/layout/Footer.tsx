@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Calculator, ShieldCheck, Lock, Plane } from 'lucide-react';
 import { ALL_NICHES } from '@/lib/niches';
+import CookiePreferencesButton from '@/components/layout/CookiePreferencesButton';
 
 export default function Footer() {
   return (
@@ -155,8 +156,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#faq" className="hover:text-indigo-400 transition-colors">
-                  Frequently Asked Questions
+                <Link href="/privacy" className="hover:text-indigo-400 transition-colors">
+                  Privacy &amp; Cookie Policy
                 </Link>
               </li>
             </ul>
@@ -170,7 +171,11 @@ export default function Footer() {
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
             <p>© {new Date().getFullYear()} RunwayCalculator.dev. Open, private, and independent.</p>
-            <div className="flex items-center space-x-6 text-xs">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs">
+              <Link href="/privacy" className="hover:text-slate-300 transition-colors text-slate-400">
+                Privacy Policy
+              </Link>
+              <CookiePreferencesButton />
               <span className="flex items-center text-slate-400">
                 <ShieldCheck className="w-3.5 h-3.5 mr-1 text-emerald-500" />
                 Browser-only execution
