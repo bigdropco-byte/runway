@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og';
 
+export const dynamic = 'force-static';
 export const alt = 'Runway Calculator – Calculate Your Cash Runway';
 export const size = {
   width: 1200,
