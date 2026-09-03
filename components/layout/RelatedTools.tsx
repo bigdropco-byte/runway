@@ -96,6 +96,18 @@ const ALL_TOOLS: RelatedToolItem[] = [
     url: '/aviation/contaminated-runway-calculator',
     description: 'FAA TALPA / RCAM landing distance adjustments for wet, slush, and icy runways.',
     category: 'aviation'
+  },
+  {
+    name: 'Runway in Use Calculator',
+    url: '/aviation/runway-in-use-calculator',
+    description: 'Determine active airport runway in use based on surface wind direction and velocity.',
+    category: 'aviation'
+  },
+  {
+    name: 'Runway Wind Calculator',
+    url: '/aviation/runway-wind-calculator',
+    description: 'Calculate headwind, crosswind, and tailwind components with wind gust factoring.',
+    category: 'aviation'
   }
 ];
 

@@ -76,6 +76,20 @@ const AVIATION_TOOLS = [
     description: 'Apply FAA TALPA Runway Condition Assessment Matrix (RCAM 1–6) multipliers for rain, slush, snow, and ice with 15% dispatch buffers.',
     icon: CloudRain,
     badge: 'TALPA / RCAM'
+  },
+  {
+    name: 'Runway in Use Calculator',
+    slug: 'runway-in-use-calculator',
+    description: 'Determine active airport runway in use based on surface wind direction, speed, and airport runway layouts.',
+    icon: Compass,
+    badge: 'Active Runway'
+  },
+  {
+    name: 'Runway Wind Calculator',
+    slug: 'runway-wind-calculator',
+    description: 'Calculate headwind, crosswind, and tailwind components with wind gust factoring and visual vectors.',
+    icon: Wind,
+    badge: 'Wind Vectors'
   }
 ];
 

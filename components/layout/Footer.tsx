@@ -122,6 +122,16 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/aviation/runway-in-use-calculator" className="hover:text-indigo-400 transition-colors">
+                  Runway in Use Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/aviation/runway-wind-calculator" className="hover:text-indigo-400 transition-colors">
+                  Runway Wind Calculator
+                </Link>
+              </li>
+              <li>
                 <Link href="/aviation" className="hover:text-indigo-400 transition-colors font-semibold text-indigo-400">
                   Aviation Hub Overview →
                 </Link>

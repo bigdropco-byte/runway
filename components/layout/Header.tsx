@@ -203,6 +203,21 @@ export default function Header() {
                       <span>Contaminated Runway (TALPA)</span>
                       <span className="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">New</span>
                     </Link>
+                    <Link
+                      href="/aviation/runway-in-use-calculator"
+                      onClick={() => setAviationDropdownOpen(false)}
+                      className="flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                    >
+                      <span>Runway in Use Calculator</span>
+                      <span className="text-[10px] text-indigo-500 bg-indigo-50 px-1.5 py-0.5 rounded">ATC</span>
+                    </Link>
+                    <Link
+                      href="/aviation/runway-wind-calculator"
+                      onClick={() => setAviationDropdownOpen(false)}
+                      className="flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                    >
+                      <span>Runway Wind Calculator</span>
+                    </Link>
                   </div>
                   <div className="mt-1.5 pt-1.5 border-t border-slate-100">
                     <Link
@@ -360,6 +375,20 @@ export default function Header() {
               className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
             >
               Contaminated Runway (TALPA)
+            </Link>
+            <Link
+              href="/aviation/runway-in-use-calculator"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+            >
+              Runway in Use Calculator
+            </Link>
+            <Link
+              href="/aviation/runway-wind-calculator"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+            >
+              Runway Wind Calculator
             </Link>
           </div>
         </div>

@@ -9,7 +9,8 @@ import {
   calculateCrosswind,
   calculateRunwaySlope,
   calculateRunwayNumber,
-  calculateRunwayLengthPerformance
+  calculateRunwayLengthPerformance,
+  calculateRunwayInUse
 } from '../lib/aviationCalculator';
 
 describe('New Financial Tools Engine', () => {
@@ -118,5 +119,21 @@ describe('Aviation Runway Engine', () => {
     expect(res.densityAltitudeFeet).toBeGreaterThan(5000);
     expect(res.adjustedTakeoffDistanceFeet).toBeGreaterThan(1000);
     expect(res.safetyMarginDistanceFeet).toBeGreaterThan(res.adjustedTakeoffDistanceFeet);
+  });
+
+  it('selects the active runway in use maximizing headwind', () => {
+    // Airport has Runway 09/27 (90°/270°) and Runway 18/36 (180°/360°)
+    // Wind is from 260° at 15 knots
+    const res = calculateRunwayInUse({
+      windDirection: 260,
+      windSpeedKnots: 15,
+      runwayHeadings: [90, 180]
+    });
+
+    // Runway 27 (270°) should be the active runway in use
+    expect(res.activeRunway.heading).toBe(270);
+    expect(res.activeRunway.isTailwind).toBe(false);
+    expect(res.activeRunway.headwindKnots).toBeGreaterThan(14);
+    expect(res.activeRunway.crosswindKnots).toBeLessThan(3);
   });
 });

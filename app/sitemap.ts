@@ -121,6 +121,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.8
+    },
+    {
+      url: `${SITE_URL}/aviation/runway-in-use-calculator`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9
+    },
+    {
+      url: `${SITE_URL}/aviation/runway-wind-calculator`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9
     }
   ];
 

@@ -246,3 +246,97 @@ export function calculateRunwayLengthPerformance(inputs: RunwayLengthInputs): Ru
     densityAltitudePenaltyPercent: daPenaltyPct
   };
 }
+
+/* ============================================================
+   5. RUNWAY IN USE CALCULATOR
+   ============================================================ */
+export interface RunwayInUseOption {
+  runwayName: string; // e.g. "Runway 27"
+  heading: number;
+  headwindKnots: number;
+  crosswindKnots: number;
+  crosswindDirection: 'Left' | 'Right' | 'None';
+  isTailwind: boolean;
+  score: number;
+}
+
+export interface RunwayInUseInputs {
+  windDirection: number;
+  windSpeedKnots: number;
+  runwayHeadings: number[];
+}
+
+export interface RunwayInUseResults {
+  activeRunway: RunwayInUseOption;
+  allRunwaysEvaluated: RunwayInUseOption[];
+  explanation: string;
+}
+
+export function calculateRunwayInUse(inputs: RunwayInUseInputs): RunwayInUseResults {
+  const windDir = ((inputs.windDirection % 360) + 360) % 360;
+  const windSpeed = Math.max(0, inputs.windSpeedKnots || 0);
+
+  // For each runway heading, evaluate both ends (primary and reciprocal +180°)
+  const evaluatedEnds: RunwayInUseOption[] = [];
+
+  const uniqueHeadings = new Set<number>();
+  for (const h of inputs.runwayHeadings) {
+    const norm = ((h % 360) + 360) % 360;
+    const recip = (norm + 180) % 360;
+    uniqueHeadings.add(norm === 0 ? 360 : norm);
+    uniqueHeadings.add(recip === 0 ? 360 : recip);
+  }
+
+  for (const hdg of uniqueHeadings) {
+    const rwyNum = Math.round(hdg / 10);
+    const rwyStr = rwyNum === 0 ? '36' : rwyNum < 10 ? `0${rwyNum}` : `${rwyNum}`;
+    const rwyName = `Runway ${rwyStr} (${hdg}°)`;
+
+    let diff = (windDir - hdg + 360) % 360;
+    if (diff > 180) diff -= 360;
+    const rad = (diff * Math.PI) / 180;
+
+    const crosswindKnots = Math.round(Math.abs(windSpeed * Math.sin(rad)) * 10) / 10;
+    const rawHeadwind = Math.round(windSpeed * Math.cos(rad) * 10) / 10;
+    const isTailwind = rawHeadwind < 0;
+    const headwindKnots = Math.abs(rawHeadwind);
+    const crosswindDirection = diff > 0 ? 'Right' : diff < 0 ? 'Left' : 'None';
+
+    // Scoring: prefer positive headwind, penalize tailwind heavily, penalize crosswind
+    const score = rawHeadwind - (crosswindKnots * 0.4);
+
+    evaluatedEnds.push({
+      runwayName: rwyName,
+      heading: hdg,
+      headwindKnots,
+      crosswindKnots,
+      crosswindDirection,
+      isTailwind,
+      score: Number(score.toFixed(1))
+    });
+  }
+
+  // Sort by score descending (highest headwind & lowest crosswind first)
+  evaluatedEnds.sort((a, b) => b.score - a.score);
+
+  const active = evaluatedEnds[0] || {
+    runwayName: 'Runway 36 (360°)',
+    heading: 360,
+    headwindKnots: 0,
+    crosswindKnots: 0,
+    crosswindDirection: 'None',
+    isTailwind: false,
+    score: 0
+  };
+
+  const explanation = active.isTailwind
+    ? `All evaluated runways exhibit tailwinds. ${active.runwayName} has the least adverse wind condition.`
+    : `${active.runwayName} is the active Runway in Use, providing ${active.headwindKnots} kts of headwind with a ${active.crosswindKnots} kts crosswind from the ${active.crosswindDirection}.`;
+
+  return {
+    activeRunway: active,
+    allRunwaysEvaluated: evaluatedEnds,
+    explanation
+  };
+}
+
