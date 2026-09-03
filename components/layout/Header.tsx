@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Calculator, ChevronDown, Menu, X, ArrowUpRight, ShieldCheck, Plane, DollarSign, FileSpreadsheet, Flame } from 'lucide-react';
+import { Calculator, ChevronDown, Menu, X, ArrowUpRight, ShieldCheck, Plane, DollarSign, FileSpreadsheet, Flame, Users, HeartPulse, PieChart } from 'lucide-react';
 import { ALL_NICHES } from '@/lib/niches';
 
 export default function Header() {
@@ -50,46 +50,71 @@ export default function Header() {
 
               {businessDropdownOpen && (
                 <div 
-                  className="absolute left-0 mt-1 w-72 rounded-xl bg-white shadow-xl border border-slate-200 p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
+                  className="absolute left-0 mt-1 w-80 rounded-xl bg-white shadow-xl border border-slate-200 p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
                   onMouseEnter={() => setBusinessDropdownOpen(true)}
                   onMouseLeave={() => setBusinessDropdownOpen(false)}
                 >
                   <div className="px-3 py-1.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-                    Core Business Calculators
+                    Core Financial Calculators
                   </div>
                   <div className="space-y-0.5">
                     <Link
                       href="/tools/startup-runway-calculator"
                       onClick={() => setBusinessDropdownOpen(false)}
-                      className="flex items-center px-3 py-2 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      className="flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                     >
                       <span>Startup Runway Calculator</span>
+                      <span className="text-[10px] text-indigo-500 bg-indigo-50 px-1.5 py-0.5 rounded">Venture</span>
+                    </Link>
+                    <Link
+                      href="/tools/hiring-runway-calculator"
+                      onClick={() => setBusinessDropdownOpen(false)}
+                      className="flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                    >
+                      <span>Hiring &amp; Headcount Burn</span>
+                      <span className="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">New</span>
+                    </Link>
+                    <Link
+                      href="/tools/default-alive-calculator"
+                      onClick={() => setBusinessDropdownOpen(false)}
+                      className="flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                    >
+                      <span>Default Alive / Dead (PG)</span>
+                      <span className="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">New</span>
+                    </Link>
+                    <Link
+                      href="/tools/safe-dilution-runway-calculator"
+                      onClick={() => setBusinessDropdownOpen(false)}
+                      className="flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                    >
+                      <span>SAFE &amp; Dilution Calculator</span>
+                      <span className="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">New</span>
                     </Link>
                     <Link
                       href="/tools/cash-runway-calculator"
                       onClick={() => setBusinessDropdownOpen(false)}
-                      className="flex items-center px-3 py-2 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      className="flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                     >
-                      <span>Cash Runway Calculator</span>
+                      <span>Cash Runway &amp; Buffer</span>
                     </Link>
                     <Link
                       href="/tools/burn-rate-calculator"
                       onClick={() => setBusinessDropdownOpen(false)}
-                      className="flex items-center px-3 py-2 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      className="flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                     >
-                      <span>Burn Rate Calculator</span>
+                      <span>Burn Rate &amp; Multiple</span>
                     </Link>
                     <Link
                       href="/tools/runway-calculator-excel"
                       onClick={() => setBusinessDropdownOpen(false)}
-                      className="flex items-center px-3 py-2 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      className="flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                     >
                       <span>Excel Model &amp; CSV Template</span>
                     </Link>
                     <Link
                       href="/tools/runway-extension-calculator"
                       onClick={() => setBusinessDropdownOpen(false)}
-                      className="flex items-center px-3 py-2 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      className="flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                     >
                       <span>Runway Extension Solver</span>
                     </Link>
@@ -124,41 +149,57 @@ export default function Header() {
 
               {aviationDropdownOpen && (
                 <div 
-                  className="absolute left-0 mt-1 w-64 rounded-xl bg-white shadow-xl border border-slate-200 p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
+                  className="absolute left-0 mt-1 w-72 rounded-xl bg-white shadow-xl border border-slate-200 p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
                   onMouseEnter={() => setAviationDropdownOpen(true)}
                   onMouseLeave={() => setAviationDropdownOpen(false)}
                 >
                   <div className="px-3 py-1.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-                    Pilot &amp; Airport Tools
+                    Pilot &amp; Airport Flight Tools
                   </div>
                   <div className="space-y-0.5">
                     <Link
                       href="/aviation/crosswind-calculator"
                       onClick={() => setAviationDropdownOpen(false)}
-                      className="flex items-center px-3 py-2 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      className="flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                     >
                       <span>Crosswind &amp; Wind Component</span>
                     </Link>
                     <Link
                       href="/aviation/runway-slope-calculator"
                       onClick={() => setAviationDropdownOpen(false)}
-                      className="flex items-center px-3 py-2 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      className="flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                     >
                       <span>Runway Slope Gradient</span>
                     </Link>
                     <Link
                       href="/aviation/runway-number-calculator"
                       onClick={() => setAviationDropdownOpen(false)}
-                      className="flex items-center px-3 py-2 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      className="flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                     >
                       <span>Runway Number &amp; Reciprocal</span>
                     </Link>
                     <Link
                       href="/aviation/runway-length-calculator"
                       onClick={() => setAviationDropdownOpen(false)}
-                      className="flex items-center px-3 py-2 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      className="flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                     >
                       <span>Density Altitude &amp; Length</span>
+                    </Link>
+                    <Link
+                      href="/aviation/runway-visual-range-calculator"
+                      onClick={() => setAviationDropdownOpen(false)}
+                      className="flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                    >
+                      <span>Runway Visual Range (RVR)</span>
+                      <span className="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">New</span>
+                    </Link>
+                    <Link
+                      href="/aviation/contaminated-runway-calculator"
+                      onClick={() => setAviationDropdownOpen(false)}
+                      className="flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                    >
+                      <span>Contaminated Runway (TALPA)</span>
+                      <span className="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">New</span>
                     </Link>
                   </div>
                   <div className="mt-1.5 pt-1.5 border-t border-slate-100">
@@ -210,7 +251,7 @@ export default function Header() {
 
       {/* Mobile menu dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-6 space-y-2 text-sm">
+        <div className="md:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-6 space-y-2 text-sm max-h-[85vh] overflow-y-auto">
           <Link
             href="/#calculator"
             onClick={() => setMobileMenuOpen(false)}
@@ -230,11 +271,32 @@ export default function Header() {
               Startup Runway Calculator
             </Link>
             <Link
+              href="/tools/hiring-runway-calculator"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+            >
+              Hiring &amp; Headcount Burn
+            </Link>
+            <Link
+              href="/tools/default-alive-calculator"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+            >
+              Default Alive vs Dead (PG)
+            </Link>
+            <Link
+              href="/tools/safe-dilution-runway-calculator"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+            >
+              SAFE &amp; Dilution Calculator
+            </Link>
+            <Link
               href="/tools/cash-runway-calculator"
               onClick={() => setMobileMenuOpen(false)}
               className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
             >
-              Cash Runway Calculator
+              Cash Runway &amp; Buffer
             </Link>
             <Link
               href="/tools/burn-rate-calculator"
@@ -282,6 +344,20 @@ export default function Header() {
               className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
             >
               Runway Length Calculator
+            </Link>
+            <Link
+              href="/aviation/runway-visual-range-calculator"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+            >
+              Runway Visual Range (RVR)
+            </Link>
+            <Link
+              href="/aviation/contaminated-runway-calculator"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+            >
+              Contaminated Runway (TALPA)
             </Link>
           </div>
         </div>

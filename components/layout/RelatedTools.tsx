@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Calculator, Plane, FileSpreadsheet, TrendingUp, DollarSign } from 'lucide-react';
+import { ArrowRight, Calculator, Plane } from 'lucide-react';
 
 interface RelatedToolItem {
   name: string;
@@ -10,6 +10,7 @@ interface RelatedToolItem {
 }
 
 const ALL_TOOLS: RelatedToolItem[] = [
+  // Financial Tools
   {
     name: 'Cash Runway Calculator',
     url: '/tools/cash-runway-calculator',
@@ -29,21 +30,41 @@ const ALL_TOOLS: RelatedToolItem[] = [
     category: 'financial'
   },
   {
-    name: 'Runway Calculator Excel Generator',
+    name: 'Hiring Runway Calculator',
+    url: '/tools/hiring-runway-calculator',
+    description: 'Model headcount salary additions and benefits overhead on runway months.',
+    category: 'financial'
+  },
+  {
+    name: 'Default Alive vs Dead Calculator',
+    url: '/tools/default-alive-calculator',
+    description: 'Paul Graham framework: test if revenue growth reaches profitability before cash runs out.',
+    category: 'financial'
+  },
+  {
+    name: 'SAFE & Dilution Calculator',
+    url: '/tools/safe-dilution-runway-calculator',
+    description: 'Calculate how much SAFE capital to raise and resulting founder equity dilution.',
+    category: 'financial'
+  },
+  {
+    name: 'Runway Calculator Excel Model',
     url: '/tools/runway-calculator-excel',
     description: 'Build & download a custom 24-month financial runway model spreadsheet.',
     category: 'financial'
   },
   {
-    name: 'Runway Extension Calculator',
+    name: 'Runway Extension Solver',
     url: '/tools/runway-extension-calculator',
     description: 'Determine exact expense cuts or sales needed to reach your runway goal.',
     category: 'financial'
   },
+
+  // Aviation Tools
   {
     name: 'Runway Crosswind Calculator',
     url: '/aviation/crosswind-calculator',
-    description: 'Calculate exact crosswind and headwind/tailwind components for safe landing.',
+    description: 'Calculate exact crosswind and headwind/tailwind components with compass visual.',
     category: 'aviation'
   },
   {
@@ -62,6 +83,18 @@ const ALL_TOOLS: RelatedToolItem[] = [
     name: 'Runway Length & Takeoff Calculator',
     url: '/aviation/runway-length-calculator',
     description: 'Compute density altitude and required ground roll safety distance.',
+    category: 'aviation'
+  },
+  {
+    name: 'Runway Visual Range (RVR) Calculator',
+    url: '/aviation/runway-visual-range-calculator',
+    description: 'Convert RVR in feet/meters to statute miles and CAT I/II/III approach minimums.',
+    category: 'aviation'
+  },
+  {
+    name: 'Contaminated Runway Calculator',
+    url: '/aviation/contaminated-runway-calculator',
+    description: 'FAA TALPA / RCAM landing distance adjustments for wet, slush, and icy runways.',
     category: 'aviation'
   }
 ];

@@ -19,7 +19,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              Free, professional-grade calculation suite for financial runway forecasting and FAA/ICAO aeronautical runway calculations. 100% private in-browser computation.
+              Free, professional-grade calculation suite for financial runway forecasting, headcount burn, and FAA/ICAO aeronautical runway calculations. 100% private in-browser computation.
             </p>
             <div className="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700/60 max-w-sm">
               <div className="flex items-center space-x-2 text-emerald-400 text-xs font-semibold mb-1">
@@ -37,10 +37,25 @@ export default function Footer() {
             <h3 className="text-xs font-semibold text-white uppercase tracking-wider mb-3">
               Financial Calculators
             </h3>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-1.5 text-xs">
               <li>
                 <Link href="/tools/startup-runway-calculator" className="hover:text-indigo-400 transition-colors">
                   Startup Runway Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/hiring-runway-calculator" className="hover:text-indigo-400 transition-colors">
+                  Hiring &amp; Headcount Burn
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/default-alive-calculator" className="hover:text-indigo-400 transition-colors">
+                  Default Alive vs Dead (PG)
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/safe-dilution-runway-calculator" className="hover:text-indigo-400 transition-colors">
+                  SAFE &amp; Dilution Calculator
                 </Link>
               </li>
               <li>
@@ -63,11 +78,6 @@ export default function Footer() {
                   Runway Extension Solver
                 </Link>
               </li>
-              <li>
-                <Link href="/tools" className="hover:text-indigo-400 transition-colors font-semibold text-indigo-400">
-                  All 10 Industry Niches →
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -77,7 +87,7 @@ export default function Footer() {
               <Plane className="w-3.5 h-3.5 mr-1 text-indigo-400" />
               Aviation Tools
             </h3>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-1.5 text-xs">
               <li>
                 <Link href="/aviation/crosswind-calculator" className="hover:text-indigo-400 transition-colors">
                   Crosswind &amp; Wind Component
@@ -99,6 +109,16 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/aviation/runway-visual-range-calculator" className="hover:text-indigo-400 transition-colors">
+                  Runway Visual Range (RVR)
+                </Link>
+              </li>
+              <li>
+                <Link href="/aviation/contaminated-runway-calculator" className="hover:text-indigo-400 transition-colors">
+                  Contaminated Runway (TALPA)
+                </Link>
+              </li>
+              <li>
                 <Link href="/aviation" className="hover:text-indigo-400 transition-colors font-semibold text-indigo-400">
                   Aviation Hub Overview →
                 </Link>
@@ -109,9 +129,14 @@ export default function Footer() {
           {/* Guides & Resources */}
           <div>
             <h3 className="text-xs font-semibold text-white uppercase tracking-wider mb-3">
-              Guides &amp; Formulas
+              Guides &amp; Niches
             </h3>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-1.5 text-xs">
+              <li>
+                <Link href="/tools" className="hover:text-indigo-400 transition-colors font-semibold text-indigo-400">
+                  All 10 Industry Niches →
+                </Link>
+              </li>
               <li>
                 <Link href="/#how-it-works" className="hover:text-indigo-400 transition-colors">
                   Runway Formula Breakdown

@@ -60,6 +60,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.8
     },
+    {
+      url: `${SITE_URL}/tools/hiring-runway-calculator`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9
+    },
+    {
+      url: `${SITE_URL}/tools/default-alive-calculator`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9
+    },
+    {
+      url: `${SITE_URL}/tools/safe-dilution-runway-calculator`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8
+    },
 
     // Dedicated Aviation Runway Calculators
     {
@@ -82,6 +100,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/aviation/runway-length-calculator`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8
+    },
+    {
+      url: `${SITE_URL}/aviation/runway-visual-range-calculator`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9
+    },
+    {
+      url: `${SITE_URL}/aviation/contaminated-runway-calculator`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.8
