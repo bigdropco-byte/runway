@@ -11,9 +11,11 @@ export default function Footer() {
           {/* Brand & Privacy Statement */}
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center space-x-2.5 text-white">
-              <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center text-white">
-                <Calculator className="w-5 h-5" />
-              </div>
+              <img
+                src="/favicon.png"
+                alt="Runway Calculator Logo"
+                className="w-8 h-8 rounded-lg shadow-xs object-cover"
+              />
               <span className="text-lg font-bold tracking-tight">
                 Runway<span className="text-indigo-400">Calculator</span>
               </span>

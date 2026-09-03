@@ -16,9 +16,11 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2.5 group">
-            <div className="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-sm shadow-indigo-200 group-hover:bg-indigo-700 transition-colors">
-              <Calculator className="w-5 h-5" />
-            </div>
+            <img
+              src="/favicon.png"
+              alt="Runway Calculator Logo"
+              className="w-9 h-9 rounded-xl shadow-xs object-cover group-hover:scale-105 transition-transform"
+            />
             <div className="flex flex-col">
               <span className="text-lg font-bold tracking-tight text-slate-900 leading-tight">
                 Runway<span className="text-indigo-600">Calculator</span>
