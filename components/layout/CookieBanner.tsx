@@ -30,15 +30,24 @@ export default function CookieBanner() {
   }, []);
 
   const handleSaveConsent = (choice: CookieConsentChoice) => {
+    const isAnalyticsAllowed = choice === 'all' || analyticsEnabled;
     localStorage.setItem(
       'runway_cookie_consent',
       JSON.stringify({
         choice,
         necessary: true,
-        analytics: choice === 'all' ? true : analyticsEnabled,
+        analytics: isAnalyticsAllowed,
         timestamp: new Date().toISOString()
       })
     );
+
+    // Sync with Google Analytics 4 Consent Mode
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('consent', 'update', {
+        analytics_storage: isAnalyticsAllowed ? 'granted' : 'denied'
+      });
+    }
+
     setIsVisible(false);
     setShowPreferences(false);
   };
