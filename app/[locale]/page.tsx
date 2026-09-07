@@ -130,15 +130,15 @@ export default async function LocalizedHomePage({
             <div className="flex flex-wrap items-center justify-center gap-6 pt-2 text-xs font-medium text-slate-500">
               <span className="flex items-center">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 mr-1.5" />
-                100% In-Browser Computation
+                {t('common.inBrowser')}
               </span>
               <span className="flex items-center">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 mr-1.5" />
-                Linear Growth Interpolation
+                {t('common.growthModel')}
               </span>
               <span className="flex items-center">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 mr-1.5" />
-                No Sign-Up Required
+                {t('common.noSignUp')}
               </span>
             </div>
           </div>

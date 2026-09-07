@@ -53,6 +53,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
+  const lp = (path: string) => {
+    const clean = path.startsWith('/') ? path : '/' + path;
+    return '/' + locale + (clean === '/' ? '' : clean);
+  };
   const niche = getNicheBySlug(slug);
   if (!niche) return {};
   return getLocalizedMetadata({
@@ -65,6 +69,10 @@ export async function generateMetadata({
 
 export default async function NicheCalculatorPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
+  const lp = (path: string) => {
+    const clean = path.startsWith('/') ? path : '/' + path;
+    return '/' + locale + (clean === '/' ? '' : clean);
+  };
   const niche = getNicheBySlug(slug);
 
   if (!niche) {
@@ -239,7 +247,7 @@ export default async function NicheCalculatorPage({ params }: { params: Promise<
                     return (
                       <Link
                         key={rel.slug}
-                        href={`/tools/${rel.slug}`}
+                        href={lp(`/tools/${rel.slug}`)}
                         className="p-3.5 rounded-xl border border-slate-200 bg-white hover:border-indigo-400 hover:shadow-xs transition-all group"
                       >
                         <div className="text-xs font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">

@@ -1,3 +1,4 @@
+import { getTranslations } from '@/i18n/getTranslations';
 import { NON_DEFAULT_LOCALES } from '@/i18n/config';
 import { getLocalizedMetadata } from '@/lib/seo';
 import React from 'react';
@@ -160,10 +161,11 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = getTranslations(locale);
   return getLocalizedMetadata({
     locale,
     subpath: '/privacy',
-    title: 'Privacy Policy & Cookie Disclosure – Runway Calculator',
-    description: 'Runway Calculator Privacy Policy: 100% client-side computing, zero database storage, GDPR rights, CCPA compliance, and local storage cookie disclosure.'
+    title: t('seo.privacyTitle'),
+    description: t('seo.privacyDescription')
   });
 }

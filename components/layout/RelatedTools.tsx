@@ -1,11 +1,16 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Calculator, Plane } from 'lucide-react';
+import { useTranslation } from '@/i18n/useTranslation';
 
 interface RelatedToolItem {
   name: string;
+  nameKey?: string;
   url: string;
   description: string;
+  descKey?: string;
   category: 'financial' | 'aviation';
 }
 
@@ -13,100 +18,132 @@ const ALL_TOOLS: RelatedToolItem[] = [
   // Financial Tools
   {
     name: 'Cash Runway Calculator',
+    nameKey: 'financialTools.cashRunway',
     url: '/tools/cash-runway-calculator',
     description: 'Calculate cash survival months with customizable emergency reserve buffers.',
+    descKey: 'financialTools.cashRunwayDesc',
     category: 'financial'
   },
   {
     name: 'Startup Runway Calculator',
+    nameKey: 'financialTools.startupRunway',
     url: '/tools/startup-runway-calculator',
     description: 'Model venture capital burn, fundraising timing, and milestone runway.',
+    descKey: 'financialTools.startupRunwayDesc',
     category: 'financial'
   },
   {
     name: 'Burn Rate Calculator',
+    nameKey: 'financialTools.burnRate',
     url: '/tools/burn-rate-calculator',
     description: 'Measure gross burn, net burn, and SaaS capital efficiency Burn Multiple.',
+    descKey: 'financialTools.burnRateDesc',
     category: 'financial'
   },
   {
     name: 'Hiring Runway Calculator',
+    nameKey: 'financialTools.hiringRunway',
     url: '/tools/hiring-runway-calculator',
     description: 'Model headcount salary additions and benefits overhead on runway months.',
+    descKey: 'financialTools.hiringRunwayDesc',
     category: 'financial'
   },
   {
     name: 'Default Alive vs Dead Calculator',
+    nameKey: 'financialTools.defaultAlive',
     url: '/tools/default-alive-calculator',
     description: 'Paul Graham framework: test if revenue growth reaches profitability before cash runs out.',
+    descKey: 'financialTools.defaultAliveDesc',
     category: 'financial'
   },
   {
     name: 'SAFE & Dilution Calculator',
+    nameKey: 'financialTools.safeDilution',
     url: '/tools/safe-dilution-runway-calculator',
     description: 'Calculate how much SAFE capital to raise and resulting founder equity dilution.',
+    descKey: 'financialTools.safeDilutionDesc',
     category: 'financial'
   },
   {
     name: 'Runway Calculator Excel Model',
+    nameKey: 'financialTools.excelTemplate',
     url: '/tools/runway-calculator-excel',
     description: 'Build & download a custom 24-month financial runway model spreadsheet.',
+    descKey: 'financialTools.excelTemplateDesc',
     category: 'financial'
   },
   {
     name: 'Runway Extension Solver',
+    nameKey: 'financialTools.extensionSolver',
     url: '/tools/runway-extension-calculator',
     description: 'Determine exact expense cuts or sales needed to reach your runway goal.',
+    descKey: 'financialTools.extensionSolverDesc',
     category: 'financial'
   },
 
   // Aviation Tools
   {
     name: 'Runway Crosswind Calculator',
+    nameKey: 'aviationTools.crosswind',
     url: '/aviation/crosswind-calculator',
     description: 'Calculate exact crosswind and headwind/tailwind components with compass visual.',
+    descKey: 'aviationTools.crosswindDesc',
     category: 'aviation'
   },
   {
     name: 'Runway Slope Calculator',
+    nameKey: 'aviationTools.runwaySlope',
     url: '/aviation/runway-slope-calculator',
     description: 'Determine runway gradient percentage and takeoff/landing rollout impact.',
+    descKey: 'aviationTools.runwaySlopeDesc',
     category: 'aviation'
   },
   {
     name: 'Runway Number Calculator',
+    nameKey: 'aviationTools.runwayNumber',
     url: '/aviation/runway-number-calculator',
     description: 'Convert magnetic headings to official FAA/ICAO runway numbers and reciprocals.',
+    descKey: 'aviationTools.runwayNumberDesc',
     category: 'aviation'
   },
   {
     name: 'Runway Length & Takeoff Calculator',
+    nameKey: 'aviationTools.runwayLength',
     url: '/aviation/runway-length-calculator',
     description: 'Compute density altitude and required ground roll safety distance.',
+    descKey: 'aviationTools.runwayLengthDesc',
     category: 'aviation'
   },
   {
     name: 'Runway Visual Range (RVR) Calculator',
+    nameKey: 'aviationTools.rvr',
     url: '/aviation/runway-visual-range-calculator',
     description: 'Convert RVR in feet/meters to statute miles and CAT I/II/III approach minimums.',
+    descKey: 'aviationTools.rvrDesc',
     category: 'aviation'
   },
   {
     name: 'Contaminated Runway Calculator',
+    nameKey: 'aviationTools.contaminated',
     url: '/aviation/contaminated-runway-calculator',
     description: 'FAA TALPA / RCAM landing distance adjustments for wet, slush, and icy runways.',
+    descKey: 'aviationTools.contaminatedDesc',
     category: 'aviation'
   },
   {
     name: 'Runway in Use Calculator',
+    nameKey: 'aviationTools.runwayInUse',
     url: '/aviation/runway-in-use-calculator',
     description: 'Determine active airport runway in use based on surface wind direction and velocity.',
+    descKey: 'aviationTools.runwayInUseDesc',
     category: 'aviation'
   },
   {
     name: 'Runway Wind Calculator',
+    nameKey: 'aviationTools.runwayWind',
     url: '/aviation/runway-wind-calculator',
     description: 'Calculate headwind, crosswind, and tailwind components with wind gust factoring.',
+    descKey: 'aviationTools.runwayWindDesc',
     category: 'aviation'
   }
 ];
@@ -118,9 +155,25 @@ interface RelatedToolsProps {
 }
 
 export default function RelatedTools({ currentUrl, category, limit = 4 }: RelatedToolsProps) {
-  let filtered = ALL_TOOLS.filter((t) => t.url !== currentUrl);
+  const { locale, t } = useTranslation();
+
+  const lp = (path: string) => {
+    const clean = path.startsWith('/') ? path : `/${path}`;
+    if (!locale || locale === 'en') {
+      return clean;
+    }
+    if (clean === `/${locale}` || clean.startsWith(`/${locale}/`)) {
+      return clean;
+    }
+    return `/${locale}${clean === '/' ? '' : clean}`;
+  };
+
+  // Normalise currentUrl so it matches regardless of locale prefix
+  const rawCurrentUrl = currentUrl.replace(/^\/[a-z]{2}\//, '/');
+
+  let filtered = ALL_TOOLS.filter((tool) => tool.url !== rawCurrentUrl && tool.url !== currentUrl);
   if (category) {
-    filtered = filtered.filter((t) => t.category === category);
+    filtered = filtered.filter((tool) => tool.category === category);
   }
   const items = filtered.slice(0, limit);
 
@@ -134,47 +187,52 @@ export default function RelatedTools({ currentUrl, category, limit = 4 }: Relate
             ) : (
               <Calculator className="w-4 h-4 mr-2 text-indigo-600" />
             )}
-            Related {category === 'aviation' ? 'Aviation' : 'Financial'} Calculators
+            {category === 'aviation' ? t('navigation.aviationTools') : t('navigation.financialTools')}
           </h3>
           <p className="text-xs text-slate-500 mt-0.5">
             Explore more precision calculators to streamline your planning.
           </p>
         </div>
         <Link
-          href={category === 'aviation' ? '/aviation' : '/tools'}
+          href={category === 'aviation' ? lp('/aviation') : lp('/tools')}
           className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 flex items-center self-start sm:self-auto"
         >
-          <span>View All Tools</span>
-          <ArrowRight className="w-3.5 h-3.5 ml-1" />
+          <span>{category === 'aviation' ? t('navigation.allAviation') : t('navigation.allTools')}</span>
+          <ArrowRight className="w-3.5 h-3.5 ml-1 rtl:rotate-180" />
         </Link>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {items.map((tool) => (
-          <Link
-            key={tool.url}
-            href={tool.url}
-            className="p-4 rounded-xl bg-white border border-slate-200/80 hover:border-indigo-400 hover:shadow-xs transition-all group flex flex-col justify-between"
-          >
-            <div>
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
-                  {tool.name}
-                </span>
-                <span className="text-[10px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 uppercase">
-                  {tool.category}
-                </span>
+        {items.map((tool) => {
+          const toolName = tool.nameKey ? t(tool.nameKey) : tool.name;
+          const toolDesc = tool.descKey ? t(tool.descKey) : tool.description;
+
+          return (
+            <Link
+              key={tool.url}
+              href={lp(tool.url)}
+              className="p-4 rounded-xl bg-white border border-slate-200/80 hover:border-indigo-400 hover:shadow-xs transition-all group flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                    {toolName}
+                  </span>
+                  <span className="text-[10px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 uppercase">
+                    {tool.category}
+                  </span>
+                </div>
+                <p className="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                  {toolDesc}
+                </p>
               </div>
-              <p className="text-xs text-slate-500 leading-relaxed line-clamp-2">
-                {tool.description}
-              </p>
-            </div>
-            <div className="mt-3 pt-2 border-t border-slate-100 flex items-center text-xs font-semibold text-indigo-600">
-              <span>Open Calculator</span>
-              <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-0.5 transition-transform" />
-            </div>
-          </Link>
-        ))}
+              <div className="mt-3 pt-2 border-t border-slate-100 flex items-center text-xs font-semibold text-indigo-600">
+                <span>{t('common.launchTool')}</span>
+                <ArrowRight className="w-3 h-3 ml-1 rtl:rotate-180 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform" />
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </section>
   );

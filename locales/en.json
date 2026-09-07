@@ -14,6 +14,9 @@
     "privacyPolicy": "Privacy Policy",
     "cookiePreferences": "Cookie Preferences",
     "allRightsReserved": "All rights reserved. 100% private in-browser tool.",
+    "inBrowser": "100% In-Browser Computation",
+    "growthModel": "Linear Growth Interpolation",
+    "noSignUp": "No Sign-Up Required",
     "disclaimer": "Disclaimer: The Runway Calculator suite is built for educational, illustrative, and planning purposes only. Financial calculations do not constitute formal accounting or investment advice. Aviation calculations do not replace official aircraft POH or certified dispatch releases."
   },
   "navigation": {

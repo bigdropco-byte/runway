@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { HelpCircle, ChevronDown, ChevronUp, DollarSign, Percent, Sparkles } from 'lucide-react';
 import { RunwayInputs } from '@/lib/runwayCalculator';
+import { useTranslation } from '@/i18n/useTranslation';
 
 interface CalculatorInputsProps {
   inputs: RunwayInputs;
@@ -11,6 +12,7 @@ interface CalculatorInputsProps {
 }
 
 export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: CalculatorInputsProps) {
+  const { locale, t } = useTranslation();
   const [showAdvanced, setShowAdvanced] = useState(
     Boolean(
       (inputs.revenueGrowthRate && inputs.revenueGrowthRate !== 0) ||
@@ -29,7 +31,7 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
 
   const presets: { name: string; badge: string; data: RunwayInputs }[] = [
     {
-      name: 'Seed Startup',
+      name: t('calculator.inputs.presets.seedStartup'),
       badge: 'High Growth',
       data: {
         cashBalance: 500_000,
@@ -42,7 +44,7 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
       }
     },
     {
-      name: 'Bootstrapped SaaS',
+      name: t('calculator.inputs.presets.bootstrapped'),
       badge: 'Lean Tech',
       data: {
         cashBalance: 120_000,
@@ -55,7 +57,7 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
       }
     },
     {
-      name: 'Agency / Studio',
+      name: t('calculator.inputs.presets.agency'),
       badge: 'Services',
       data: {
         cashBalance: 160_000,
@@ -68,7 +70,7 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
       }
     },
     {
-      name: 'Freelancer',
+      name: t('calculator.inputs.presets.freelancer'),
       badge: 'Solo',
       data: {
         cashBalance: 25_000,
@@ -89,7 +91,7 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
         <div className="flex items-center justify-between mb-2.5">
           <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider flex items-center">
             <Sparkles className="w-3.5 h-3.5 mr-1 text-indigo-500" />
-            Quick Presets
+            {t('calculator.inputs.presetsLabel')}
           </label>
           <span className="text-[11px] text-slate-400">Click to test scenario</span>
         </div>
@@ -105,7 +107,7 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
                   onChange(preset.data);
                 }
               }}
-              className="text-left px-3 py-2 rounded-lg border border-slate-200 hover:border-indigo-300 hover:bg-indigo-50/40 transition-all focus:outline-none focus:ring-1 focus:ring-indigo-500 group"
+              className="text-left px-3 py-2 rounded-lg border border-slate-200 hover:border-indigo-300 hover:bg-indigo-50/40 transition-all focus:outline-none focus:ring-1 focus:ring-indigo-500 group cursor-pointer"
             >
               <div className="text-xs font-semibold text-slate-800 group-hover:text-indigo-700 truncate">
                 {preset.name}
@@ -121,7 +123,7 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
         <div>
           <div className="flex items-center justify-between mb-1.5">
             <label htmlFor="cashBalance" className="text-sm font-semibold text-slate-800 flex items-center">
-              Current Available Cash
+              {t('calculator.inputs.cashBalance')}
               <span className="group relative ml-1.5 cursor-pointer text-slate-400 hover:text-slate-600">
                 <HelpCircle className="w-3.5 h-3.5" />
                 <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 hidden w-48 rounded bg-slate-800 p-2 text-[11px] text-white shadow-md group-hover:block z-20">
@@ -132,7 +134,7 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
             <span className="text-xs font-medium text-slate-400">Liquid reserves</span>
           </div>
           <div className="relative rounded-xl shadow-xs">
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5">
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 rtl:right-0 rtl:left-auto rtl:pr-3.5">
               <DollarSign className="w-4 h-4 text-slate-400" />
             </div>
             <input
@@ -144,7 +146,7 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
               value={inputs.cashBalance === 0 ? '' : inputs.cashBalance}
               onChange={(e) => handleFieldChange('cashBalance', parseFloat(e.target.value))}
               placeholder="e.g. 100000"
-              className="block w-full rounded-xl border border-slate-200 bg-slate-50/50 py-3 pl-9 pr-4 text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+              className="block w-full rounded-xl border border-slate-200 bg-slate-50/50 py-3 pl-9 pr-4 rtl:pr-9 rtl:pl-4 text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
             />
           </div>
         </div>
@@ -155,7 +157,7 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
           <div>
             <div className="flex items-center justify-between mb-1.5">
               <label htmlFor="monthlyRevenue" className="text-sm font-semibold text-slate-800 flex items-center">
-                Monthly Revenue
+                {t('calculator.inputs.monthlyRevenue')}
                 <span className="group relative ml-1.5 cursor-pointer text-slate-400 hover:text-slate-600">
                   <HelpCircle className="w-3.5 h-3.5" />
                   <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 hidden w-48 rounded bg-slate-800 p-2 text-[11px] text-white shadow-md group-hover:block z-20">
@@ -165,7 +167,7 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
               </label>
             </div>
             <div className="relative rounded-xl shadow-xs">
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 rtl:right-0 rtl:left-auto rtl:pr-3.5">
                 <DollarSign className="w-4 h-4 text-slate-400" />
               </div>
               <input
@@ -177,7 +179,7 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
                 value={inputs.monthlyRevenue === 0 ? '' : inputs.monthlyRevenue}
                 onChange={(e) => handleFieldChange('monthlyRevenue', parseFloat(e.target.value))}
                 placeholder="e.g. 20000"
-                className="block w-full rounded-xl border border-slate-200 bg-slate-50/50 py-3 pl-9 pr-4 text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                className="block w-full rounded-xl border border-slate-200 bg-slate-50/50 py-3 pl-9 pr-4 rtl:pr-9 rtl:pl-4 text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
               />
             </div>
           </div>
@@ -186,7 +188,7 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
           <div>
             <div className="flex items-center justify-between mb-1.5">
               <label htmlFor="monthlyExpenses" className="text-sm font-semibold text-slate-800 flex items-center">
-                Monthly Expenses
+                {t('calculator.inputs.monthlyExpenses')}
                 <span className="group relative ml-1.5 cursor-pointer text-slate-400 hover:text-slate-600">
                   <HelpCircle className="w-3.5 h-3.5" />
                   <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 hidden w-48 rounded bg-slate-800 p-2 text-[11px] text-white shadow-md group-hover:block z-20">
@@ -197,7 +199,7 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
               <span className="text-[11px] font-medium text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded">Gross Burn</span>
             </div>
             <div className="relative rounded-xl shadow-xs">
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 rtl:right-0 rtl:left-auto rtl:pr-3.5">
                 <DollarSign className="w-4 h-4 text-slate-400" />
               </div>
               <input
@@ -209,7 +211,7 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
                 value={inputs.monthlyExpenses === 0 ? '' : inputs.monthlyExpenses}
                 onChange={(e) => handleFieldChange('monthlyExpenses', parseFloat(e.target.value))}
                 placeholder="e.g. 35000"
-                className="block w-full rounded-xl border border-slate-200 bg-slate-50/50 py-3 pl-9 pr-4 text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                className="block w-full rounded-xl border border-slate-200 bg-slate-50/50 py-3 pl-9 pr-4 rtl:pr-9 rtl:pl-4 text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
               />
             </div>
           </div>

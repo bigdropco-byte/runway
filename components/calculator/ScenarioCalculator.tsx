@@ -17,6 +17,7 @@ import {
   calculateScenarios,
   formatCurrency 
 } from '@/lib/runwayCalculator';
+import { useTranslation } from '@/i18n/useTranslation';
 
 interface ScenarioCalculatorProps {
   inputs: RunwayInputs;
@@ -29,6 +30,7 @@ export default function ScenarioCalculator({
   baseMetrics,
   onApplyScenario
 }: ScenarioCalculatorProps) {
+  const { locale, t } = useTranslation();
   const [activeTab, setActiveTab] = useState<'expenses' | 'revenue' | 'funding'>('expenses');
   const scenarios: ScenarioResults = calculateScenarios(inputs, baseMetrics);
 
@@ -55,10 +57,10 @@ export default function ScenarioCalculator({
         <div>
           <h3 className="text-base font-bold text-slate-900 flex items-center">
             <SlidersHorizontal className="w-4 h-4 mr-2 text-indigo-600" />
-            “What If?” Scenario Modeling
+            {t('calculator.scenarios.heading')}
           </h3>
           <p className="text-xs text-slate-500 mt-0.5">
-            Test how cutting burn, expanding sales, or raising capital extends your survival timeline.
+            {t('calculator.scenarios.subheading')}
           </p>
         </div>
 

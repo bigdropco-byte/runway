@@ -1,3 +1,4 @@
+import { getTranslations } from '@/i18n/getTranslations';
 import { NON_DEFAULT_LOCALES } from '@/i18n/config';
 import { getLocalizedMetadata } from '@/lib/seo';
 import React from 'react';
@@ -91,6 +92,11 @@ const AVIATION_FAQS: FaqItem[] = [
 
 export default async function AviationHubPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const t = getTranslations(locale);
+  const lp = (path: string) => {
+    const clean = path.startsWith('/') ? path : '/' + path;
+    return '/' + locale + (clean === '/' ? '' : clean);
+  };
   const pageUrl = `${SITE_URL}/aviation`;
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: 'Aviation Tools Hub', url: pageUrl }
@@ -155,7 +161,7 @@ export default async function AviationHubPage({ params }: { params: Promise<{ lo
 
                     <h2 className="text-lg font-bold text-slate-900 mb-2">
                       <Link
-                        href={`/aviation/${tool.slug}`}
+                        href={lp(`/aviation/${tool.slug}`)}
                         className="hover:text-indigo-600 transition-colors"
                       >
                         {tool.name}
@@ -169,7 +175,7 @@ export default async function AviationHubPage({ params }: { params: Promise<{ lo
 
                   <div className="pt-4 border-t border-slate-100">
                     <Link
-                      href={`/aviation/${tool.slug}`}
+                      href={lp(`/aviation/${tool.slug}`)}
                       className="inline-flex items-center text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition-colors"
                     >
                       <span>Open Aviation Calculator</span>
@@ -195,7 +201,7 @@ export default async function AviationHubPage({ params }: { params: Promise<{ lo
               </p>
             </div>
             <Link
-              href="/"
+              href={lp("/")}
               className="shrink-0 px-4 py-2.5 rounded-xl bg-white text-indigo-900 hover:bg-indigo-50 font-bold text-xs shadow-sm transition-colors flex items-center space-x-1"
             >
               <span>Go to Financial Runway Calculator</span>
@@ -223,10 +229,11 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = getTranslations(locale);
   return getLocalizedMetadata({
     locale,
     subpath: '/aviation',
-    title: 'Aviation Runway Calculators – Crosswind, Slope, RVR, & Performance',
-    description: 'Complete directory of free aviation runway calculators for pilots and flight dispatchers. Calculate crosswind components, slope gradient, runway numbers, density altitude, RVR, and contaminated distance.'
+    title: t('seo.aviationTitle'),
+    description: t('seo.aviationDescription')
   });
 }

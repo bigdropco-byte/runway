@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { MonthlyProjectionPoint, formatCurrency, formatRunway } from '@/lib/runwayCalculator';
 import { LineChart as LineChartIcon, Info } from 'lucide-react';
+import { useTranslation } from '@/i18n/useTranslation';
 
 interface ProjectionChartProps {
   projections: MonthlyProjectionPoint[];
@@ -15,6 +16,7 @@ export default function ProjectionChart({
   startingCash,
   runwayMonths
 }: ProjectionChartProps) {
+  const { locale, t } = useTranslation();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   if (!projections || projections.length === 0) {
@@ -65,16 +67,16 @@ export default function ProjectionChart({
         <div>
           <h3 className="text-sm font-bold text-slate-900 flex items-center">
             <LineChartIcon className="w-4 h-4 mr-2 text-indigo-600" />
-            Projected Cash Trajectory (24-Month Horizon)
+            {t('calculator.chart.heading')}
           </h3>
           <p className="text-xs text-slate-500 mt-0.5">
-            Real-time projection showing monthly cash reserves over time.
+            {t('calculator.chart.subheading')}
           </p>
         </div>
         <div className="flex items-center space-x-3 text-xs">
           <div className="flex items-center space-x-1.5">
             <span className="w-3 h-0.5 bg-indigo-600 rounded-full" />
-            <span className="text-slate-600 font-medium">Cash Balance</span>
+            <span className="text-slate-600 font-medium">{t('calculator.chart.cashBalance')}</span>
           </div>
           <div className="flex items-center space-x-1.5">
             <span className="w-3 h-0.5 bg-rose-400 border-dashed border-t border-rose-500" />

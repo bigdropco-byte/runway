@@ -1,3 +1,4 @@
+import { getTranslations } from '@/i18n/getTranslations';
 import { NON_DEFAULT_LOCALES } from '@/i18n/config';
 import { getLocalizedMetadata } from '@/lib/seo';
 import React from 'react';
@@ -109,6 +110,11 @@ const DIRECTORY_FAQS: FaqItem[] = [
 
 export default async function ToolsDirectoryPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const t = getTranslations(locale);
+  const lp = (path: string) => {
+    const clean = path.startsWith('/') ? path : '/' + path;
+    return '/' + locale + (clean === '/' ? '' : clean);
+  };
   const pageUrl = `${SITE_URL}/tools`;
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: 'Financial Tools Directory', url: pageUrl }
@@ -182,7 +188,7 @@ export default async function ToolsDirectoryPage({ params }: { params: Promise<{
                 return (
                   <Link
                     key={tool.url}
-                    href={tool.url}
+                    href={lp(tool.url)}
                     className="p-5 rounded-2xl bg-white border border-slate-200/80 hover:border-indigo-500 hover:shadow-md transition-all group flex flex-col justify-between"
                   >
                     <div>
@@ -245,7 +251,7 @@ export default async function ToolsDirectoryPage({ params }: { params: Promise<{
 
                     <h3 className="text-lg font-bold text-slate-900 mb-2">
                       <Link
-                        href={`/tools/${niche.slug}`}
+                        href={lp(`/tools/${niche.slug}`)}
                         className="hover:text-indigo-600 transition-colors"
                       >
                         {niche.name}
@@ -268,7 +274,7 @@ export default async function ToolsDirectoryPage({ params }: { params: Promise<{
 
                   <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                     <Link
-                      href={`/tools/${niche.slug}`}
+                      href={lp(`/tools/${niche.slug}`)}
                       className="inline-flex items-center text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition-colors"
                     >
                       <span>Launch {niche.name} Calculator</span>
@@ -294,7 +300,7 @@ export default async function ToolsDirectoryPage({ params }: { params: Promise<{
               </p>
             </div>
             <Link
-              href="/aviation"
+              href={lp("/aviation")}
               className="shrink-0 px-4 py-2.5 rounded-xl bg-white text-indigo-900 hover:bg-indigo-50 font-bold text-xs shadow-sm transition-colors flex items-center space-x-1.5"
             >
               <span>Explore Aviation Tools</span>
@@ -323,10 +329,11 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = getTranslations(locale);
   return getLocalizedMetadata({
     locale,
     subpath: '/tools',
-    title: 'Financial Runway Calculators Directory – Core & Niche Tools',
-    description: 'Explore the complete directory of free financial runway calculators. Model startup burn rates, hiring impact, Paul Graham default alive status, SAFE dilution, and 10 industry niche models.'
+    title: t('seo.toolsTitle'),
+    description: t('seo.toolsDescription')
   });
 }
