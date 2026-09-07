@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { X, Check, Globe } from 'lucide-react';
@@ -37,7 +38,12 @@ export function getLocalizedPath(pathname: string, targetLocale: string): string
 }
 
 export default function LanguageModal({ isOpen, onClose, currentLocale }: LanguageModalProps) {
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname() || '/';
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Handle ESC key to close modal
   useEffect(() => {
@@ -56,18 +62,26 @@ export default function LanguageModal({ isOpen, onClose, currentLocale }: Langua
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
-  return (
+  return createPortal(
     <div
       role="dialog"
       aria-modal="true"
       aria-label="Language Selector Directory"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-200"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
+      }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-200 overflow-y-auto"
     >
-      <div className="bg-white w-full max-w-4xl rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[90vh]">
+      <div 
+        className="bg-white w-full max-w-4xl rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[85vh] sm:max-h-[90vh] my-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/50">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/50 shrink-0">
           <div className="flex items-center space-x-2.5">
             <div className="w-8 h-8 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600">
               <Globe className="w-4 h-4" />
@@ -88,7 +102,7 @@ export default function LanguageModal({ isOpen, onClose, currentLocale }: Langua
         </div>
 
         {/* 3-Column Desktop Grid / 2-Column Mobile Grid */}
-        <div className="p-6 overflow-y-auto">
+        <div className="p-4 sm:p-6 overflow-y-auto min-h-0 flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
             {SUPPORTED_LOCALES.map((locale) => {
               const isSelected = locale.code === currentLocale;
@@ -132,17 +146,18 @@ export default function LanguageModal({ isOpen, onClose, currentLocale }: Langua
         </div>
 
         {/* Modal Footer */}
-        <div className="px-6 py-3 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between text-xs text-slate-500">
+        <div className="px-6 py-3 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between text-xs text-slate-500 shrink-0">
           <span>{SUPPORTED_LOCALES.length} languages available</span>
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-1.5 rounded-lg text-slate-700 font-medium hover:bg-slate-200/70 transition-colors"
+            className="px-4 py-1.5 rounded-lg text-slate-700 font-medium hover:bg-slate-200/70 transition-colors cursor-pointer"
           >
             Close
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
