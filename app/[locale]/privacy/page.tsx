@@ -1,4 +1,4 @@
-import { SUPPORTED_LOCALES } from '@/i18n/config';
+import { NON_DEFAULT_LOCALES } from '@/i18n/config';
 import { getLocalizedMetadata } from '@/lib/seo';
 import React from 'react';
 import type { Metadata } from 'next';
@@ -151,7 +151,7 @@ export default async function PrivacyPolicyPage({ params }: { params: Promise<{ 
 
 
 export function generateStaticParams() {
-  return SUPPORTED_LOCALES.map((l) => ({ locale: l.code }));
+  return NON_DEFAULT_LOCALES.map((l) => ({ locale: l.code }));
 }
 
 export async function generateMetadata({

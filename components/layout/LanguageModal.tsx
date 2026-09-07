@@ -13,27 +13,27 @@ interface LanguageModalProps {
 }
 
 /**
- * Replace the locale prefix in the pathname, preserving the rest of the path.
- * e.g., /en/tools/startup-runway-calculator -> /es/tools/startup-runway-calculator
+ * Replace or strip the locale prefix in the pathname.
+ * For English (default), does NOT show /en and uses the main URL.
+ * e.g., /es/tools/startup-runway-calculator/ -> /tools/startup-runway-calculator/
+ * e.g., /tools/startup-runway-calculator/ -> /es/tools/startup-runway-calculator/
  */
 export function getLocalizedPath(pathname: string, targetLocale: string): string {
-  if (!pathname || pathname === '/') {
-    return `/${targetLocale}/`;
+  const cleanPath = pathname || '/';
+  const segments = cleanPath.split('/').filter(Boolean);
+
+  // If first segment is an existing locale, remove it
+  if (segments.length > 0 && LOCALE_CODES.includes(segments[0].toLowerCase())) {
+    segments.shift();
   }
 
-  const segments = pathname.split('/').filter(Boolean);
-  if (segments.length === 0) {
-    return `/${targetLocale}/`;
+  // English (default locale) shows the main URL with NO /en
+  if (targetLocale === DEFAULT_LOCALE) {
+    return segments.length === 0 ? '/' : `/${segments.join('/')}/`;
   }
 
-  // Check if first segment is an existing locale
-  if (LOCALE_CODES.includes(segments[0].toLowerCase())) {
-    segments[0] = targetLocale;
-  } else {
-    segments.unshift(targetLocale);
-  }
-
-  return `/${segments.join('/')}/`;
+  // Localized non-default locales prepend /[locale]/
+  return segments.length === 0 ? `/${targetLocale}/` : `/${targetLocale}/${segments.join('/')}/`;
 }
 
 export default function LanguageModal({ isOpen, onClose, currentLocale }: LanguageModalProps) {

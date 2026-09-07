@@ -16,7 +16,7 @@ import {
   SITE_URL 
 } from '@/lib/seo';
 import { getTranslations } from '@/i18n/getTranslations';
-import { SUPPORTED_LOCALES } from '@/i18n/config';
+import { NON_DEFAULT_LOCALES } from '@/i18n/config';
 import { ALL_NICHES } from '@/lib/niches';
 import Link from 'next/link';
 import { ShieldCheck, Zap, Sparkles, TrendingUp, CheckCircle2, ArrowRight, Plane, DollarSign, FileSpreadsheet, Flame, Users, HeartPulse, PieChart } from 'lucide-react';
@@ -24,7 +24,7 @@ import { ShieldCheck, Zap, Sparkles, TrendingUp, CheckCircle2, ArrowRight, Plane
 export const dynamic = 'force-static';
 
 export function generateStaticParams() {
-  return SUPPORTED_LOCALES.map((l) => ({ locale: l.code }));
+  return NON_DEFAULT_LOCALES.map((l) => ({ locale: l.code }));
 }
 
 export async function generateMetadata({

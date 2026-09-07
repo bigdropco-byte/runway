@@ -47,7 +47,14 @@ export const SUPPORTED_LOCALES: LocaleConfig[] = [
 
 export const LOCALE_CODES = SUPPORTED_LOCALES.map((l) => l.code);
 
+export const NON_DEFAULT_LOCALES = SUPPORTED_LOCALES.filter((l) => l.code !== DEFAULT_LOCALE);
+export const NON_DEFAULT_LOCALE_CODES = NON_DEFAULT_LOCALES.map((l) => l.code);
+
 export const RTL_LOCALES = new Set(['ar', 'he', 'fa', 'ur']);
+
+export function isDefaultLocale(code: string): boolean {
+  return (code || '').toLowerCase() === DEFAULT_LOCALE;
+}
 
 export function isValidLocale(code: string): boolean {
   return LOCALE_CODES.includes(code.toLowerCase());

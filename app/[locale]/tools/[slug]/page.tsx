@@ -1,4 +1,4 @@
-import { SUPPORTED_LOCALES } from '@/i18n/config';
+import { NON_DEFAULT_LOCALES } from '@/i18n/config';
 import { getLocalizedMetadata } from '@/lib/seo';
 import React from 'react';
 import { notFound } from 'next/navigation';
@@ -39,7 +39,7 @@ interface NichePageProps {
 
 export function generateStaticParams() {
   const params: { locale: string; slug: string }[] = [];
-  for (const l of SUPPORTED_LOCALES) {
+  for (const l of NON_DEFAULT_LOCALES) {
     for (const n of ALL_NICHES) {
       params.push({ locale: l.code, slug: n.slug });
     }

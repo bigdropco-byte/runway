@@ -15,6 +15,9 @@ export default function Header() {
 
   const lp = (path: string) => {
     const clean = path.startsWith('/') ? path : `/${path}`;
+    if (!locale || locale === 'en') {
+      return clean;
+    }
     return `/${locale}${clean === '/' ? '' : clean}`;
   };
 

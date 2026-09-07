@@ -1,12 +1,12 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { SUPPORTED_LOCALES, isValidLocale, getLocaleConfig } from '@/i18n/config';
+import { NON_DEFAULT_LOCALES, isValidLocale, getLocaleConfig } from '@/i18n/config';
 import { getLocaleMessages } from '@/i18n/getTranslations';
 import { TranslationProvider } from '@/i18n/useTranslation';
 import DirectionProvider from '@/components/layout/DirectionProvider';
 
 export function generateStaticParams() {
-  return SUPPORTED_LOCALES.map((l) => ({ locale: l.code }));
+  return NON_DEFAULT_LOCALES.map((l) => ({ locale: l.code }));
 }
 
 export default async function LocaleLayout({

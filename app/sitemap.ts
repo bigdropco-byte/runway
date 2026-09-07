@@ -36,24 +36,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   for (const locale of SUPPORTED_LOCALES) {
     const code = locale.code;
+    const isEn = code === 'en';
 
     // Add standard subpaths
     for (const sub of SUBPATHS) {
+      const pageUrl = isEn 
+        ? (sub.path ? `${SITE_URL}${sub.path}/` : `${SITE_URL}/`)
+        : `${SITE_URL}/${code}${sub.path}/`;
+
       entries.push({
-        url: `${SITE_URL}/${code}${sub.path}/`,
+        url: pageUrl,
         lastModified: currentDate,
         changeFrequency: sub.changeFrequency,
-        priority: code === 'en' ? sub.priority : Number((sub.priority * 0.95).toFixed(2))
+        priority: isEn ? sub.priority : Number((sub.priority * 0.95).toFixed(2))
       });
     }
 
     // Add 10 programmatic niche calculators
     for (const niche of ALL_NICHES) {
+      const nicheUrl = isEn 
+        ? `${SITE_URL}/tools/${niche.slug}/` 
+        : `${SITE_URL}/${code}/tools/${niche.slug}/`;
+
       entries.push({
-        url: `${SITE_URL}/${code}/tools/${niche.slug}/`,
+        url: nicheUrl,
         lastModified: currentDate,
         changeFrequency: 'weekly',
-        priority: code === 'en' ? 0.75 : 0.7
+        priority: isEn ? 0.75 : 0.7
       });
     }
   }

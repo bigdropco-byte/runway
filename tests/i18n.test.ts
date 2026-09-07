@@ -101,11 +101,17 @@ describe('Multilingual System Architecture & Integrity', () => {
 });
 
 describe('Language Switching & Path Preservation', () => {
-  it('correctly replaces locale segment preserving the rest of the path', () => {
-    expect(getLocalizedPath('/en/tools/startup-runway-calculator/', 'fr')).toBe('/fr/tools/startup-runway-calculator/');
-    expect(getLocalizedPath('/en/aviation/crosswind-calculator/', 'de')).toBe('/de/aviation/crosswind-calculator/');
+  it('correctly uses main URL without /en for English', () => {
+    expect(getLocalizedPath('/fr/tools/startup-runway-calculator/', 'en')).toBe('/tools/startup-runway-calculator/');
+    expect(getLocalizedPath('/es/aviation/crosswind-calculator/', 'en')).toBe('/aviation/crosswind-calculator/');
+    expect(getLocalizedPath('/ar/', 'en')).toBe('/');
+    expect(getLocalizedPath('/', 'en')).toBe('/');
+  });
+
+  it('correctly replaces locale segment for non-default languages', () => {
+    expect(getLocalizedPath('/tools/startup-runway-calculator/', 'fr')).toBe('/fr/tools/startup-runway-calculator/');
+    expect(getLocalizedPath('/aviation/crosswind-calculator/', 'de')).toBe('/de/aviation/crosswind-calculator/');
     expect(getLocalizedPath('/es/tools/burn-rate-calculator/', 'ja')).toBe('/ja/tools/burn-rate-calculator/');
-    expect(getLocalizedPath('/en/', 'ar')).toBe('/ar/');
     expect(getLocalizedPath('/', 'es')).toBe('/es/');
   });
 });

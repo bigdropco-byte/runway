@@ -380,7 +380,9 @@ export function getLocalizedMetadata({
   keywords?: string[];
 }): Metadata {
   const normSubpath = subpath ? (subpath.startsWith('/') ? subpath : `/${subpath}`) : '';
-  const canonicalUrl = `${SITE_URL}/${locale}${normSubpath}/`;
+  const canonicalUrl = locale === 'en' 
+    ? `${SITE_URL}${normSubpath}/` 
+    : `${SITE_URL}/${locale}${normSubpath}/`;
 
   const languages: Record<string, string> = {};
   const supported = [
@@ -389,9 +391,11 @@ export function getLocalizedMetadata({
   ];
 
   for (const code of supported) {
-    languages[code] = `${SITE_URL}/${code}${normSubpath}/`;
+    languages[code] = code === 'en' 
+      ? `${SITE_URL}${normSubpath}/` 
+      : `${SITE_URL}/${code}${normSubpath}/`;
   }
-  languages['x-default'] = `${SITE_URL}/en${normSubpath}/`;
+  languages['x-default'] = `${SITE_URL}${normSubpath}/`;
 
   return {
     metadataBase: new URL(SITE_URL),
