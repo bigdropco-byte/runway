@@ -4,18 +4,26 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Calculator, ChevronDown, Menu, X, ArrowUpRight, ShieldCheck, Plane, DollarSign, FileSpreadsheet, Flame, Users, HeartPulse, PieChart } from 'lucide-react';
 import { ALL_NICHES } from '@/lib/niches';
+import LanguageButton from '@/components/layout/LanguageButton';
+import { useTranslation } from '@/i18n/useTranslation';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [businessDropdownOpen, setBusinessDropdownOpen] = useState(false);
   const [aviationDropdownOpen, setAviationDropdownOpen] = useState(false);
+  const { locale, t } = useTranslation();
+
+  const lp = (path: string) => {
+    const clean = path.startsWith('/') ? path : `/${path}`;
+    return `/${locale}${clean === '/' ? '' : clean}`;
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2.5 group">
+          <Link href={lp('/')} className="flex items-center space-x-2.5 group">
             <img
               src="/favicon.png"
               alt="Runway Calculator Logo"
@@ -33,8 +41,8 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
-            <Link href="/#calculator" className="hover:text-indigo-600 transition-colors">
-              Calculator
+            <Link href={lp('/#calculator')} className="hover:text-indigo-600 transition-colors">
+              {t('navigation.calculator')}
             </Link>
 
             {/* Financial Tools dropdown */}
@@ -238,22 +246,24 @@ export default function Header() {
             </Link>
           </nav>
 
-          {/* Privacy badge & Primary CTA */}
-          <div className="hidden lg:flex items-center space-x-4">
+          {/* Privacy badge, Language & Primary CTA */}
+          <div className="hidden lg:flex items-center space-x-3">
             <div className="flex items-center text-xs font-medium text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60">
               <ShieldCheck className="w-3.5 h-3.5 mr-1 text-emerald-600" />
               <span>100% Client-Side Privacy</span>
             </div>
+            <LanguageButton currentLocale={locale} />
             <Link
-              href="/#calculator"
+              href={lp('/#calculator')}
               className="inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
-              Calculate Runway
+              {t('common.calculate')}
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          {/* Mobile menu button and language switch */}
+          <div className="md:hidden flex items-center space-x-2">
+            <LanguageButton currentLocale={locale} />
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

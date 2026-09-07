@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Calculator, ShieldCheck, Lock, Plane } from 'lucide-react';
 import { ALL_NICHES } from '@/lib/niches';
 import CookiePreferencesButton from '@/components/layout/CookiePreferencesButton';
+import LanguageButton from '@/components/layout/LanguageButton';
 
 export default function Footer() {
   return (
@@ -182,6 +183,7 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
             <p>© {new Date().getFullYear()} RunwayCalculator.dev. Open, private, and independent.</p>
             <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs">
+              <LanguageButton currentLocale="en" variant="footer" />
               <Link href="/privacy" className="hover:text-slate-300 transition-colors text-slate-400">
                 Privacy Policy
               </Link>

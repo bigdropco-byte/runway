@@ -361,3 +361,69 @@ export function getImageObjectSchema(image: {
     height: image.height || 682
   };
 }
+
+/**
+ * Generate localized page metadata with self-referencing canonical URL
+ * and complete hreflang alternates for all 27 languages + x-default.
+ */
+export function getLocalizedMetadata({
+  locale,
+  subpath = '',
+  title,
+  description,
+  keywords = []
+}: {
+  locale: string;
+  subpath?: string;
+  title: string;
+  description: string;
+  keywords?: string[];
+}): Metadata {
+  const normSubpath = subpath ? (subpath.startsWith('/') ? subpath : `/${subpath}`) : '';
+  const canonicalUrl = `${SITE_URL}/${locale}${normSubpath}/`;
+
+  const languages: Record<string, string> = {};
+  const supported = [
+    'en', 'es', 'fr', 'de', 'pt', 'it', 'hi', 'mr', 'bn', 'ar', 'ru', 'ja', 'ko', 'zh',
+    'tr', 'id', 'nl', 'pl', 'sv', 'da', 'fi', 'no', 'cs', 'el', 'he', 'fa', 'ur'
+  ];
+
+  for (const code of supported) {
+    languages[code] = `${SITE_URL}/${code}${normSubpath}/`;
+  }
+  languages['x-default'] = `${SITE_URL}/en${normSubpath}/`;
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title,
+    description,
+    keywords,
+    alternates: {
+      canonical: canonicalUrl,
+      languages
+    },
+    openGraph: {
+      type: 'website',
+      locale,
+      url: canonicalUrl,
+      siteName: SITE_NAME,
+      title,
+      description,
+      images: [
+        {
+          url: `${SITE_URL}/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: `${SITE_NAME} – ${title}`
+        }
+      ]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [`${SITE_URL}/og-image.png`]
+    }
+  };
+}
+
