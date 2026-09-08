@@ -14,8 +14,8 @@ import fs from 'fs';
 import path from 'path';
 
 describe('Multilingual System Architecture & Integrity', () => {
-  it('supports exactly 27 languages as required', () => {
-    expect(SUPPORTED_LOCALES.length).toBe(27);
+  it('supports exactly 40 languages as required', () => {
+    expect(SUPPORTED_LOCALES.length).toBe(40);
     expect(DEFAULT_LOCALE).toBe('en');
   });
 
@@ -38,10 +38,12 @@ describe('Multilingual System Architecture & Integrity', () => {
     expect(isValidLocale('hi')).toBe(true);
     expect(isValidLocale('mr')).toBe(true);
     expect(isValidLocale('bn')).toBe(true);
+    expect(isValidLocale('th')).toBe(true);
+    expect(isValidLocale('vi')).toBe(true);
     expect(isValidLocale('xyz')).toBe(false);
   });
 
-  it('provides native names for all 27 languages', () => {
+  it('provides native names for all 40 languages', () => {
     const arConfig = getLocaleConfig('ar');
     expect(arConfig.nativeName).toBe('العربية');
 
@@ -53,9 +55,15 @@ describe('Multilingual System Architecture & Integrity', () => {
 
     const deConfig = getLocaleConfig('de');
     expect(deConfig.nativeName).toBe('Deutsch');
+
+    const viConfig = getLocaleConfig('vi');
+    expect(viConfig.nativeName).toBe('Tiếng Việt');
+
+    const thConfig = getLocaleConfig('th');
+    expect(thConfig.nativeName).toBe('ไทย');
   });
 
-  it('ensures every one of the 27 translation JSON files exists on disk and has core keys', () => {
+  it('ensures every one of the 40 translation JSON files exists on disk and has core keys', () => {
     for (const code of LOCALE_CODES) {
       const filePath = path.join(process.cwd(), 'locales', `${code}.json`);
       expect(fs.existsSync(filePath)).toBe(true);

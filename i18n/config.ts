@@ -1,6 +1,6 @@
 /**
  * Central Multilingual Configuration for Runway Calculator
- * Supports 27 languages with native names and directional specifications (LTR/RTL).
+ * Supports 40 languages with native names and directional specifications (LTR/RTL).
  */
 
 export type LocaleDirection = 'ltr' | 'rtl';
@@ -42,7 +42,20 @@ export const SUPPORTED_LOCALES: LocaleConfig[] = [
   { code: 'el', nativeName: 'Ελληνικά', englishName: 'Greek', direction: 'ltr', enabled: true },
   { code: 'he', nativeName: 'עברית', englishName: 'Hebrew', direction: 'rtl', enabled: true },
   { code: 'fa', nativeName: 'فارسی', englishName: 'Persian', direction: 'rtl', enabled: true },
-  { code: 'ur', nativeName: 'اردو', englishName: 'Urdu', direction: 'rtl', enabled: true }
+  { code: 'ur', nativeName: 'اردو', englishName: 'Urdu', direction: 'rtl', enabled: true },
+  { code: 'az', nativeName: 'Azərbaycanca', englishName: 'Azerbaijani', direction: 'ltr', enabled: true },
+  { code: 'bg', nativeName: 'Български', englishName: 'Bulgarian', direction: 'ltr', enabled: true },
+  { code: 'hr', nativeName: 'Hrvatski', englishName: 'Croatian', direction: 'ltr', enabled: true },
+  { code: 'hu', nativeName: 'Magyar', englishName: 'Hungarian', direction: 'ltr', enabled: true },
+  { code: 'kk', nativeName: 'Қазақша', englishName: 'Kazakh', direction: 'ltr', enabled: true },
+  { code: 'ms', nativeName: 'Bahasa Melayu', englishName: 'Malay', direction: 'ltr', enabled: true },
+  { code: 'ro', nativeName: 'Română', englishName: 'Romanian', direction: 'ltr', enabled: true },
+  { code: 'sk', nativeName: 'Slovenčina', englishName: 'Slovak', direction: 'ltr', enabled: true },
+  { code: 'sr', nativeName: 'Српски', englishName: 'Serbian', direction: 'ltr', enabled: true },
+  { code: 'th', nativeName: 'ไทย', englishName: 'Thai', direction: 'ltr', enabled: true },
+  { code: 'tl', nativeName: 'Tagalog', englishName: 'Tagalog / Filipino', direction: 'ltr', enabled: true },
+  { code: 'uz', nativeName: 'Oʻzbekcha', englishName: 'Uzbek', direction: 'ltr', enabled: true },
+  { code: 'vi', nativeName: 'Tiếng Việt', englishName: 'Vietnamese', direction: 'ltr', enabled: true }
 ];
 
 export const LOCALE_CODES = SUPPORTED_LOCALES.map((l) => l.code);

@@ -4,6 +4,7 @@
 
 import { Metadata } from 'next';
 import { NicheData } from './niches';
+import { LOCALE_CODES } from '@/i18n/config';
 
 export const SITE_URL = 'https://runwaycalculator.dev';
 export const SITE_NAME = 'Runway Calculator';
@@ -364,7 +365,7 @@ export function getImageObjectSchema(image: {
 
 /**
  * Generate localized page metadata with self-referencing canonical URL
- * and complete hreflang alternates for all 27 languages + x-default.
+ * and complete hreflang alternates for all 40 languages + x-default.
  */
 export function getLocalizedMetadata({
   locale,
@@ -385,12 +386,8 @@ export function getLocalizedMetadata({
     : `${SITE_URL}/${locale}${normSubpath}/`;
 
   const languages: Record<string, string> = {};
-  const supported = [
-    'en', 'es', 'fr', 'de', 'pt', 'it', 'hi', 'mr', 'bn', 'ar', 'ru', 'ja', 'ko', 'zh',
-    'tr', 'id', 'nl', 'pl', 'sv', 'da', 'fi', 'no', 'cs', 'el', 'he', 'fa', 'ur'
-  ];
 
-  for (const code of supported) {
+  for (const code of LOCALE_CODES) {
     languages[code] = code === 'en' 
       ? `${SITE_URL}${normSubpath}/` 
       : `${SITE_URL}/${code}${normSubpath}/`;
