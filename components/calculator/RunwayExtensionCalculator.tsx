@@ -96,7 +96,7 @@ export default function RunwayExtensionCalculator() {
               onChange={(e) => setInputs({ ...inputs, targetRunwayMonths: parseInt(e.target.value, 10) })}
               className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
             />
-            <div className="flex justify-between text-[10px] text-slate-400 mt-1">
+            <div className="flex justify-between text-[10px] text-slate-600 mt-1">
               <span>6 mo (Short)</span>
               <span>18 mo (Standard Seed)</span>
               <span>36 mo (Defensive)</span>
@@ -108,7 +108,7 @@ export default function RunwayExtensionCalculator() {
         <div className="lg:col-span-7 space-y-4">
           <div className="p-5 rounded-2xl bg-slate-900 text-white shadow-md flex items-center justify-between">
             <div>
-              <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Current vs. Target Runway</span>
+              <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider block">Current vs. Target Runway</span>
               <div className="flex items-center space-x-3 mt-1">
                 <span className="text-2xl font-bold text-slate-300">
                   {typeof res.currentRunwayMonths === 'number' ? `${res.currentRunwayMonths} mo` : 'Sustainable'}
@@ -120,7 +120,7 @@ export default function RunwayExtensionCalculator() {
               </div>
             </div>
             <div className="text-right">
-              <span className="text-xs text-slate-400 block">Max Allowed Net Burn</span>
+              <span className="text-xs text-slate-300 block">Max Allowed Net Burn</span>
               <span className="text-lg font-bold text-white">
                 {formatCurrency(res.targetNetBurnAllowed)}/mo
               </span>
@@ -139,9 +139,9 @@ export default function RunwayExtensionCalculator() {
             </div>
           ) : (
             <div className="space-y-3">
-              <h4 className="text-xs font-bold text-slate-600 uppercase tracking-wider">
+              <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wider">
                 Choose 1 of 3 Independent Levers to Reach {inputs.targetRunwayMonths} Months:
-              </h4>
+              </h3>
 
               {/* Lever 1: Expense Reduction */}
               <div className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 hover:border-indigo-300 transition-all">

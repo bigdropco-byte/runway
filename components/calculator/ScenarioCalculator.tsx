@@ -127,12 +127,12 @@ export default function ScenarioCalculator({
 
                 <div className="pt-3 border-t border-slate-200/60">
                   <div className="flex items-center justify-between text-xs mb-2">
-                    <span className="text-slate-400">Runway:</span>
+                    <span className="text-slate-600 font-medium">Runway:</span>
                     <div className="flex items-center space-x-1.5 font-bold">
                       <span className="text-slate-500 line-through">
                         {typeof baseMetrics.runwayMonths === 'number' ? `${baseMetrics.runwayMonths.toFixed(1)} mo` : 'Sustainable'}
                       </span>
-                      <ArrowRight className="w-3 h-3 text-slate-400" />
+                      <ArrowRight className="w-3 h-3 text-slate-500" />
                       <span className="text-indigo-600 font-extrabold">{item.newRunwayFormatted}</span>
                     </div>
                   </div>
@@ -173,12 +173,12 @@ export default function ScenarioCalculator({
 
                 <div className="pt-3 border-t border-slate-200/60">
                   <div className="flex items-center justify-between text-xs mb-2">
-                    <span className="text-slate-400">Runway:</span>
+                    <span className="text-slate-600 font-medium">Runway:</span>
                     <div className="flex items-center space-x-1.5 font-bold">
                       <span className="text-slate-500 line-through">
                         {typeof baseMetrics.runwayMonths === 'number' ? `${baseMetrics.runwayMonths.toFixed(1)} mo` : 'Sustainable'}
                       </span>
-                      <ArrowRight className="w-3 h-3 text-slate-400" />
+                      <ArrowRight className="w-3 h-3 text-slate-500" />
                       <span className="text-indigo-600 font-extrabold">{item.newRunwayFormatted}</span>
                     </div>
                   </div>
@@ -219,12 +219,12 @@ export default function ScenarioCalculator({
 
                 <div className="pt-3 border-t border-slate-200/60">
                   <div className="flex items-center justify-between text-xs mb-2">
-                    <span className="text-slate-400">Runway:</span>
+                    <span className="text-slate-600 font-medium">Runway:</span>
                     <div className="flex items-center space-x-1.5 font-bold">
                       <span className="text-slate-500 line-through">
                         {typeof baseMetrics.runwayMonths === 'number' ? `${baseMetrics.runwayMonths.toFixed(1)} mo` : 'Sustainable'}
                       </span>
-                      <ArrowRight className="w-3 h-3 text-slate-400" />
+                      <ArrowRight className="w-3 h-3 text-slate-500" />
                       <span className="text-indigo-600 font-extrabold">{item.newRunwayFormatted}</span>
                     </div>
                   </div>

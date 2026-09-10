@@ -22,7 +22,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-slate-900 text-slate-400 text-sm border-t border-slate-800">
+    <footer className="bg-slate-900 text-slate-300 text-sm border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Brand & Privacy Statement */}
@@ -37,7 +37,7 @@ export default function Footer() {
                 Runway<span className="text-indigo-400">Calculator</span>
               </span>
             </Link>
-            <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
+            <p className="text-xs text-slate-300 leading-relaxed max-w-sm">
               {t('common.tagline')}. 100% private in-browser computation.
             </p>
             <div className="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700/60 max-w-sm">
@@ -56,44 +56,44 @@ export default function Footer() {
             <h3 className="text-xs font-semibold text-white uppercase tracking-wider mb-3">
               {t('navigation.financialTools')}
             </h3>
-            <ul className="space-y-1.5 text-xs">
+            <ul className="space-y-1 text-xs">
               <li>
-                <Link href={lp('/tools/startup-runway-calculator')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/tools/startup-runway-calculator')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('financialTools.startupRunway')}
                 </Link>
               </li>
               <li>
-                <Link href={lp('/tools/hiring-runway-calculator')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/tools/hiring-runway-calculator')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('financialTools.hiringRunway')}
                 </Link>
               </li>
               <li>
-                <Link href={lp('/tools/default-alive-calculator')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/tools/default-alive-calculator')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('financialTools.defaultAlive')}
                 </Link>
               </li>
               <li>
-                <Link href={lp('/tools/safe-dilution-runway-calculator')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/tools/safe-dilution-runway-calculator')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('financialTools.safeDilution')}
                 </Link>
               </li>
               <li>
-                <Link href={lp('/tools/cash-runway-calculator')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/tools/cash-runway-calculator')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('financialTools.cashRunway')}
                 </Link>
               </li>
               <li>
-                <Link href={lp('/tools/burn-rate-calculator')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/tools/burn-rate-calculator')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('financialTools.burnRate')}
                 </Link>
               </li>
               <li>
-                <Link href={lp('/tools/runway-calculator-excel')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/tools/runway-calculator-excel')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('financialTools.excelTemplate')}
                 </Link>
               </li>
               <li>
-                <Link href={lp('/tools/runway-extension-calculator')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/tools/runway-extension-calculator')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('financialTools.extensionSolver')}
                 </Link>
               </li>
@@ -106,49 +106,49 @@ export default function Footer() {
               <Plane className="w-3.5 h-3.5 mr-1 text-indigo-400" />
               {t('navigation.aviationTools')}
             </h3>
-            <ul className="space-y-1.5 text-xs">
+            <ul className="space-y-1 text-xs">
               <li>
-                <Link href={lp('/aviation/crosswind-calculator')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/aviation/crosswind-calculator')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('aviationTools.crosswind')}
                 </Link>
               </li>
               <li>
-                <Link href={lp('/aviation/runway-slope-calculator')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/aviation/runway-slope-calculator')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('aviationTools.runwaySlope')}
                 </Link>
               </li>
               <li>
-                <Link href={lp('/aviation/runway-number-calculator')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/aviation/runway-number-calculator')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('aviationTools.runwayNumber')}
                 </Link>
               </li>
               <li>
-                <Link href={lp('/aviation/runway-length-calculator')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/aviation/runway-length-calculator')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('aviationTools.runwayLength')}
                 </Link>
               </li>
               <li>
-                <Link href={lp('/aviation/runway-visual-range-calculator')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/aviation/runway-visual-range-calculator')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('aviationTools.rvr')}
                 </Link>
               </li>
               <li>
-                <Link href={lp('/aviation/contaminated-runway-calculator')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/aviation/contaminated-runway-calculator')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('aviationTools.contaminated')}
                 </Link>
               </li>
               <li>
-                <Link href={lp('/aviation/runway-in-use-calculator')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/aviation/runway-in-use-calculator')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('aviationTools.runwayInUse')}
                 </Link>
               </li>
               <li>
-                <Link href={lp('/aviation/runway-wind-calculator')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/aviation/runway-wind-calculator')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('aviationTools.runwayWind')}
                 </Link>
               </li>
               <li>
-                <Link href={lp('/aviation')} className="hover:text-indigo-400 transition-colors font-semibold text-indigo-400">
+                <Link href={lp('/aviation')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors font-semibold text-indigo-400">
                   {t('navigation.allAviation')} →
                 </Link>
               </li>
@@ -160,29 +160,29 @@ export default function Footer() {
             <h3 className="text-xs font-semibold text-white uppercase tracking-wider mb-3">
               {t('navigation.guides')}
             </h3>
-            <ul className="space-y-1.5 text-xs">
+            <ul className="space-y-1 text-xs">
               <li>
-                <Link href={lp('/tools')} className="hover:text-indigo-400 transition-colors font-semibold text-indigo-400">
+                <Link href={lp('/tools')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors font-semibold text-indigo-400">
                   {t('navigation.industryNiches')} →
                 </Link>
               </li>
               <li>
-                <Link href={lp('/#how-it-works')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/#how-it-works')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('navigation.howItWorks')}
                 </Link>
               </li>
               <li>
-                <Link href={lp('/#runway-guide')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/#runway-guide')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   Gross vs Net Burn Guide
                 </Link>
               </li>
               <li>
-                <Link href={lp('/#methodology')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/#methodology')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   Calculation Assumptions
                 </Link>
               </li>
               <li>
-                <Link href={lp('/privacy')} className="hover:text-indigo-400 transition-colors">
+                <Link href={lp('/privacy')} className="inline-block py-1.5 hover:text-indigo-300 transition-colors">
                   {t('common.privacyPolicy')}
                 </Link>
               </li>
@@ -191,20 +191,20 @@ export default function Footer() {
         </div>
 
         {/* Legal Disclaimer & Attribution */}
-        <div className="pt-8 border-t border-slate-800 text-xs text-slate-500 space-y-3">
+        <div className="pt-8 border-t border-slate-800 text-xs text-slate-300 space-y-3">
           <p className="leading-relaxed">
             {t('common.disclaimer')}
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
-            <p>© {new Date().getFullYear()} RunwayCalculator.dev. {t('common.allRightsReserved')}</p>
+            <p className="text-slate-300">© {new Date().getFullYear()} RunwayCalculator.dev. {t('common.allRightsReserved')}</p>
             <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs">
               <LanguageButton currentLocale={locale || 'en'} variant="footer" />
-              <Link href={lp('/privacy')} className="hover:text-slate-300 transition-colors text-slate-400">
+              <Link href={lp('/privacy')} className="hover:text-white transition-colors text-slate-300 inline-block py-1">
                 {t('common.privacyPolicy')}
               </Link>
               <CookiePreferencesButton />
-              <span className="flex items-center text-slate-400">
-                <ShieldCheck className="w-3.5 h-3.5 mr-1 text-emerald-500" />
+              <span className="flex items-center text-slate-300">
+                <ShieldCheck className="w-3.5 h-3.5 mr-1 text-emerald-400" />
                 Browser-only execution
               </span>
             </div>

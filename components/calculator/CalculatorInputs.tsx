@@ -89,11 +89,11 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
       {/* Quick preset pills */}
       <div>
         <div className="flex items-center justify-between mb-2.5">
-          <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider flex items-center">
+          <label className="text-xs font-semibold text-slate-600 uppercase tracking-wider flex items-center">
             <Sparkles className="w-3.5 h-3.5 mr-1 text-indigo-500" />
             {t('calculator.inputs.presetsLabel')}
           </label>
-          <span className="text-[11px] text-slate-400">Click to test scenario</span>
+          <span className="text-[11px] text-slate-600">Click to test scenario</span>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {presets.map((preset) => (
@@ -112,7 +112,7 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
               <div className="text-xs font-semibold text-slate-800 group-hover:text-indigo-700 truncate">
                 {preset.name}
               </div>
-              <div className="text-[10px] text-slate-400">{preset.badge}</div>
+              <div className="text-[10px] text-slate-600 group-hover:text-indigo-700">{preset.badge}</div>
             </button>
           ))}
         </div>
@@ -124,14 +124,14 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
           <div className="flex items-center justify-between mb-1.5">
             <label htmlFor="cashBalance" className="text-sm font-semibold text-slate-800 flex items-center">
               {t('calculator.inputs.cashBalance')}
-              <span className="group relative ml-1.5 cursor-pointer text-slate-400 hover:text-slate-600">
+              <span className="group relative ml-1.5 cursor-pointer text-slate-500 hover:text-slate-700">
                 <HelpCircle className="w-3.5 h-3.5" />
                 <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 hidden w-48 rounded bg-slate-800 p-2 text-[11px] text-white shadow-md group-hover:block z-20">
                   Total liquid cash balance in business bank accounts, money market funds, and short-term deposits.
                 </span>
               </span>
             </label>
-            <span className="text-xs font-medium text-slate-400">Liquid reserves</span>
+            <span className="text-xs font-medium text-slate-600">Liquid reserves</span>
           </div>
           <div className="relative rounded-xl shadow-xs">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 rtl:right-0 rtl:left-auto rtl:pr-3.5">
@@ -158,7 +158,7 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
             <div className="flex items-center justify-between mb-1.5">
               <label htmlFor="monthlyRevenue" className="text-sm font-semibold text-slate-800 flex items-center">
                 {t('calculator.inputs.monthlyRevenue')}
-                <span className="group relative ml-1.5 cursor-pointer text-slate-400 hover:text-slate-600">
+                <span className="group relative ml-1.5 cursor-pointer text-slate-500 hover:text-slate-700">
                   <HelpCircle className="w-3.5 h-3.5" />
                   <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 hidden w-48 rounded bg-slate-800 p-2 text-[11px] text-white shadow-md group-hover:block z-20">
                     Actual average monthly cash receipts from customer invoices, subscriptions (MRR), or sales.
@@ -189,14 +189,14 @@ export default function CalculatorInputs({ inputs, onChange, onPresetSelect }: C
             <div className="flex items-center justify-between mb-1.5">
               <label htmlFor="monthlyExpenses" className="text-sm font-semibold text-slate-800 flex items-center">
                 {t('calculator.inputs.monthlyExpenses')}
-                <span className="group relative ml-1.5 cursor-pointer text-slate-400 hover:text-slate-600">
+                <span className="group relative ml-1.5 cursor-pointer text-slate-500 hover:text-slate-700">
                   <HelpCircle className="w-3.5 h-3.5" />
                   <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 hidden w-48 rounded bg-slate-800 p-2 text-[11px] text-white shadow-md group-hover:block z-20">
                     Total monthly operating costs (Gross Burn): payroll, contractor fees, cloud servers, software, rent, and overhead.
                   </span>
                 </span>
               </label>
-              <span className="text-[11px] font-medium text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded">Gross Burn</span>
+              <span className="text-[11px] font-semibold text-amber-800 bg-amber-100/80 px-1.5 py-0.5 rounded">Gross Burn</span>
             </div>
             <div className="relative rounded-xl shadow-xs">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 rtl:right-0 rtl:left-auto rtl:pr-3.5">

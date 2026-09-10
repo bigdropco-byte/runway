@@ -69,7 +69,7 @@ export default function Header() {
                   onMouseEnter={() => setBusinessDropdownOpen(true)}
                   onMouseLeave={() => setBusinessDropdownOpen(false)}
                 >
-                  <div className="px-3 py-1.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+                  <div className="px-3 py-1.5 text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
                     {t('navigation.financialTools')}
                   </div>
                   <div className="space-y-0.5">
@@ -168,42 +168,42 @@ export default function Header() {
                   onMouseEnter={() => setAviationDropdownOpen(true)}
                   onMouseLeave={() => setAviationDropdownOpen(false)}
                 >
-                  <div className="px-3 py-1.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+                  <div className="px-3 py-2 text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
                     {t('navigation.aviationTools')}
                   </div>
                   <div className="space-y-0.5">
                     <Link
                       href={lp('/aviation/crosswind-calculator')}
                       onClick={() => setAviationDropdownOpen(false)}
-                      className="flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      className="flex items-center px-3 py-2 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                     >
                       <span className="truncate">{t('aviationTools.crosswind')}</span>
                     </Link>
                     <Link
                       href={lp('/aviation/runway-slope-calculator')}
                       onClick={() => setAviationDropdownOpen(false)}
-                      className="flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      className="flex items-center px-3 py-2 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                     >
                       <span className="truncate">{t('aviationTools.runwaySlope')}</span>
                     </Link>
                     <Link
                       href={lp('/aviation/runway-number-calculator')}
                       onClick={() => setAviationDropdownOpen(false)}
-                      className="flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      className="flex items-center px-3 py-2 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                     >
                       <span className="truncate">{t('aviationTools.runwayNumber')}</span>
                     </Link>
                     <Link
                       href={lp('/aviation/runway-length-calculator')}
                       onClick={() => setAviationDropdownOpen(false)}
-                      className="flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      className="flex items-center px-3 py-2 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                     >
                       <span className="truncate">{t('aviationTools.runwayLength')}</span>
                     </Link>
                     <Link
                       href={lp('/aviation/runway-visual-range-calculator')}
                       onClick={() => setAviationDropdownOpen(false)}
-                      className="flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                     >
                       <span className="truncate mr-2">{t('aviationTools.rvr')}</span>
                       <span className="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded shrink-0">New</span>
@@ -211,7 +211,7 @@ export default function Header() {
                     <Link
                       href={lp('/aviation/contaminated-runway-calculator')}
                       onClick={() => setAviationDropdownOpen(false)}
-                      className="flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                     >
                       <span className="truncate mr-2">{t('aviationTools.contaminated')}</span>
                       <span className="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded shrink-0">New</span>
@@ -219,7 +219,7 @@ export default function Header() {
                     <Link
                       href={lp('/aviation/runway-in-use-calculator')}
                       onClick={() => setAviationDropdownOpen(false)}
-                      className="flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                     >
                       <span className="truncate mr-2">{t('aviationTools.runwayInUse')}</span>
                       <span className="text-[10px] text-indigo-500 bg-indigo-50 px-1.5 py-0.5 rounded shrink-0">ATC</span>
@@ -227,16 +227,16 @@ export default function Header() {
                     <Link
                       href={lp('/aviation/runway-wind-calculator')}
                       onClick={() => setAviationDropdownOpen(false)}
-                      className="flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                     >
                       <span className="truncate">{t('aviationTools.runwayWind')}</span>
                     </Link>
                   </div>
-                  <div className="mt-1.5 pt-1.5 border-t border-slate-100">
+                  <div className="mt-1 pt-2 border-t border-slate-100">
                     <Link
                       href={lp('/aviation')}
                       onClick={() => setAviationDropdownOpen(false)}
-                      className="flex items-center justify-between px-3 py-1.5 text-xs font-semibold text-indigo-600 hover:text-indigo-800"
+                      className="flex items-center justify-between px-3 py-2 text-xs font-semibold text-indigo-600 hover:text-indigo-800"
                     >
                       <span>{t('navigation.allAviation')}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 rtl:rotate-90" />
@@ -287,128 +287,128 @@ export default function Header() {
           <Link
             href={lp('/#calculator')}
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50"
+            className="block px-3 py-2.5 rounded-md font-medium text-slate-700 hover:bg-slate-50"
           >
             {t('navigation.calculator')}
           </Link>
           <div className="pt-2 border-t border-slate-100">
-            <span className="px-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mb-1">
+            <span className="px-3 text-[11px] font-semibold text-slate-500 uppercase tracking-wider block mb-1">
               {t('navigation.financialTools')}
             </span>
             <Link
               href={lp('/tools/startup-runway-calculator')}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+              className="block px-3 py-2 rounded-md text-slate-700 hover:bg-slate-50"
             >
               {t('financialTools.startupRunway')}
             </Link>
             <Link
               href={lp('/tools/hiring-runway-calculator')}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+              className="block px-3 py-2 rounded-md text-slate-700 hover:bg-slate-50"
             >
               {t('financialTools.hiringRunway')}
             </Link>
             <Link
               href={lp('/tools/default-alive-calculator')}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+              className="block px-3 py-2 rounded-md text-slate-700 hover:bg-slate-50"
             >
               {t('financialTools.defaultAlive')}
             </Link>
             <Link
               href={lp('/tools/safe-dilution-runway-calculator')}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+              className="block px-3 py-2 rounded-md text-slate-700 hover:bg-slate-50"
             >
               {t('financialTools.safeDilution')}
             </Link>
             <Link
               href={lp('/tools/cash-runway-calculator')}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+              className="block px-3 py-2 rounded-md text-slate-700 hover:bg-slate-50"
             >
               {t('financialTools.cashRunway')}
             </Link>
             <Link
               href={lp('/tools/burn-rate-calculator')}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+              className="block px-3 py-2 rounded-md text-slate-700 hover:bg-slate-50"
             >
               {t('financialTools.burnRate')}
             </Link>
             <Link
               href={lp('/tools/runway-calculator-excel')}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+              className="block px-3 py-2 rounded-md text-slate-700 hover:bg-slate-50"
             >
               {t('financialTools.excelTemplate')}
             </Link>
             <Link
               href={lp('/tools/runway-extension-calculator')}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+              className="block px-3 py-2 rounded-md text-slate-700 hover:bg-slate-50"
             >
               {t('financialTools.extensionSolver')}
             </Link>
           </div>
           <div className="pt-2 border-t border-slate-100">
-            <span className="px-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mb-1">
+            <span className="px-3 text-[11px] font-semibold text-slate-500 uppercase tracking-wider block mb-1">
               {t('navigation.aviationTools')}
             </span>
             <Link
               href={lp('/aviation/crosswind-calculator')}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+              className="block px-3 py-2 rounded-md text-slate-700 hover:bg-slate-50"
             >
               {t('aviationTools.crosswind')}
             </Link>
             <Link
               href={lp('/aviation/runway-slope-calculator')}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+              className="block px-3 py-2 rounded-md text-slate-700 hover:bg-slate-50"
             >
               {t('aviationTools.runwaySlope')}
             </Link>
             <Link
               href={lp('/aviation/runway-number-calculator')}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+              className="block px-3 py-2 rounded-md text-slate-700 hover:bg-slate-50"
             >
               {t('aviationTools.runwayNumber')}
             </Link>
             <Link
               href={lp('/aviation/runway-length-calculator')}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+              className="block px-3 py-2 rounded-md text-slate-700 hover:bg-slate-50"
             >
               {t('aviationTools.runwayLength')}
             </Link>
             <Link
               href={lp('/aviation/runway-visual-range-calculator')}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+              className="block px-3 py-2 rounded-md text-slate-700 hover:bg-slate-50"
             >
               {t('aviationTools.rvr')}
             </Link>
             <Link
               href={lp('/aviation/contaminated-runway-calculator')}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+              className="block px-3 py-2 rounded-md text-slate-700 hover:bg-slate-50"
             >
               {t('aviationTools.contaminated')}
             </Link>
             <Link
               href={lp('/aviation/runway-in-use-calculator')}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+              className="block px-3 py-2 rounded-md text-slate-700 hover:bg-slate-50"
             >
               {t('aviationTools.runwayInUse')}
             </Link>
             <Link
               href={lp('/aviation/runway-wind-calculator')}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-1.5 rounded-md text-slate-700 hover:bg-slate-50"
+              className="block px-3 py-2 rounded-md text-slate-700 hover:bg-slate-50"
             >
               {t('aviationTools.runwayWind')}
             </Link>

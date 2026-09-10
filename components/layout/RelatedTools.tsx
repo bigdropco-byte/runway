@@ -195,7 +195,7 @@ export default function RelatedTools({ currentUrl, category, limit = 4 }: Relate
         </div>
         <Link
           href={category === 'aviation' ? lp('/aviation') : lp('/tools')}
-          className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 flex items-center self-start sm:self-auto"
+          className="text-xs font-semibold text-indigo-700 hover:text-indigo-900 flex items-center self-start sm:self-auto"
         >
           <span>{category === 'aviation' ? t('navigation.allAviation') : t('navigation.allTools')}</span>
           <ArrowRight className="w-3.5 h-3.5 ml-1 rtl:rotate-180" />
@@ -226,7 +226,7 @@ export default function RelatedTools({ currentUrl, category, limit = 4 }: Relate
                   {toolDesc}
                 </p>
               </div>
-              <div className="mt-3 pt-2 border-t border-slate-100 flex items-center text-xs font-semibold text-indigo-600">
+              <div className="mt-3 pt-2 border-t border-slate-100 flex items-center text-xs font-semibold text-indigo-700">
                 <span>{t('common.launchTool')}</span>
                 <ArrowRight className="w-3 h-3 ml-1 rtl:rotate-180 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform" />
               </div>

@@ -98,7 +98,7 @@ export default function CashRunwayCalculator() {
               onChange={(e) => setInputs({ ...inputs, emergencyBufferPercent: parseInt(e.target.value, 10) })}
               className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
             />
-            <div className="flex justify-between text-[10px] text-slate-400 mt-1">
+            <div className="flex justify-between text-[10px] text-slate-600 mt-1">
               <span>0% (No cushion)</span>
               <span>20% (Standard)</span>
               <span>50% (Conservative)</span>
@@ -109,7 +109,7 @@ export default function CashRunwayCalculator() {
         {/* Right Column: Visual Results */}
         <div className="lg:col-span-6 space-y-4">
           <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900 to-indigo-950 text-white shadow-md space-y-3">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-slate-300">
               Cash Runway Status
             </span>
             <div className="flex items-baseline space-x-3">
@@ -122,7 +122,7 @@ export default function CashRunwayCalculator() {
             </p>
 
             <div className="pt-3 border-t border-slate-700 flex items-center justify-between text-xs">
-              <span className="text-slate-400">Net Monthly Burn:</span>
+              <span className="text-slate-300">Net Monthly Burn:</span>
               <strong className="text-rose-400 font-bold">{formatCurrency(res.netMonthlyBurn)}/mo</strong>
             </div>
           </div>

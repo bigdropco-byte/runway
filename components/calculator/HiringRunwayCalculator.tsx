@@ -170,20 +170,20 @@ export default function HiringRunwayCalculator() {
         {/* Right Column: Visual Runway Impact Card */}
         <div className="lg:col-span-5 space-y-4">
           <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900 to-indigo-950 text-white shadow-md space-y-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-slate-300">
               Runway Impact Analysis
             </span>
 
             <div className="flex items-center justify-between pt-1">
               <div>
-                <span className="text-xs text-slate-400 block">Before Hires</span>
+                <span className="text-xs text-slate-300 block">Before Hires</span>
                 <span className="text-2xl font-bold text-slate-300">
                   {typeof res.baselineRunwayMonths === 'number' ? `${res.baselineRunwayMonths} mo` : 'Sustainable'}
                 </span>
               </div>
               <ArrowRight className="w-5 h-5 text-indigo-400" />
               <div>
-                <span className="text-xs text-slate-400 block">After Hires</span>
+                <span className="text-xs text-slate-300 block">After Hires</span>
                 <span className="text-3xl font-extrabold text-amber-400">
                   {typeof res.newRunwayMonths === 'number' ? `${res.newRunwayMonths} mo` : 'Sustainable'}
                 </span>

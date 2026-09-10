@@ -125,7 +125,7 @@ export default function BurnRateCalculator() {
 
           <div className="p-5 rounded-2xl bg-slate-900 text-white shadow-md space-y-3">
             <div className="flex items-center justify-between text-xs">
-              <span className="text-slate-400 font-semibold uppercase tracking-wider">Cash Burn Velocity</span>
+              <span className="text-slate-300 font-semibold uppercase tracking-wider">Cash Burn Velocity</span>
               <span className="px-2 py-0.5 rounded-full bg-indigo-500/20 border border-indigo-400/40 text-indigo-300 font-medium">
                 {res.monthlyBurnPercentage}% cash / month
               </span>
@@ -133,13 +133,13 @@ export default function BurnRateCalculator() {
 
             <div className="flex items-baseline justify-between pt-1">
               <div>
-                <span className="text-xs text-slate-400 block">Implied Runway</span>
+                <span className="text-xs text-slate-300 block">Implied Runway</span>
                 <span className="text-3xl font-extrabold text-white">
                   {res.runwayMonths === 'infinite' ? 'Sustainable' : `${res.runwayMonths} months`}
                 </span>
               </div>
               <div className="text-right">
-                <span className="text-xs text-slate-400 block">Annualized Net Burn</span>
+                <span className="text-xs text-slate-300 block">Annualized Net Burn</span>
                 <span className="text-lg font-bold text-rose-400">
                   {formatCurrency(res.annualizedNetBurn)}/yr
                 </span>

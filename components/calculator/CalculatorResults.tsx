@@ -63,7 +63,7 @@ export default function CalculatorResults({ metrics, startingCash }: CalculatorR
       {/* Primary Hero Result Card */}
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 p-6 text-white shadow-md">
         <div className="flex items-center justify-between gap-2 mb-3">
-          <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <span className="text-xs font-semibold uppercase tracking-wider text-slate-300">
             {t('calculator.results.estimatedRunway')}
           </span>
           <div className={`inline-flex items-center space-x-1.5 text-xs font-semibold px-2.5 py-0.5 rounded-full border ${statusBadgeColor} bg-white/10 backdrop-blur-xs text-white border-white/20`}>
@@ -92,7 +92,7 @@ export default function CalculatorResults({ metrics, startingCash }: CalculatorR
             <strong className="text-white font-semibold">{metrics.depletionDateFormatted}</strong>
           </div>
           {metrics.netBurn > 0 && (
-            <div className="flex items-center space-x-1 text-slate-400">
+            <div className="flex items-center space-x-1 text-slate-300">
               <span>{t('calculator.results.netMonthlyBurn')}:</span>
               <strong className="text-rose-400 font-semibold">{fc(metrics.netBurn)}/mo</strong>
             </div>
@@ -170,27 +170,27 @@ export default function CalculatorResults({ metrics, startingCash }: CalculatorR
       {/* Cash Milestones: +3, +6, +12 Months */}
       <div>
         <div className="flex items-center justify-between mb-2">
-          <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+          <h3 className="text-xs font-semibold text-slate-700 uppercase tracking-wider">
             Projected Cash Remaining
-          </h4>
-          <span className="text-[11px] text-slate-400">Based on trajectory</span>
+          </h3>
+          <span className="text-[11px] text-slate-600">Based on trajectory</span>
         </div>
         <div className="grid grid-cols-3 gap-2.5 sm:gap-3 text-center">
           <div className="p-3 rounded-xl border border-slate-200 bg-slate-50/40">
-            <span className="text-[11px] font-semibold text-slate-500 block">After 3 Months</span>
-            <span className={`text-sm sm:text-base font-bold block mt-1 ${metrics.cashAt3Months <= 0 ? 'text-rose-600' : 'text-slate-900'}`}>
+            <span className="text-[11px] font-semibold text-slate-600 block">After 3 Months</span>
+            <span className={`text-sm sm:text-base font-bold block mt-1 ${metrics.cashAt3Months <= 0 ? 'text-rose-700' : 'text-slate-900'}`}>
               {fc(metrics.cashAt3Months)}
             </span>
           </div>
           <div className="p-3 rounded-xl border border-slate-200 bg-slate-50/40">
-            <span className="text-[11px] font-semibold text-slate-500 block">After 6 Months</span>
-            <span className={`text-sm sm:text-base font-bold block mt-1 ${metrics.cashAt6Months <= 0 ? 'text-rose-600' : 'text-slate-900'}`}>
+            <span className="text-[11px] font-semibold text-slate-600 block">After 6 Months</span>
+            <span className={`text-sm sm:text-base font-bold block mt-1 ${metrics.cashAt6Months <= 0 ? 'text-rose-700' : 'text-slate-900'}`}>
               {fc(metrics.cashAt6Months)}
             </span>
           </div>
           <div className="p-3 rounded-xl border border-slate-200 bg-slate-50/40">
-            <span className="text-[11px] font-semibold text-slate-500 block">After 12 Months</span>
-            <span className={`text-sm sm:text-base font-bold block mt-1 ${metrics.cashAt12Months <= 0 ? 'text-rose-600' : 'text-slate-900'}`}>
+            <span className="text-[11px] font-semibold text-slate-600 block">After 12 Months</span>
+            <span className={`text-sm sm:text-base font-bold block mt-1 ${metrics.cashAt12Months <= 0 ? 'text-rose-700' : 'text-slate-900'}`}>
               {fc(metrics.cashAt12Months)}
             </span>
           </div>

@@ -107,7 +107,7 @@ export default function DefaultAliveCalculator() {
             }`}
           >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+              <span className="text-xs font-semibold uppercase tracking-wider text-slate-300">
                 Paul Graham Framework Verdict
               </span>
               <div
@@ -134,7 +134,7 @@ export default function DefaultAliveCalculator() {
 
             <div className="pt-3 border-t border-white/10 grid grid-cols-2 gap-3 text-xs">
               <div>
-                <span className="text-slate-400 block">
+                <span className="text-slate-300 block">
                   {res.isDefaultAlive ? 'Profitability Crossover:' : 'Cash Depleted Around:'}
                 </span>
                 <strong className="text-white font-bold">
@@ -142,7 +142,7 @@ export default function DefaultAliveCalculator() {
                 </strong>
               </div>
               <div>
-                <span className="text-slate-400 block">Lowest Cash Trough:</span>
+                <span className="text-slate-300 block">Lowest Cash Trough:</span>
                 <strong className={res.isDefaultAlive ? 'text-emerald-400 font-bold' : 'text-rose-400 font-bold'}>
                   {formatCurrency(res.lowestCashTrough)}
                 </strong>

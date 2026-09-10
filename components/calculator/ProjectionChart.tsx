@@ -211,22 +211,22 @@ export default function ProjectionChart({
           >
             <div className="font-semibold text-slate-200 border-b border-slate-700/80 pb-1 mb-1.5 flex items-center justify-between gap-3">
               <span>Month {hoveredPoint.month}</span>
-              <span className="text-slate-400 font-normal">{hoveredPoint.dateLabel}</span>
+              <span className="text-slate-300 font-normal">{hoveredPoint.dateLabel}</span>
             </div>
             <div className="space-y-1">
               <div className="flex justify-between gap-4">
-                <span className="text-slate-400">Cash Balance:</span>
+                <span className="text-slate-300">Cash Balance:</span>
                 <span className={`font-bold ${hoveredPoint.endingCash <= 0 ? 'text-rose-400' : 'text-white'}`}>
                   {formatCurrency(hoveredPoint.endingCash)}
                 </span>
               </div>
               <div className="flex justify-between gap-4">
-                <span className="text-slate-400">Net Flow:</span>
+                <span className="text-slate-300">Net Flow:</span>
                 <span className={`font-medium ${hoveredPoint.netCashFlow >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
                   {hoveredPoint.netCashFlow >= 0 ? '+' : ''}{formatCurrency(hoveredPoint.netCashFlow)}
                 </span>
               </div>
-              <div className="flex justify-between gap-4 text-[11px] text-slate-400">
+              <div className="flex justify-between gap-4 text-[11px] text-slate-300">
                 <span>Rev / Exp:</span>
                 <span>{formatCurrency(hoveredPoint.revenue, true)} / {formatCurrency(hoveredPoint.expenses, true)}</span>
               </div>

@@ -94,7 +94,7 @@ export default function SafeRunwayCalculator() {
         {/* Right Column: Visual Results */}
         <div className="lg:col-span-6 space-y-4">
           <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900 to-indigo-950 text-white shadow-md space-y-3">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-slate-300">
               Recommended SAFE Raise
             </span>
             <div className="flex items-baseline space-x-3">
@@ -107,15 +107,15 @@ export default function SafeRunwayCalculator() {
             </p>
 
             <div className="pt-3 border-t border-slate-700/80 flex items-center justify-between text-xs">
-              <span className="text-slate-400">Extended Runway:</span>
+              <span className="text-slate-300">Extended Runway:</span>
               <strong className="text-white font-bold">{res.newTotalRunwayMonths} months</strong>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div className="p-4 rounded-xl border border-slate-200 bg-slate-50/60">
-              <span className="text-[11px] font-semibold text-slate-500 block">Founder Dilution</span>
-              <span className="text-2xl font-extrabold text-rose-600 block mt-0.5">
+              <span className="text-[11px] font-semibold text-slate-600 block">Founder Dilution</span>
+              <span className="text-2xl font-extrabold text-rose-700 block mt-0.5">
                 {res.founderDilutionPercent}%
               </span>
               <span className="text-[10px] text-slate-500 mt-0.5 block">Equity given to SAFE investors</span>

@@ -204,13 +204,13 @@ export default async function LocalizedHomePage({
         <section className="bg-white py-14 border-t border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div className="text-center max-w-2xl mx-auto space-y-2">
-              <span className="text-xs font-bold text-indigo-600 uppercase tracking-wider">
+              <span className="text-xs font-bold text-indigo-700 uppercase tracking-wider">
                 {t('financialTools.badge')}
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
                 {t('financialTools.title')}
               </h2>
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-slate-600">
                 {t('financialTools.description')}
               </p>
             </div>
@@ -240,11 +240,11 @@ export default async function LocalizedHomePage({
                       <h3 className="text-sm font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
                         {tool.title}
                       </h3>
-                      <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">
+                      <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
                         {tool.desc}
                       </p>
                     </div>
-                    <div className="mt-4 pt-2 border-t border-slate-200/60 flex items-center justify-between text-xs font-semibold text-indigo-600">
+                    <div className="mt-4 pt-2 border-t border-slate-200/60 flex items-center justify-between text-xs font-semibold text-indigo-700">
                       <span>{t('common.launchTool')}</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                     </div>
@@ -259,13 +259,13 @@ export default async function LocalizedHomePage({
         <section className="bg-slate-50 py-14 border-t border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div className="text-center max-w-2xl mx-auto space-y-2">
-              <span className="text-xs font-bold text-sky-600 uppercase tracking-wider">
+              <span className="text-xs font-bold text-sky-800 uppercase tracking-wider">
                 {t('aviationTools.badge')}
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
                 {t('aviationTools.title')}
               </h2>
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-slate-600">
                 {t('aviationTools.description')}
               </p>
             </div>
@@ -290,14 +290,14 @@ export default async function LocalizedHomePage({
                     <div className="w-8 h-8 rounded-lg bg-sky-100/80 text-sky-700 flex items-center justify-center">
                       <Plane className="w-4 h-4" />
                     </div>
-                    <h3 className="text-sm font-bold text-slate-900 group-hover:text-sky-600 transition-colors">
+                    <h3 className="text-sm font-bold text-slate-900 group-hover:text-sky-700 transition-colors">
                       {tool.title}
                     </h3>
-                    <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">
+                    <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
                       {tool.desc}
                     </p>
                   </div>
-                  <div className="mt-4 pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-sky-600">
+                  <div className="mt-4 pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-sky-700">
                     <span>{t('common.launchTool')}</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                   </div>
