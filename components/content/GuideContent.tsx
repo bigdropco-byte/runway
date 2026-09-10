@@ -209,7 +209,7 @@ export default function GuideContent() {
           <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1.5">
             <div className="flex items-center space-x-2 text-slate-900 font-bold text-sm">
               <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold shrink-0">1</span>
-              <h4>Offer Annual Prepaid Discounts</h4>
+              <h3>Offer Annual Prepaid Discounts</h3>
             </div>
             <p className="text-xs text-slate-600 leading-normal">
               Incentivize customers with 15–20% discounts for paying annually upfront. This immediately accelerates future cash receipts into non-dilutive working capital today.
@@ -219,7 +219,7 @@ export default function GuideContent() {
           <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1.5">
             <div className="flex items-center space-x-2 text-slate-900 font-bold text-sm">
               <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold shrink-0">2</span>
-              <h4>Audit SaaS Subscriptions &amp; Cloud Tiers</h4>
+              <h3>Audit SaaS Subscriptions &amp; Cloud Tiers</h3>
             </div>
             <p className="text-xs text-slate-600 leading-normal">
               Review company credit card statements. Eliminate idle SaaS seats, downgrade redundant enterprise packages, and request startup cloud hosting credits.
@@ -229,7 +229,7 @@ export default function GuideContent() {
           <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1.5">
             <div className="flex items-center space-x-2 text-slate-900 font-bold text-sm">
               <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold shrink-0">3</span>
-              <h4>Freeze Non-Revenue Headcount</h4>
+              <h3>Freeze Non-Revenue Headcount</h3>
             </div>
             <p className="text-xs text-slate-600 leading-normal">
               Payroll accounts for the majority of startup burn. Pause all speculative administrative hiring and align open roles strictly with direct customer revenue generation.
@@ -239,7 +239,7 @@ export default function GuideContent() {
           <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1.5">
             <div className="flex items-center space-x-2 text-slate-900 font-bold text-sm">
               <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold shrink-0">4</span>
-              <h4>Shorten Payment Terms (Net-15 / Net-30)</h4>
+              <h3>Shorten Payment Terms (Net-15 / Net-30)</h3>
             </div>
             <p className="text-xs text-slate-600 leading-normal">
               If client contracts are Net-60 or Net-90, negotiate shorter payment windows or offer early payment incentives (e.g. 2% discount for payment within 10 days).
@@ -249,7 +249,7 @@ export default function GuideContent() {
           <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1.5">
             <div className="flex items-center space-x-2 text-slate-900 font-bold text-sm">
               <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold shrink-0">5</span>
-              <h4>Secure Non-Dilutive Capital or Grants</h4>
+              <h3>Secure Non-Dilutive Capital or Grants</h3>
             </div>
             <p className="text-xs text-slate-600 leading-normal">
               Explore government R&amp;D tax credits (such as the US federal R&amp;D payroll tax credit of up to $500k), SBIR grants, or revenue-based financing lines.
@@ -259,7 +259,7 @@ export default function GuideContent() {
           <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1.5">
             <div className="flex items-center space-x-2 text-slate-900 font-bold text-sm">
               <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold shrink-0">6</span>
-              <h4>Initiate Bridge Financing Early</h4>
+              <h3>Initiate Bridge Financing Early</h3>
             </div>
             <p className="text-xs text-slate-600 leading-normal">
               Do not wait until you have 60 days of cash left to approach existing angel investors. Pitch an insider bridge round or convertible note while you have 6+ months of runway.
@@ -271,9 +271,9 @@ export default function GuideContent() {
       {/* Programmatic SEO Cross-Links Section */}
       <section className="space-y-6 pt-4 border-t border-slate-200">
         <div className="text-center max-w-xl mx-auto space-y-2">
-          <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
             Tailored Runway Calculators by Industry
-          </h3>
+          </h2>
           <p className="text-xs sm:text-sm text-slate-500">
             Explore dedicated calculators pre-configured with industry-specific burn benchmarks, cash cycles, and worked examples:
           </p>

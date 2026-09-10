@@ -86,10 +86,10 @@ export default function HiringRunwayCalculator() {
           {/* Headcount Roster */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center">
+              <div className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center">
                 <Users className="w-3.5 h-3.5 mr-1.5 text-indigo-600" />
                 Planned New Hires Roster
-              </h4>
+              </div>
               <button
                 type="button"
                 onClick={handleAddHire}

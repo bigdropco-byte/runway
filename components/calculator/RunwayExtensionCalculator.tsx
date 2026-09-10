@@ -139,9 +139,9 @@ export default function RunwayExtensionCalculator() {
             </div>
           ) : (
             <div className="space-y-3">
-              <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+              <div className="text-xs font-bold text-slate-700 uppercase tracking-wider">
                 Choose 1 of 3 Independent Levers to Reach {inputs.targetRunwayMonths} Months:
-              </h3>
+              </div>
 
               {/* Lever 1: Expense Reduction */}
               <div className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 hover:border-indigo-300 transition-all">

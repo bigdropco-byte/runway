@@ -49,6 +49,7 @@ export default function RunwayCalculator({
 
   return (
     <section id="calculator" className="space-y-8 scroll-mt-20">
+      <h2 className="sr-only">Interactive Startup Runway & Cash Burn Calculator</h2>
       {/* Two Column Desktop Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column: Form Inputs */}

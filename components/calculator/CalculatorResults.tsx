@@ -170,9 +170,9 @@ export default function CalculatorResults({ metrics, startingCash }: CalculatorR
       {/* Cash Milestones: +3, +6, +12 Months */}
       <div>
         <div className="flex items-center justify-between mb-2">
-          <h3 className="text-xs font-semibold text-slate-700 uppercase tracking-wider">
+          <div className="text-xs font-semibold text-slate-700 uppercase tracking-wider">
             Projected Cash Remaining
-          </h3>
+          </div>
           <span className="text-[11px] text-slate-600">Based on trajectory</span>
         </div>
         <div className="grid grid-cols-3 gap-2.5 sm:gap-3 text-center">
