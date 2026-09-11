@@ -31,6 +31,8 @@ export default function Footer() {
               <img
                 src="/favicon.png"
                 alt="Runway Calculator Logo"
+                width={32}
+                height={32}
                 className="w-8 h-8 rounded-lg shadow-xs object-cover"
               />
               <span className="text-lg font-bold tracking-tight">

@@ -9,6 +9,22 @@ import { LOCALE_CODES } from '@/i18n/config';
 export const SITE_URL = 'https://runwaycalculator.dev';
 export const SITE_NAME = 'Runway Calculator';
 
+export const SITE_ICONS: Metadata['icons'] = {
+  icon: [
+    { url: '/favicon.ico', sizes: '48x48 32x32 16x16' },
+    { url: '/favicon.svg', type: 'image/svg+xml' },
+    { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+    { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+    { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+  ],
+  apple: [
+    { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+  ],
+  shortcut: ['/favicon.ico'],
+};
+
 export function getBaseMetadata(): Metadata {
   return {
     metadataBase: new URL(SITE_URL),
@@ -69,18 +85,7 @@ export function getBaseMetadata(): Metadata {
     alternates: {
       canonical: SITE_URL
     },
-    icons: {
-      icon: [
-        { url: '/favicon.ico', sizes: 'any' },
-        { url: '/favicon.png', type: 'image/png' },
-        { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-        { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      ],
-      apple: [
-        { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-      ],
-      shortcut: ['/favicon.ico'],
-    }
+    icons: SITE_ICONS
   };
 }
 
@@ -120,7 +125,8 @@ export function getNicheMetadata(niche: NicheData): Metadata {
     },
     alternates: {
       canonical: url
-    }
+    },
+    icons: SITE_ICONS
   };
 }
 
@@ -424,7 +430,8 @@ export function getLocalizedMetadata({
       title,
       description,
       images: [`${SITE_URL}/og-image.png`]
-    }
+    },
+    icons: SITE_ICONS
   };
 }
 

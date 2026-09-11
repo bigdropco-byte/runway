@@ -32,6 +32,8 @@ export default function Header() {
             <img
               src="/favicon.png"
               alt="Runway Calculator Logo"
+              width={36}
+              height={36}
               className="w-9 h-9 rounded-xl shadow-xs object-cover group-hover:scale-105 transition-transform"
             />
             <div className="flex flex-col">
