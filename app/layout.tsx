@@ -17,7 +17,13 @@ const geistMono = Geist_Mono({
 import Script from "next/script";
 import CookieBanner from "@/components/layout/CookieBanner";
 
-export const metadata: Metadata = getBaseMetadata();
+export const metadata: Metadata = {
+  ...getBaseMetadata(),
+  metadataBase: new URL("https://runwaycalculator.dev"),
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export const viewport: Viewport = {
   themeColor: "#4f46e5",
@@ -37,6 +43,15 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}
     >
       <head>
+        {/* Security & Protocol Enforcement */}
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+        <script
+          id="https-redirect"
+          dangerouslySetInnerHTML={{
+            __html: `if(typeof window!=='undefined'&&window.location.protocol==='http:'&&window.location.hostname!=='localhost'&&window.location.hostname!=='127.0.0.1'){window.location.replace('https://'+window.location.host+window.location.pathname+window.location.search+window.location.hash);}`,
+          }}
+        />
+
         {/* Resource Hints */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />

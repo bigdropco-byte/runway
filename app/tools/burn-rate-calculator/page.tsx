@@ -27,8 +27,9 @@ export const metadata: Metadata = {
     'net burn rate',
     'burn multiple calculator'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/tools/burn-rate-calculator`
+    canonical: '/tools/burn-rate-calculator/'
   }
 };
 

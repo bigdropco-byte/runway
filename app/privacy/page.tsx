@@ -21,8 +21,9 @@ export const metadata: Metadata = {
     'ccpa privacy notice',
     'client-side data privacy'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/privacy`
+    canonical: '/privacy/'
   }
 };
 

@@ -27,8 +27,9 @@ export const metadata: Metadata = {
     'liquid cash reserve calculator',
     'business cash runway'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/tools/cash-runway-calculator`
+    canonical: '/tools/cash-runway-calculator/'
   }
 };
 

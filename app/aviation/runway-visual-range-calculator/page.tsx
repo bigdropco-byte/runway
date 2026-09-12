@@ -27,8 +27,9 @@ export const metadata: Metadata = {
     'runway visual range aviation',
     'cat 1 rvr minimums'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/aviation/runway-visual-range-calculator`
+    canonical: '/aviation/runway-visual-range-calculator/'
   }
 };
 

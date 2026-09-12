@@ -41,8 +41,9 @@ export const metadata: Metadata = {
     'saas runway calculator',
     'small business runway'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/tools`
+    canonical: '/tools/'
   }
 };
 

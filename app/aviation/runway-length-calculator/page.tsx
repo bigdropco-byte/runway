@@ -27,8 +27,9 @@ export const metadata: Metadata = {
     'required runway length',
     'aircraft ground roll calculator'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/aviation/runway-length-calculator`
+    canonical: '/aviation/runway-length-calculator/'
   }
 };
 

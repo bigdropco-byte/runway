@@ -27,8 +27,9 @@ export const metadata: Metadata = {
     'which runway is in use',
     'runway wind selector'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/aviation/runway-in-use-calculator`
+    canonical: '/aviation/runway-in-use-calculator/'
   }
 };
 

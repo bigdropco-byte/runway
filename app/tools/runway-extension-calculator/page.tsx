@@ -27,8 +27,9 @@ export const metadata: Metadata = {
     'target runway calculator',
     'runway reverse solver'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/tools/runway-extension-calculator`
+    canonical: '/tools/runway-extension-calculator/'
   }
 };
 

@@ -27,8 +27,9 @@ export const metadata: Metadata = {
     'startup burn rate calculator',
     'seed stage runway'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/tools/startup-runway-calculator`
+    canonical: '/tools/startup-runway-calculator/'
   }
 };
 

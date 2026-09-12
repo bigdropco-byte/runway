@@ -27,8 +27,9 @@ export const metadata: Metadata = {
     'reciprocal runway calculator',
     'runway designation calculator'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/aviation/runway-number-calculator`
+    canonical: '/aviation/runway-number-calculator/'
   }
 };
 

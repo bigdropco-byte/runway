@@ -29,8 +29,9 @@ export const metadata: Metadata = {
     'rvr calculator',
     'contaminated runway calculator'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/aviation`
+    canonical: '/aviation/'
   }
 };
 

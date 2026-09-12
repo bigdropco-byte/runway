@@ -27,8 +27,9 @@ export const metadata: Metadata = {
     'how much safe to raise for 18 months runway',
     'startup dilution calculator'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/tools/safe-dilution-runway-calculator`
+    canonical: '/tools/safe-dilution-runway-calculator/'
   }
 };
 

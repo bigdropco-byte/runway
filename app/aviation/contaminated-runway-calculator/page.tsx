@@ -27,8 +27,9 @@ export const metadata: Metadata = {
     'rcam runway assessment',
     'hydroplaning landing distance'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/aviation/contaminated-runway-calculator`
+    canonical: '/aviation/contaminated-runway-calculator/'
   }
 };
 

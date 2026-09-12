@@ -83,15 +83,16 @@ export function getBaseMetadata(): Metadata {
       images: [`${SITE_URL}/og-image.png`]
     },
     alternates: {
-      canonical: SITE_URL
+      canonical: '/'
     },
     icons: SITE_ICONS
   };
 }
 
 export function getNicheMetadata(niche: NicheData): Metadata {
-  const url = `${SITE_URL}/tools/${niche.slug}`;
+  const url = `${SITE_URL}/tools/${niche.slug}/`;
   return {
+    metadataBase: new URL(SITE_URL),
     title: niche.title,
     description: niche.metaDescription,
     keywords: [
@@ -124,7 +125,7 @@ export function getNicheMetadata(niche: NicheData): Metadata {
       images: [`${SITE_URL}/og-image.png`]
     },
     alternates: {
-      canonical: url
+      canonical: `/tools/${niche.slug}/`
     },
     icons: SITE_ICONS
   };

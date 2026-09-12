@@ -27,8 +27,9 @@ export const metadata: Metadata = {
     'startup runway template excel',
     'burn rate excel formula'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/tools/runway-calculator-excel`
+    canonical: '/tools/runway-calculator-excel/'
   }
 };
 

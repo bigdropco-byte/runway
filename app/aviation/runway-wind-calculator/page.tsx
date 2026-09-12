@@ -27,8 +27,9 @@ export const metadata: Metadata = {
     'aviation wind calculator',
     'tailwind component calculator'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/aviation/runway-wind-calculator`
+    canonical: '/aviation/runway-wind-calculator/'
   }
 };
 

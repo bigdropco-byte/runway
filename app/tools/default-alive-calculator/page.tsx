@@ -27,8 +27,9 @@ export const metadata: Metadata = {
     'default alive vs default dead',
     'startup profitability crossover'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/tools/default-alive-calculator`
+    canonical: '/tools/default-alive-calculator/'
   }
 };
 

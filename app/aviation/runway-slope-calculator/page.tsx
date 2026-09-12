@@ -27,8 +27,9 @@ export const metadata: Metadata = {
     'ICAO runway slope limit',
     'takeoff slope adjustment'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/aviation/runway-slope-calculator`
+    canonical: '/aviation/runway-slope-calculator/'
   }
 };
 

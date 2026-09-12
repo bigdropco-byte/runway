@@ -27,8 +27,9 @@ export const metadata: Metadata = {
     'hiring impact on runway',
     'payroll burn rate'
   ],
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: `${SITE_URL}/tools/hiring-runway-calculator`
+    canonical: '/tools/hiring-runway-calculator/'
   }
 };
 
