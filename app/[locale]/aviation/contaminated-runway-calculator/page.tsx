@@ -37,10 +37,16 @@ const FAQS: FaqItem[] = [
 
 export default async function ContaminatedRunwayPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const pageUrl = `${SITE_URL}/aviation/contaminated-runway-calculator`;
-  const webAppSchema = getWebApplicationSchema(pageUrl, 'Contaminated Runway Landing Distance Calculator');
+  const pageUrl = `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/aviation/contaminated-runway-calculator/`;
+  const webAppSchema = getWebApplicationSchema({
+    name: 'Contaminated Runway Landing Distance Calculator',
+    url: pageUrl,
+    description: 'Calculate contaminated runway landing distance factors for standing water, slush, dry snow, and ice conditions.',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'All (Web Browser)'
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Aviation Tools', url: `${SITE_URL}/aviation` },
+    { name: 'Aviation Tools', url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/aviation/` },
     { name: 'Contaminated Runway Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);

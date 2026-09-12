@@ -79,10 +79,16 @@ export default async function NicheCalculatorPage({ params }: { params: Promise<
     notFound();
   }
 
-  const pageUrl = `${SITE_URL}/tools/${niche.slug}`;
-  const webAppSchema = getWebApplicationSchema(pageUrl, `${niche.name} Runway Calculator`);
+  const pageUrl = `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/tools/${niche.slug}/`;
+  const webAppSchema = getWebApplicationSchema({
+    name: `${niche.name} Runway Calculator`,
+    url: pageUrl,
+    description: niche.metaDescription,
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'All (Web Browser)'
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Tools Directory', url: `${SITE_URL}/tools` },
+    { name: 'Tools Directory', url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/tools/` },
     { name: `${niche.name} Calculator`, url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(niche.faqs);

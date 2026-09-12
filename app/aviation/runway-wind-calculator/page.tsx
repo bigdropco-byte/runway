@@ -50,12 +50,13 @@ const FAQS: FaqItem[] = [
 
 export default function RunwayWindPage() {
   const pageUrl = `${SITE_URL}/aviation/runway-wind-calculator/`;
-  const webAppSchema = getWebApplicationSchema(
-    pageUrl,
-    'Runway Wind Calculator',
-    'Calculate headwind, crosswind, and tailwind components with wind gust factoring and directional compass vectors.',
-    'AerospaceApplication'
-  );
+  const webAppSchema = getWebApplicationSchema({
+    name: 'Runway Wind Calculator',
+    url: pageUrl,
+    description: 'Calculate headwind, crosswind, and tailwind components with wind gust factoring and directional compass vectors.',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'All (Web Browser)'
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: 'Aviation Tools', url: `${SITE_URL}/aviation/` },
     { name: 'Runway Wind Calculator', url: pageUrl }

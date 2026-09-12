@@ -37,10 +37,16 @@ const FAQS: FaqItem[] = [
 
 export default async function RunwayExtensionPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const pageUrl = `${SITE_URL}/tools/runway-extension-calculator`;
-  const webAppSchema = getWebApplicationSchema(pageUrl, 'Runway Extension Calculator');
+  const pageUrl = `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/tools/runway-extension-calculator/`;
+  const webAppSchema = getWebApplicationSchema({
+    name: 'Runway Extension Calculator',
+    url: pageUrl,
+    description: 'Reverse goal solver: input your desired runway months to find exact dollar expense cuts or sales needed.',
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'All (Web Browser)'
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Tools Directory', url: `${SITE_URL}/tools` },
+    { name: 'Tools Directory', url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/tools/` },
     { name: 'Runway Extension Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);

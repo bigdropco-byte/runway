@@ -37,10 +37,16 @@ const FAQS: FaqItem[] = [
 
 export default async function HiringRunwayPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const pageUrl = `${SITE_URL}/tools/hiring-runway-calculator`;
-  const webAppSchema = getWebApplicationSchema(pageUrl, 'Hiring Runway Calculator');
+  const pageUrl = `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/tools/hiring-runway-calculator/`;
+  const webAppSchema = getWebApplicationSchema({
+    name: 'Hiring Runway Calculator',
+    url: pageUrl,
+    description: 'Model headcount additions and employee burden overhead to compute exact runway reduction.',
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'All (Web Browser)'
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Tools Directory', url: `${SITE_URL}/tools` },
+    { name: 'Tools Directory', url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/tools/` },
     { name: 'Hiring Runway Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);

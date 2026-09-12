@@ -41,10 +41,16 @@ const FAQS: FaqItem[] = [
 
 export default async function CrosswindPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const pageUrl = `${SITE_URL}/aviation/crosswind-calculator`;
-  const webAppSchema = getWebApplicationSchema(pageUrl, 'Runway Crosswind Calculator');
+  const pageUrl = `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/aviation/crosswind-calculator/`;
+  const webAppSchema = getWebApplicationSchema({
+    name: 'Runway Crosswind Calculator',
+    url: pageUrl,
+    description: 'Calculate exact crosswind and headwind components from wind angle and velocity.',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'All (Web Browser)'
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Aviation Tools', url: `${SITE_URL}/aviation` },
+    { name: 'Aviation Tools', url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/aviation/` },
     { name: 'Runway Crosswind Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);

@@ -37,10 +37,16 @@ const FAQS: FaqItem[] = [
 
 export default async function DefaultAlivePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const pageUrl = `${SITE_URL}/tools/default-alive-calculator`;
-  const webAppSchema = getWebApplicationSchema(pageUrl, 'Default Alive vs Default Dead Calculator');
+  const pageUrl = `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/tools/default-alive-calculator/`;
+  const webAppSchema = getWebApplicationSchema({
+    name: 'Default Alive vs Default Dead Calculator',
+    url: pageUrl,
+    description: 'Paul Graham framework: verify if current revenue growth rate reaches profitability before cash runs out.',
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'All (Web Browser)'
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Tools Directory', url: `${SITE_URL}/tools` },
+    { name: 'Tools Directory', url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/tools/` },
     { name: 'Default Alive Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);

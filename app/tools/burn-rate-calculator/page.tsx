@@ -50,7 +50,20 @@ const FAQS: FaqItem[] = [
 
 export default function BurnRatePage() {
   const pageUrl = `${SITE_URL}/tools/burn-rate-calculator/`;
-  const webAppSchema = getWebApplicationSchema(pageUrl, 'Burn Rate Calculator');
+  const webAppSchema = getWebApplicationSchema({
+    name: 'Burn Rate & Multiple Calculator',
+    url: pageUrl,
+    description: 'Calculate startup gross burn rate, net burn rate, cash runway depletion velocity, and SaaS burn multiple efficiency.',
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'All (Web Browser)',
+    features: [
+      'Gross burn vs net burn calculation',
+      'SaaS burn multiple capital efficiency',
+      'Cash depletion velocity forecasting',
+      'Interactive expense sensitivity',
+      '100% private in-browser tool'
+    ]
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: 'Tools Directory', url: `${SITE_URL}/tools/` },
     { name: 'Burn Rate Calculator', url: pageUrl }

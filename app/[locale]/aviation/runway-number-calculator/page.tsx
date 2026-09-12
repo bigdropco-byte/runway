@@ -37,10 +37,16 @@ const FAQS: FaqItem[] = [
 
 export default async function RunwayNumberPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const pageUrl = `${SITE_URL}/aviation/runway-number-calculator`;
-  const webAppSchema = getWebApplicationSchema(pageUrl, 'Runway Number Calculator');
+  const pageUrl = `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/aviation/runway-number-calculator/`;
+  const webAppSchema = getWebApplicationSchema({
+    name: 'Runway Number Calculator',
+    url: pageUrl,
+    description: 'Calculate runway designations, reciprocal runways, and magnetic heading deviations.',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'All (Web Browser)'
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Aviation Tools', url: `${SITE_URL}/aviation` },
+    { name: 'Aviation Tools', url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/aviation/` },
     { name: 'Runway Number Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);

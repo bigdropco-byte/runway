@@ -37,10 +37,16 @@ const FAQS: FaqItem[] = [
 
 export default async function CashRunwayPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const pageUrl = `${SITE_URL}/tools/cash-runway-calculator`;
-  const webAppSchema = getWebApplicationSchema(pageUrl, 'Cash Runway Calculator');
+  const pageUrl = `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/tools/cash-runway-calculator/`;
+  const webAppSchema = getWebApplicationSchema({
+    name: 'Cash Runway Calculator',
+    url: pageUrl,
+    description: 'Calculate usable cash runway months with dedicated emergency reserve buffers.',
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'All (Web Browser)'
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Tools Directory', url: `${SITE_URL}/tools` },
+    { name: 'Tools Directory', url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/tools/` },
     { name: 'Cash Runway Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);

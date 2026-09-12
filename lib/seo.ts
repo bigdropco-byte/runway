@@ -177,49 +177,94 @@ export function getOrganizationSchema() {
   };
 }
 
+export interface WebApplicationSchemaOptions {
+  url?: string;
+  name?: string;
+  description?: string;
+  applicationCategory?: string;
+  operatingSystem?: string;
+  browserRequirements?: string;
+  softwareVersion?: string;
+  features?: string[];
+  price?: string;
+  priceCurrency?: string;
+}
+
 /**
  * Generate Schema.org WebApplication / SoftwareApplication JSON-LD
+ * Fully compliant with Google Search Central structured data specifications.
  */
 export function getWebApplicationSchema(
-  customUrl: string = SITE_URL,
-  customName: string = SITE_NAME,
-  customDescription: string = 'Calculate cash runway, gross burn, net burn, and cash depletion dates with interactive scenario modeling and real-time projections.',
-  applicationCategory: string = 'FinanceApplication',
-  features: string[] = [
-    'Real-time cash runway forecasting',
-    'Gross burn vs net burn analysis',
-    'Interactive scenario planning',
-    'Depletion date projection',
-    '100% private client-side processing'
-  ]
+  optionsOrUrl: string | WebApplicationSchemaOptions = SITE_URL,
+  customName?: string,
+  customDescription?: string,
+  customCategory?: string,
+  customFeatures?: string[],
+  customOperatingSystem?: string
 ) {
+  let url = `${SITE_URL}/`;
+  let name = 'Runway Calculator – Interactive Online Tool';
+  let description = 'Free instant calculation tool with zero registration required.';
+  let applicationCategory = 'UtilitiesApplication';
+  let operatingSystem = 'All (Web Browser)';
+  let browserRequirements = 'Requires JavaScript. Requires HTML5.';
+  let softwareVersion = '2.1.0';
+  let features: string[] = [
+    'Real-time cash runway forecasting',
+    'Interactive scenario planning',
+    '100% private client-side processing'
+  ];
+  let price = '0';
+  let priceCurrency = 'USD';
+
+  if (typeof optionsOrUrl === 'object' && optionsOrUrl !== null) {
+    if (optionsOrUrl.url) url = optionsOrUrl.url;
+    if (optionsOrUrl.name) name = optionsOrUrl.name;
+    if (optionsOrUrl.description) description = optionsOrUrl.description;
+    if (optionsOrUrl.applicationCategory) applicationCategory = optionsOrUrl.applicationCategory;
+    if (optionsOrUrl.operatingSystem) operatingSystem = optionsOrUrl.operatingSystem;
+    if (optionsOrUrl.browserRequirements) browserRequirements = optionsOrUrl.browserRequirements;
+    if (optionsOrUrl.softwareVersion) softwareVersion = optionsOrUrl.softwareVersion;
+    if (optionsOrUrl.features) features = optionsOrUrl.features;
+    if (optionsOrUrl.price) price = optionsOrUrl.price;
+    if (optionsOrUrl.priceCurrency) priceCurrency = optionsOrUrl.priceCurrency;
+  } else if (typeof optionsOrUrl === 'string') {
+    const isUrl = optionsOrUrl.startsWith('http://') || optionsOrUrl.startsWith('https://') || optionsOrUrl.startsWith('/');
+    if (isUrl) {
+      url = optionsOrUrl;
+      if (customName) name = customName;
+    } else {
+      name = optionsOrUrl;
+      if (customName) url = customName;
+    }
+    if (customDescription) description = customDescription;
+    if (customCategory) applicationCategory = customCategory;
+    if (customFeatures) features = customFeatures;
+    if (customOperatingSystem) operatingSystem = customOperatingSystem;
+  }
+
+  const normalizedUrl = url.endsWith('/') || url.includes('#') || url.includes('?') ? url : `${url}/`;
+
   return {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    name: customName,
-    url: customUrl,
-    description: customDescription,
+    name,
+    url: normalizedUrl,
+    description,
     applicationCategory,
-    operatingSystem: 'All (Web Browser)',
-    browserRequirements: 'Requires JavaScript. Requires HTML5.',
-    softwareVersion: '2.1.0',
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '148',
-      bestRating: '5',
-      worstRating: '1'
-    },
+    operatingSystem,
+    browserRequirements,
+    softwareVersion,
     offers: {
       '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD'
+      price,
+      priceCurrency
     },
     featureList: features,
     creator: {
       '@type': 'Organization',
       name: SITE_NAME,
-      url: SITE_URL
+      url: `${SITE_URL}/`
     }
   };
 }

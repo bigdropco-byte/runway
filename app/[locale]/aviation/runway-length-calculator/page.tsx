@@ -37,10 +37,23 @@ const FAQS: FaqItem[] = [
 
 export default async function RunwayLengthPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const pageUrl = `${SITE_URL}/aviation/runway-length-calculator`;
-  const webAppSchema = getWebApplicationSchema(pageUrl, 'Runway Length Calculator');
+  const pageUrl = `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/aviation/runway-length-calculator/`;
+  const webAppSchema = getWebApplicationSchema({
+    name: 'Runway Length Calculator – Density Altitude & Takeoff Distance',
+    url: pageUrl,
+    description: 'Calculate pressure altitude, density altitude, and required takeoff ground roll distance with FAA 50% safety buffers.',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'All (Web Browser)',
+    features: [
+      'Density altitude calculation',
+      'Pressure altitude calculation',
+      'FAA recommended 50% safety margin',
+      'ISA temperature deviation analysis',
+      '100% private in-browser tool'
+    ]
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Aviation Tools', url: `${SITE_URL}/aviation` },
+    { name: 'Aviation Tools', url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/aviation/` },
     { name: 'Runway Length Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);

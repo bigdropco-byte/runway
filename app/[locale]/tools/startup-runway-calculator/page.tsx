@@ -37,10 +37,16 @@ const FAQS: FaqItem[] = [
 
 export default async function StartupRunwayPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const pageUrl = `${SITE_URL}/tools/startup-runway-calculator`;
-  const webAppSchema = getWebApplicationSchema(pageUrl, 'Startup Runway Calculator');
+  const pageUrl = `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/tools/startup-runway-calculator/`;
+  const webAppSchema = getWebApplicationSchema({
+    name: 'Startup Runway Calculator',
+    url: pageUrl,
+    description: 'Venture & seed stage cash forecasting with compound growth, hiring burn, and milestone timelines.',
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'All (Web Browser)'
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Tools Directory', url: `${SITE_URL}/tools` },
+    { name: 'Tools Directory', url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/tools/` },
     { name: 'Startup Runway Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);

@@ -37,10 +37,16 @@ const FAQS: FaqItem[] = [
 
 export default async function RunwayExcelPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const pageUrl = `${SITE_URL}/tools/runway-calculator-excel`;
-  const webAppSchema = getWebApplicationSchema(pageUrl, 'Runway Calculator Excel Generator');
+  const pageUrl = `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/tools/runway-calculator-excel/`;
+  const webAppSchema = getWebApplicationSchema({
+    name: 'Runway Calculator Excel Template',
+    url: pageUrl,
+    description: 'Download a pre-built 24-month financial runway projection model spreadsheet with native formulas.',
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'All (Web Browser)'
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Tools Directory', url: `${SITE_URL}/tools` },
+    { name: 'Tools Directory', url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/tools/` },
     { name: 'Runway Calculator Excel', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);

@@ -37,15 +37,16 @@ const FAQS: FaqItem[] = [
 
 export default async function RunwayInUsePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const pageUrl = `${SITE_URL}/aviation/runway-in-use-calculator`;
-  const webAppSchema = getWebApplicationSchema(
-    pageUrl,
-    'Runway in Use Calculator',
-    'Determine the active runway in use based on reported wind direction, wind velocity, and airport runway configurations.',
-    'AerospaceApplication'
-  );
+  const pageUrl = `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/aviation/runway-in-use-calculator/`;
+  const webAppSchema = getWebApplicationSchema({
+    name: 'Runway in Use Calculator',
+    url: pageUrl,
+    description: 'Determine the active runway in use based on reported wind direction, wind velocity, and airport runway configurations.',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'All (Web Browser)'
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Aviation Tools', url: `${SITE_URL}/aviation` },
+    { name: 'Aviation Tools', url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/aviation/` },
     { name: 'Runway in Use Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);

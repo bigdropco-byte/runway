@@ -37,10 +37,16 @@ const FAQS: FaqItem[] = [
 
 export default async function RunwaySlopePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const pageUrl = `${SITE_URL}/aviation/runway-slope-calculator`;
-  const webAppSchema = getWebApplicationSchema(pageUrl, 'Runway Slope Calculator');
+  const pageUrl = `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/aviation/runway-slope-calculator/`;
+  const webAppSchema = getWebApplicationSchema({
+    name: 'Runway Slope Calculator',
+    url: pageUrl,
+    description: 'Calculate runway gradient percentage and takeoff distance adjustments for uphill or downhill slopes.',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'All (Web Browser)'
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Aviation Tools', url: `${SITE_URL}/aviation` },
+    { name: 'Aviation Tools', url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/aviation/` },
     { name: 'Runway Slope Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);

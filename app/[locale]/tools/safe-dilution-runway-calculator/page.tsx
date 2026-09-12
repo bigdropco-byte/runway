@@ -37,10 +37,16 @@ const FAQS: FaqItem[] = [
 
 export default async function SafeRunwayPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const pageUrl = `${SITE_URL}/tools/safe-dilution-runway-calculator`;
-  const webAppSchema = getWebApplicationSchema(pageUrl, 'SAFE Note & Dilution Runway Calculator');
+  const pageUrl = `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/tools/safe-dilution-runway-calculator/`;
+  const webAppSchema = getWebApplicationSchema({
+    name: 'SAFE Note & Dilution Runway Calculator',
+    url: pageUrl,
+    description: 'Calculate capital needed for target runway months and compute post-money founder equity dilution.',
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'All (Web Browser)'
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Tools Directory', url: `${SITE_URL}/tools` },
+    { name: 'Tools Directory', url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/tools/` },
     { name: 'SAFE Runway Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);

@@ -50,12 +50,13 @@ const FAQS: FaqItem[] = [
 
 export default function RunwayInUsePage() {
   const pageUrl = `${SITE_URL}/aviation/runway-in-use-calculator/`;
-  const webAppSchema = getWebApplicationSchema(
-    pageUrl,
-    'Runway in Use Calculator',
-    'Determine the active runway in use based on reported wind direction, wind velocity, and airport runway configurations.',
-    'AerospaceApplication'
-  );
+  const webAppSchema = getWebApplicationSchema({
+    name: 'Runway in Use Calculator',
+    url: pageUrl,
+    description: 'Determine the active runway in use based on reported wind direction, wind velocity, and airport runway configurations.',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'All (Web Browser)'
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: 'Aviation Tools', url: `${SITE_URL}/aviation/` },
     { name: 'Runway in Use Calculator', url: pageUrl }

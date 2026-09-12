@@ -105,11 +105,20 @@ export default async function LocalizedHomePage({
       <JsonLd data={getWebSiteSchema()} />
       <JsonLd data={getOrganizationSchema()} />
       <JsonLd 
-        data={getWebApplicationSchema(
-          t('calculator.title'),
-          `${SITE_URL}/${locale}/`,
-          t('calculator.subtitle')
-        )} 
+        data={getWebApplicationSchema({
+          name: t('calculator.title') || 'Runway Calculator – Startup Cash Runway & Burn Rate Calculator',
+          url: locale === 'en' ? `${SITE_URL}/` : `${SITE_URL}/${locale}/`,
+          description: t('calculator.subtitle') || 'Accurately forecast how many months of cash your business has left. Interactive scenario planning and real-time projections.',
+          applicationCategory: 'FinanceApplication',
+          operatingSystem: 'All (Web Browser)',
+          features: [
+            'Real-time cash runway forecasting',
+            'Gross burn vs net burn analysis',
+            'Interactive scenario planning',
+            'Depletion date projection',
+            '100% private client-side processing'
+          ]
+        })} 
       />
       <JsonLd data={getHowToSchema()} />
       <JsonLd data={getFaqPageSchema(HOMEPAGE_FAQS)} />

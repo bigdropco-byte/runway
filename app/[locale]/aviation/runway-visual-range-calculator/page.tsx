@@ -37,10 +37,16 @@ const FAQS: FaqItem[] = [
 
 export default async function RvrCalculatorPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const pageUrl = `${SITE_URL}/aviation/runway-visual-range-calculator`;
-  const webAppSchema = getWebApplicationSchema(pageUrl, 'Runway Visual Range (RVR) Calculator');
+  const pageUrl = `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/aviation/runway-visual-range-calculator/`;
+  const webAppSchema = getWebApplicationSchema({
+    name: 'Runway Visual Range (RVR) Calculator',
+    url: pageUrl,
+    description: 'Convert Runway Visual Range (RVR) feet and meters to statute miles and flight visibility minimums.',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'All (Web Browser)'
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Aviation Tools', url: `${SITE_URL}/aviation` },
+    { name: 'Aviation Tools', url: `${SITE_URL}${locale === 'en' ? '' : `/${locale}`}/aviation/` },
     { name: 'RVR to Visibility Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);
