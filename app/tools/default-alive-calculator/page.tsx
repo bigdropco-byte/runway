@@ -49,10 +49,10 @@ const FAQS: FaqItem[] = [
 ];
 
 export default function DefaultAlivePage() {
-  const pageUrl = `${SITE_URL}/tools/default-alive-calculator`;
+  const pageUrl = `${SITE_URL}/tools/default-alive-calculator/`;
   const webAppSchema = getWebApplicationSchema(pageUrl, 'Default Alive vs Default Dead Calculator');
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Tools Directory', url: `${SITE_URL}/tools` },
+    { name: 'Tools Directory', url: `${SITE_URL}/tools/` },
     { name: 'Default Alive Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);
@@ -68,7 +68,7 @@ export default function DefaultAlivePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <Breadcrumbs
             items={[
-              { name: 'Tools Directory', url: '/tools' },
+              { name: 'Tools Directory', url: '/tools/' },
               { name: 'Default Alive Calculator', url: pageUrl }
             ]}
           />
@@ -88,7 +88,7 @@ export default function DefaultAlivePage() {
 
           <DefaultAliveCalculator />
 
-          <RelatedTools currentUrl="/tools/default-alive-calculator" category="financial" />
+          <RelatedTools currentUrl="/tools/default-alive-calculator/" category="financial" />
 
           <FaqAccordion faqs={FAQS} title="Default Alive Frequently Asked Questions" />
         </div>

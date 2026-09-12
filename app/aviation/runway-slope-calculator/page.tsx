@@ -49,10 +49,10 @@ const FAQS: FaqItem[] = [
 ];
 
 export default function RunwaySlopePage() {
-  const pageUrl = `${SITE_URL}/aviation/runway-slope-calculator`;
+  const pageUrl = `${SITE_URL}/aviation/runway-slope-calculator/`;
   const webAppSchema = getWebApplicationSchema(pageUrl, 'Runway Slope Calculator');
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Aviation Tools', url: `${SITE_URL}/aviation` },
+    { name: 'Aviation Tools', url: `${SITE_URL}/aviation/` },
     { name: 'Runway Slope Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);
@@ -68,7 +68,7 @@ export default function RunwaySlopePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <Breadcrumbs
             items={[
-              { name: 'Aviation Tools', url: '/aviation' },
+              { name: 'Aviation Tools', url: '/aviation/' },
               { name: 'Runway Slope Calculator', url: pageUrl }
             ]}
           />
@@ -88,7 +88,7 @@ export default function RunwaySlopePage() {
 
           <RunwaySlopeCalculator />
 
-          <RelatedTools currentUrl="/aviation/runway-slope-calculator" category="aviation" />
+          <RelatedTools currentUrl="/aviation/runway-slope-calculator/" category="aviation" />
 
           <FaqAccordion faqs={FAQS} title="Runway Slope Frequently Asked Questions" />
         </div>

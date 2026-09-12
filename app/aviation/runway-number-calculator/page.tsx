@@ -49,10 +49,10 @@ const FAQS: FaqItem[] = [
 ];
 
 export default function RunwayNumberPage() {
-  const pageUrl = `${SITE_URL}/aviation/runway-number-calculator`;
+  const pageUrl = `${SITE_URL}/aviation/runway-number-calculator/`;
   const webAppSchema = getWebApplicationSchema(pageUrl, 'Runway Number Calculator');
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Aviation Tools', url: `${SITE_URL}/aviation` },
+    { name: 'Aviation Tools', url: `${SITE_URL}/aviation/` },
     { name: 'Runway Number Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);
@@ -68,7 +68,7 @@ export default function RunwayNumberPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <Breadcrumbs
             items={[
-              { name: 'Aviation Tools', url: '/aviation' },
+              { name: 'Aviation Tools', url: '/aviation/' },
               { name: 'Runway Number Calculator', url: pageUrl }
             ]}
           />
@@ -88,7 +88,7 @@ export default function RunwayNumberPage() {
 
           <RunwayNumberCalculator />
 
-          <RelatedTools currentUrl="/aviation/runway-number-calculator" category="aviation" />
+          <RelatedTools currentUrl="/aviation/runway-number-calculator/" category="aviation" />
 
           <FaqAccordion faqs={FAQS} title="Runway Numbering Frequently Asked Questions" />
         </div>

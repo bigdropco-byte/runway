@@ -19,7 +19,7 @@ const ALL_TOOLS: RelatedToolItem[] = [
   {
     name: 'Cash Runway Calculator',
     nameKey: 'financialTools.cashRunway',
-    url: '/tools/cash-runway-calculator',
+    url: '/tools/cash-runway-calculator/',
     description: 'Calculate cash survival months with customizable emergency reserve buffers.',
     descKey: 'financialTools.cashRunwayDesc',
     category: 'financial'
@@ -27,7 +27,7 @@ const ALL_TOOLS: RelatedToolItem[] = [
   {
     name: 'Startup Runway Calculator',
     nameKey: 'financialTools.startupRunway',
-    url: '/tools/startup-runway-calculator',
+    url: '/tools/startup-runway-calculator/',
     description: 'Model venture capital burn, fundraising timing, and milestone runway.',
     descKey: 'financialTools.startupRunwayDesc',
     category: 'financial'
@@ -35,7 +35,7 @@ const ALL_TOOLS: RelatedToolItem[] = [
   {
     name: 'Burn Rate Calculator',
     nameKey: 'financialTools.burnRate',
-    url: '/tools/burn-rate-calculator',
+    url: '/tools/burn-rate-calculator/',
     description: 'Measure gross burn, net burn, and SaaS capital efficiency Burn Multiple.',
     descKey: 'financialTools.burnRateDesc',
     category: 'financial'
@@ -43,7 +43,7 @@ const ALL_TOOLS: RelatedToolItem[] = [
   {
     name: 'Hiring Runway Calculator',
     nameKey: 'financialTools.hiringRunway',
-    url: '/tools/hiring-runway-calculator',
+    url: '/tools/hiring-runway-calculator/',
     description: 'Model headcount salary additions and benefits overhead on runway months.',
     descKey: 'financialTools.hiringRunwayDesc',
     category: 'financial'
@@ -51,7 +51,7 @@ const ALL_TOOLS: RelatedToolItem[] = [
   {
     name: 'Default Alive vs Dead Calculator',
     nameKey: 'financialTools.defaultAlive',
-    url: '/tools/default-alive-calculator',
+    url: '/tools/default-alive-calculator/',
     description: 'Paul Graham framework: test if revenue growth reaches profitability before cash runs out.',
     descKey: 'financialTools.defaultAliveDesc',
     category: 'financial'
@@ -59,7 +59,7 @@ const ALL_TOOLS: RelatedToolItem[] = [
   {
     name: 'SAFE & Dilution Calculator',
     nameKey: 'financialTools.safeDilution',
-    url: '/tools/safe-dilution-runway-calculator',
+    url: '/tools/safe-dilution-runway-calculator/',
     description: 'Calculate how much SAFE capital to raise and resulting founder equity dilution.',
     descKey: 'financialTools.safeDilutionDesc',
     category: 'financial'
@@ -67,7 +67,7 @@ const ALL_TOOLS: RelatedToolItem[] = [
   {
     name: 'Runway Calculator Excel Model',
     nameKey: 'financialTools.excelTemplate',
-    url: '/tools/runway-calculator-excel',
+    url: '/tools/runway-calculator-excel/',
     description: 'Build & download a custom 24-month financial runway model spreadsheet.',
     descKey: 'financialTools.excelTemplateDesc',
     category: 'financial'
@@ -75,7 +75,7 @@ const ALL_TOOLS: RelatedToolItem[] = [
   {
     name: 'Runway Extension Solver',
     nameKey: 'financialTools.extensionSolver',
-    url: '/tools/runway-extension-calculator',
+    url: '/tools/runway-extension-calculator/',
     description: 'Determine exact expense cuts or sales needed to reach your runway goal.',
     descKey: 'financialTools.extensionSolverDesc',
     category: 'financial'
@@ -85,7 +85,7 @@ const ALL_TOOLS: RelatedToolItem[] = [
   {
     name: 'Runway Crosswind Calculator',
     nameKey: 'aviationTools.crosswind',
-    url: '/aviation/crosswind-calculator',
+    url: '/aviation/crosswind-calculator/',
     description: 'Calculate exact crosswind and headwind/tailwind components with compass visual.',
     descKey: 'aviationTools.crosswindDesc',
     category: 'aviation'
@@ -93,7 +93,7 @@ const ALL_TOOLS: RelatedToolItem[] = [
   {
     name: 'Runway Slope Calculator',
     nameKey: 'aviationTools.runwaySlope',
-    url: '/aviation/runway-slope-calculator',
+    url: '/aviation/runway-slope-calculator/',
     description: 'Determine runway gradient percentage and takeoff/landing rollout impact.',
     descKey: 'aviationTools.runwaySlopeDesc',
     category: 'aviation'
@@ -101,7 +101,7 @@ const ALL_TOOLS: RelatedToolItem[] = [
   {
     name: 'Runway Number Calculator',
     nameKey: 'aviationTools.runwayNumber',
-    url: '/aviation/runway-number-calculator',
+    url: '/aviation/runway-number-calculator/',
     description: 'Convert magnetic headings to official FAA/ICAO runway numbers and reciprocals.',
     descKey: 'aviationTools.runwayNumberDesc',
     category: 'aviation'
@@ -109,7 +109,7 @@ const ALL_TOOLS: RelatedToolItem[] = [
   {
     name: 'Runway Length & Takeoff Calculator',
     nameKey: 'aviationTools.runwayLength',
-    url: '/aviation/runway-length-calculator',
+    url: '/aviation/runway-length-calculator/',
     description: 'Compute density altitude and required ground roll safety distance.',
     descKey: 'aviationTools.runwayLengthDesc',
     category: 'aviation'
@@ -117,7 +117,7 @@ const ALL_TOOLS: RelatedToolItem[] = [
   {
     name: 'Runway Visual Range (RVR) Calculator',
     nameKey: 'aviationTools.rvr',
-    url: '/aviation/runway-visual-range-calculator',
+    url: '/aviation/runway-visual-range-calculator/',
     description: 'Convert RVR in feet/meters to statute miles and CAT I/II/III approach minimums.',
     descKey: 'aviationTools.rvrDesc',
     category: 'aviation'
@@ -125,7 +125,7 @@ const ALL_TOOLS: RelatedToolItem[] = [
   {
     name: 'Contaminated Runway Calculator',
     nameKey: 'aviationTools.contaminated',
-    url: '/aviation/contaminated-runway-calculator',
+    url: '/aviation/contaminated-runway-calculator/',
     description: 'FAA TALPA / RCAM landing distance adjustments for wet, slush, and icy runways.',
     descKey: 'aviationTools.contaminatedDesc',
     category: 'aviation'
@@ -133,7 +133,7 @@ const ALL_TOOLS: RelatedToolItem[] = [
   {
     name: 'Runway in Use Calculator',
     nameKey: 'aviationTools.runwayInUse',
-    url: '/aviation/runway-in-use-calculator',
+    url: '/aviation/runway-in-use-calculator/',
     description: 'Determine active airport runway in use based on surface wind direction and velocity.',
     descKey: 'aviationTools.runwayInUseDesc',
     category: 'aviation'
@@ -141,7 +141,7 @@ const ALL_TOOLS: RelatedToolItem[] = [
   {
     name: 'Runway Wind Calculator',
     nameKey: 'aviationTools.runwayWind',
-    url: '/aviation/runway-wind-calculator',
+    url: '/aviation/runway-wind-calculator/',
     description: 'Calculate headwind, crosswind, and tailwind components with wind gust factoring.',
     descKey: 'aviationTools.runwayWindDesc',
     category: 'aviation'
@@ -158,20 +158,32 @@ export default function RelatedTools({ currentUrl, category, limit = 4 }: Relate
   const { locale, t } = useTranslation();
 
   const lp = (path: string) => {
+    if (path.startsWith('/#') || path.startsWith('#')) {
+      const hash = path.startsWith('/') ? path : `/${path}`;
+      if (!locale || locale === 'en') {
+        return hash;
+      }
+      return `/${locale}${hash}`;
+    }
     const clean = path.startsWith('/') ? path : `/${path}`;
+    const withSlash = clean.endsWith('/') ? clean : `${clean}/`;
     if (!locale || locale === 'en') {
-      return clean;
+      return withSlash;
     }
-    if (clean === `/${locale}` || clean.startsWith(`/${locale}/`)) {
-      return clean;
+    if (withSlash === `/${locale}/` || withSlash.startsWith(`/${locale}/`)) {
+      return withSlash;
     }
-    return `/${locale}${clean === '/' ? '' : clean}`;
+    return `/${locale}${withSlash === '/' ? '/' : withSlash}`.replace(/\/\//g, '/');
   };
 
-  // Normalise currentUrl so it matches regardless of locale prefix
+  // Normalise currentUrl so it matches regardless of locale prefix or trailing slash
   const rawCurrentUrl = currentUrl.replace(/^\/[a-z]{2}\//, '/');
+  const normalizedCurrent = rawCurrentUrl.endsWith('/') ? rawCurrentUrl : `${rawCurrentUrl}/`;
 
-  let filtered = ALL_TOOLS.filter((tool) => tool.url !== rawCurrentUrl && tool.url !== currentUrl);
+  let filtered = ALL_TOOLS.filter((tool) => {
+    const normalizedTool = tool.url.endsWith('/') ? tool.url : `${tool.url}/`;
+    return normalizedTool !== normalizedCurrent && tool.url !== currentUrl;
+  });
   if (category) {
     filtered = filtered.filter((tool) => tool.category === category);
   }

@@ -49,7 +49,7 @@ const FAQS: FaqItem[] = [
 ];
 
 export default function RunwayInUsePage() {
-  const pageUrl = `${SITE_URL}/aviation/runway-in-use-calculator`;
+  const pageUrl = `${SITE_URL}/aviation/runway-in-use-calculator/`;
   const webAppSchema = getWebApplicationSchema(
     pageUrl,
     'Runway in Use Calculator',
@@ -57,7 +57,7 @@ export default function RunwayInUsePage() {
     'AerospaceApplication'
   );
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Aviation Tools', url: `${SITE_URL}/aviation` },
+    { name: 'Aviation Tools', url: `${SITE_URL}/aviation/` },
     { name: 'Runway in Use Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);
@@ -73,7 +73,7 @@ export default function RunwayInUsePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <Breadcrumbs
             items={[
-              { name: 'Aviation Tools', url: '/aviation' },
+              { name: 'Aviation Tools', url: '/aviation/' },
               { name: 'Runway in Use Calculator', url: pageUrl }
             ]}
           />
@@ -93,7 +93,7 @@ export default function RunwayInUsePage() {
 
           <RunwayInUseCalculator />
 
-          <RelatedTools currentUrl="/aviation/runway-in-use-calculator" category="aviation" />
+          <RelatedTools currentUrl="/aviation/runway-in-use-calculator/" category="aviation" />
 
           <FaqAccordion faqs={FAQS} title="Runway in Use Frequently Asked Questions" />
         </div>

@@ -49,10 +49,10 @@ const FAQS: FaqItem[] = [
 ];
 
 export default function RunwayLengthPage() {
-  const pageUrl = `${SITE_URL}/aviation/runway-length-calculator`;
+  const pageUrl = `${SITE_URL}/aviation/runway-length-calculator/`;
   const webAppSchema = getWebApplicationSchema(pageUrl, 'Runway Length Calculator');
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Aviation Tools', url: `${SITE_URL}/aviation` },
+    { name: 'Aviation Tools', url: `${SITE_URL}/aviation/` },
     { name: 'Runway Length Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);
@@ -68,7 +68,7 @@ export default function RunwayLengthPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <Breadcrumbs
             items={[
-              { name: 'Aviation Tools', url: '/aviation' },
+              { name: 'Aviation Tools', url: '/aviation/' },
               { name: 'Runway Length Calculator', url: pageUrl }
             ]}
           />
@@ -88,7 +88,7 @@ export default function RunwayLengthPage() {
 
           <RunwayLengthCalculator />
 
-          <RelatedTools currentUrl="/aviation/runway-length-calculator" category="aviation" />
+          <RelatedTools currentUrl="/aviation/runway-length-calculator/" category="aviation" />
 
           <FaqAccordion faqs={FAQS} title="Runway Length Frequently Asked Questions" />
         </div>

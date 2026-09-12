@@ -4,6 +4,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import RunwayCalculator from '@/components/calculator/RunwayCalculator';
 import FaqAccordion, { FaqItem } from '@/components/content/FaqAccordion';
+import GuideContent from '@/components/content/GuideContent';
 import JsonLd from '@/components/seo/JsonLd';
 import { 
   getLocalizedMetadata, 
@@ -61,8 +62,22 @@ export default async function LocalizedHomePage({
   const t = getTranslations(locale);
 
   const lp = (path: string) => {
+    if (path.startsWith('/#') || path.startsWith('#')) {
+      const hash = path.startsWith('/') ? path : `/${path}`;
+      if (!locale || locale === 'en') {
+        return hash;
+      }
+      return `/${locale}${hash}`;
+    }
     const clean = path.startsWith('/') ? path : `/${path}`;
-    return `/${locale}${clean === '/' ? '' : clean}`;
+    const withSlash = clean.endsWith('/') ? clean : `${clean}/`;
+    if (!locale || locale === 'en') {
+      return withSlash;
+    }
+    if (withSlash === `/${locale}/` || withSlash.startsWith(`/${locale}/`)) {
+      return withSlash;
+    }
+    return `/${locale}${withSlash === '/' ? '/' : withSlash}`.replace(/\/\//g, '/');
   };
 
   const HOMEPAGE_FAQS: FaqItem[] = [
@@ -304,6 +319,13 @@ export default async function LocalizedHomePage({
                 </Link>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Educational Guide & Internal Linking */}
+        <section id="runway-guide" className="py-14 border-t border-slate-200/80 bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <GuideContent locale={locale} />
           </div>
         </section>
 

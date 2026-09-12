@@ -229,8 +229,15 @@ export function getWebApplicationSchema(
  */
 export function getBreadcrumbSchema(items: { name: string; url: string }[]) {
   const fullItems = [
-    { name: 'Home', url: SITE_URL },
-    ...items
+    { name: 'Home', url: `${SITE_URL}/` },
+    ...items.map((item) => {
+      const u = item.url;
+      const normalizedUrl = u.endsWith('/') || u.includes('#') ? u : `${u}/`;
+      return {
+        name: item.name,
+        url: normalizedUrl
+      };
+    })
   ];
   return {
     '@context': 'https://schema.org',

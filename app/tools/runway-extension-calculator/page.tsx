@@ -49,10 +49,10 @@ const FAQS: FaqItem[] = [
 ];
 
 export default function RunwayExtensionPage() {
-  const pageUrl = `${SITE_URL}/tools/runway-extension-calculator`;
+  const pageUrl = `${SITE_URL}/tools/runway-extension-calculator/`;
   const webAppSchema = getWebApplicationSchema(pageUrl, 'Runway Extension Calculator');
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Tools Directory', url: `${SITE_URL}/tools` },
+    { name: 'Tools Directory', url: `${SITE_URL}/tools/` },
     { name: 'Runway Extension Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);
@@ -68,7 +68,7 @@ export default function RunwayExtensionPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <Breadcrumbs
             items={[
-              { name: 'Tools Directory', url: '/tools' },
+              { name: 'Tools Directory', url: '/tools/' },
               { name: 'Runway Extension Calculator', url: pageUrl }
             ]}
           />
@@ -88,7 +88,7 @@ export default function RunwayExtensionPage() {
 
           <RunwayExtensionCalculator />
 
-          <RelatedTools currentUrl="/tools/runway-extension-calculator" category="financial" />
+          <RelatedTools currentUrl="/tools/runway-extension-calculator/" category="financial" />
 
           <FaqAccordion faqs={FAQS} title="Runway Extension Frequently Asked Questions" />
         </div>

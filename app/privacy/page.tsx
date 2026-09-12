@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPolicyPage() {
-  const pageUrl = `${SITE_URL}/privacy`;
+  const pageUrl = `${SITE_URL}/privacy/`;
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: 'Privacy & Cookie Policy', url: pageUrl }
   ]);
@@ -40,7 +40,7 @@ export default function PrivacyPolicyPage() {
 
       <main className="flex-1 py-10 sm:py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <Breadcrumbs items={[{ name: 'Privacy & Cookie Policy', url: '/privacy' }]} />
+          <Breadcrumbs items={[{ name: 'Privacy & Cookie Policy', url: '/privacy/' }]} />
 
           <div className="space-y-4">
             <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-xs font-semibold text-emerald-700">

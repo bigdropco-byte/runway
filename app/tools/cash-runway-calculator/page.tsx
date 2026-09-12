@@ -49,10 +49,10 @@ const FAQS: FaqItem[] = [
 ];
 
 export default function CashRunwayPage() {
-  const pageUrl = `${SITE_URL}/tools/cash-runway-calculator`;
+  const pageUrl = `${SITE_URL}/tools/cash-runway-calculator/`;
   const webAppSchema = getWebApplicationSchema(pageUrl, 'Cash Runway Calculator');
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Tools Directory', url: `${SITE_URL}/tools` },
+    { name: 'Tools Directory', url: `${SITE_URL}/tools/` },
     { name: 'Cash Runway Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);
@@ -68,7 +68,7 @@ export default function CashRunwayPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <Breadcrumbs
             items={[
-              { name: 'Tools Directory', url: '/tools' },
+              { name: 'Tools Directory', url: '/tools/' },
               { name: 'Cash Runway Calculator', url: pageUrl }
             ]}
           />
@@ -88,7 +88,7 @@ export default function CashRunwayPage() {
 
           <CashRunwayCalculator />
 
-          <RelatedTools currentUrl="/tools/cash-runway-calculator" category="financial" />
+          <RelatedTools currentUrl="/tools/cash-runway-calculator/" category="financial" />
 
           <FaqAccordion faqs={FAQS} title="Cash Runway Frequently Asked Questions" />
         </div>

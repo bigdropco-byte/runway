@@ -49,10 +49,10 @@ const FAQS: FaqItem[] = [
 ];
 
 export default function ContaminatedRunwayPage() {
-  const pageUrl = `${SITE_URL}/aviation/contaminated-runway-calculator`;
+  const pageUrl = `${SITE_URL}/aviation/contaminated-runway-calculator/`;
   const webAppSchema = getWebApplicationSchema(pageUrl, 'Contaminated Runway Landing Distance Calculator');
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Aviation Tools', url: `${SITE_URL}/aviation` },
+    { name: 'Aviation Tools', url: `${SITE_URL}/aviation/` },
     { name: 'Contaminated Runway Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);
@@ -68,7 +68,7 @@ export default function ContaminatedRunwayPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <Breadcrumbs
             items={[
-              { name: 'Aviation Tools', url: '/aviation' },
+              { name: 'Aviation Tools', url: '/aviation/' },
               { name: 'Contaminated Runway Calculator', url: pageUrl }
             ]}
           />
@@ -88,7 +88,7 @@ export default function ContaminatedRunwayPage() {
 
           <ContaminatedRunwayCalculator />
 
-          <RelatedTools currentUrl="/aviation/contaminated-runway-calculator" category="aviation" />
+          <RelatedTools currentUrl="/aviation/contaminated-runway-calculator/" category="aviation" />
 
           <FaqAccordion faqs={FAQS} title="Contaminated Runway FAQs" />
         </div>

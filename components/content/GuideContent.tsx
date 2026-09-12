@@ -10,11 +10,31 @@ import {
   DollarSign,
   AlertTriangle,
   Lightbulb,
-  CheckCircle
+  CheckCircle,
+  Plane
 } from 'lucide-react';
 import { ALL_NICHES } from '@/lib/niches';
 
-export default function GuideContent() {
+export default function GuideContent({ locale = 'en' }: { locale?: string }) {
+  const lp = (path: string) => {
+    if (path.startsWith('/#') || path.startsWith('#')) {
+      const hash = path.startsWith('/') ? path : `/${path}`;
+      if (!locale || locale === 'en') {
+        return hash;
+      }
+      return `/${locale}${hash}`;
+    }
+    const clean = path.startsWith('/') ? path : `/${path}`;
+    const withSlash = clean.endsWith('/') ? clean : `${clean}/`;
+    if (!locale || locale === 'en') {
+      return withSlash;
+    }
+    if (withSlash === `/${locale}/` || withSlash.startsWith(`/${locale}/`)) {
+      return withSlash;
+    }
+    return `/${locale}${withSlash === '/' ? '/' : withSlash}`.replace(/\/\//g, '/');
+  };
+
   return (
     <article className="space-y-16 text-slate-700 leading-relaxed max-w-4xl mx-auto pt-8">
       {/* What is a Runway Calculator? */}
@@ -30,7 +50,11 @@ export default function GuideContent() {
           A <strong>runway calculator</strong> is an essential financial forecasting tool used by founders, business owners, and CFOs to determine exactly how many months a business can survive before running out of liquid cash. It answers the fundamental entrepreneurial question: <em>“If our revenue and expenses remain on their current trajectory, when does our bank balance hit zero?”</em>
         </p>
         <p className="text-sm sm:text-base text-slate-600">
-          Unlike complex accounting software that looks backward at historical profit and loss (P&amp;L), a cash runway calculator projects forward-looking liquidity. It accounts for your current liquid bank deposits, monthly incoming cash, and total monthly outlays to model your cash exhaustion date.
+          Unlike complex accounting software that looks backward at historical profit and loss (P&amp;L), our{' '}
+          <Link href={lp('/tools/cash-runway-calculator')} className="text-indigo-600 font-semibold hover:underline">
+            cash runway calculator
+          </Link>{' '}
+          projects forward-looking liquidity. It accounts for your current liquid bank deposits, monthly incoming cash receipts, and total monthly outlays to model your cash exhaustion date with precision.
         </p>
       </section>
 
@@ -57,7 +81,18 @@ export default function GuideContent() {
         </div>
 
         <p className="text-sm text-slate-600">
-          If your business produces more cash revenue each month than it spends on expenses, your net monthly burn is negative. This indicates you are <strong>cash-flow positive</strong> or <strong>default alive</strong>, meaning your cash balance grows each month rather than depleting.
+          If your business produces more cash revenue each month than it spends on expenses, your net monthly burn is negative. This indicates you are <strong>cash-flow positive</strong> or <strong>default alive</strong>. You can evaluate your exact growth velocity and trajectory using our dedicated{' '}
+          <Link href={lp('/tools/default-alive-calculator')} className="text-indigo-600 font-semibold hover:underline">
+            Default Alive vs. Default Dead Calculator
+          </Link>
+          , which applies Paul Graham&apos;s framework to verify whether organic growth outpaces expenses before funds deplete.
+        </p>
+        <p className="text-sm text-slate-600">
+          For founders maintaining safety reserves, our interactive{' '}
+          <Link href={lp('/tools/cash-runway-calculator')} className="text-indigo-600 font-semibold hover:underline">
+            Cash Runway Calculator
+          </Link>{' '}
+          allows you to isolate emergency operating buffers (such as 3–6 months of essential payroll) from disposable spend.
         </p>
       </section>
 
@@ -96,6 +131,20 @@ export default function GuideContent() {
               Net Burn = Gross Expenses − Monthly Cash Receipts
             </div>
           </div>
+        </div>
+
+        {/* Burn Rate Calculator CTA */}
+        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="text-xs text-slate-600">
+            <strong className="text-slate-900">Want to measure your company’s burn metrics?</strong> Calculate gross burn, net burn rate, depletion velocity, and venture capital Burn Multiple in seconds.
+          </div>
+          <Link
+            href={lp('/tools/burn-rate-calculator')}
+            className="inline-flex items-center text-xs font-semibold text-indigo-600 hover:text-indigo-800 whitespace-nowrap"
+          >
+            <span>Open Burn Rate Calculator</span>
+            <ArrowRight className="w-3.5 h-3.5 ml-1" />
+          </Link>
         </div>
       </section>
 
@@ -193,6 +242,18 @@ export default function GuideContent() {
               Month 1: $15,000 burn; Month 5: $10,670 burn; Month 10: $4,900 burn. Due to compounding revenue, the actual runway expands from <strong>10.0 months to 13.8 months</strong>!
             </p>
           </div>
+
+          <div className="pt-3 border-t border-slate-100 flex flex-wrap items-center gap-4 text-xs font-semibold text-indigo-600">
+            <Link href={lp('/tools/burn-rate-calculator')} className="hover:underline flex items-center">
+              <span>Measure your Net Burn Rate</span>
+              <ArrowRight className="w-3 h-3 ml-1" />
+            </Link>
+            <span className="text-slate-300">•</span>
+            <Link href={lp('/tools/cash-runway-calculator')} className="hover:underline flex items-center">
+              <span>Run Cash Runway Projections</span>
+              <ArrowRight className="w-3 h-3 ml-1" />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -209,7 +270,7 @@ export default function GuideContent() {
           <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1.5">
             <div className="flex items-center space-x-2 text-slate-900 font-bold text-sm">
               <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold shrink-0">1</span>
-              <h3>Offer Annual Prepaid Discounts</h3>
+              <h4>Offer Annual Prepaid Discounts</h4>
             </div>
             <p className="text-xs text-slate-600 leading-normal">
               Incentivize customers with 15–20% discounts for paying annually upfront. This immediately accelerates future cash receipts into non-dilutive working capital today.
@@ -219,7 +280,7 @@ export default function GuideContent() {
           <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1.5">
             <div className="flex items-center space-x-2 text-slate-900 font-bold text-sm">
               <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold shrink-0">2</span>
-              <h3>Audit SaaS Subscriptions &amp; Cloud Tiers</h3>
+              <h4>Audit SaaS Subscriptions &amp; Cloud Tiers</h4>
             </div>
             <p className="text-xs text-slate-600 leading-normal">
               Review company credit card statements. Eliminate idle SaaS seats, downgrade redundant enterprise packages, and request startup cloud hosting credits.
@@ -229,7 +290,7 @@ export default function GuideContent() {
           <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1.5">
             <div className="flex items-center space-x-2 text-slate-900 font-bold text-sm">
               <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold shrink-0">3</span>
-              <h3>Freeze Non-Revenue Headcount</h3>
+              <h4>Freeze Non-Revenue Headcount</h4>
             </div>
             <p className="text-xs text-slate-600 leading-normal">
               Payroll accounts for the majority of startup burn. Pause all speculative administrative hiring and align open roles strictly with direct customer revenue generation.
@@ -239,7 +300,7 @@ export default function GuideContent() {
           <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1.5">
             <div className="flex items-center space-x-2 text-slate-900 font-bold text-sm">
               <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold shrink-0">4</span>
-              <h3>Shorten Payment Terms (Net-15 / Net-30)</h3>
+              <h4>Shorten Payment Terms (Net-15 / Net-30)</h4>
             </div>
             <p className="text-xs text-slate-600 leading-normal">
               If client contracts are Net-60 or Net-90, negotiate shorter payment windows or offer early payment incentives (e.g. 2% discount for payment within 10 days).
@@ -249,7 +310,7 @@ export default function GuideContent() {
           <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1.5">
             <div className="flex items-center space-x-2 text-slate-900 font-bold text-sm">
               <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold shrink-0">5</span>
-              <h3>Secure Non-Dilutive Capital or Grants</h3>
+              <h4>Secure Non-Dilutive Capital or Grants</h4>
             </div>
             <p className="text-xs text-slate-600 leading-normal">
               Explore government R&amp;D tax credits (such as the US federal R&amp;D payroll tax credit of up to $500k), SBIR grants, or revenue-based financing lines.
@@ -259,13 +320,37 @@ export default function GuideContent() {
           <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1.5">
             <div className="flex items-center space-x-2 text-slate-900 font-bold text-sm">
               <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold shrink-0">6</span>
-              <h3>Initiate Bridge Financing Early</h3>
+              <h4>Initiate Bridge Financing Early</h4>
             </div>
             <p className="text-xs text-slate-600 leading-normal">
               Do not wait until you have 60 days of cash left to approach existing angel investors. Pitch an insider bridge round or convertible note while you have 6+ months of runway.
             </p>
           </div>
         </div>
+      </section>
+
+      {/* Aviation Cross-Reference Callout */}
+      <section className="p-6 rounded-2xl bg-sky-50/80 border border-sky-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="space-y-1">
+          <div className="flex items-center space-x-1.5 text-xs font-bold text-sky-800 uppercase tracking-wider">
+            <Plane className="w-3.5 h-3.5 text-sky-600" />
+            <span>Looking for Aviation Runway Calculations?</span>
+          </div>
+          <p className="text-xs text-slate-600 max-w-xl leading-relaxed">
+            If you are a pilot, dispatcher, or aerodrome operator calculating takeoff roll distances, balanced field requirements, and density altitude corrections, use our dedicated{' '}
+            <Link href={lp('/aviation/runway-length-calculator')} className="text-sky-700 font-bold hover:underline">
+              Runway Length &amp; Takeoff Performance Calculator
+            </Link>
+            {' '}or explore our full pilot tools suite.
+          </p>
+        </div>
+        <Link
+          href={lp('/aviation/runway-length-calculator')}
+          className="inline-flex items-center px-4 py-2 rounded-lg bg-sky-700 text-white text-xs font-semibold hover:bg-sky-800 transition-colors whitespace-nowrap shadow-2xs"
+        >
+          <span>Runway Length Calculator</span>
+          <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+        </Link>
       </section>
 
       {/* Programmatic SEO Cross-Links Section */}
@@ -283,7 +368,7 @@ export default function GuideContent() {
           {ALL_NICHES.map((niche) => (
             <Link
               key={niche.slug}
-              href={`/tools/${niche.slug}`}
+              href={lp(`/tools/${niche.slug}`)}
               className="p-4 rounded-xl border border-slate-200 bg-white hover:border-indigo-400 hover:shadow-sm transition-all group flex flex-col justify-between"
             >
               <div>

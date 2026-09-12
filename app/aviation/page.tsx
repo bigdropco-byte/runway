@@ -106,7 +106,7 @@ const AVIATION_FAQS: FaqItem[] = [
 ];
 
 export default function AviationHubPage() {
-  const pageUrl = `${SITE_URL}/aviation`;
+  const pageUrl = `${SITE_URL}/aviation/`;
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: 'Aviation Tools Hub', url: pageUrl }
   ]);
@@ -117,7 +117,7 @@ export default function AviationHubPage() {
     'Suite of pilot and aerodrome calculators covering crosswinds, slope gradients, runway numbering, density altitude, RVR, and TALPA contaminated runway lengths.',
     AVIATION_TOOLS.map((t) => ({
       name: t.name,
-      url: `${SITE_URL}/aviation/${t.slug}`,
+      url: `${SITE_URL}/aviation/${t.slug}/`,
       description: t.description
     }))
   );
@@ -133,7 +133,7 @@ export default function AviationHubPage() {
 
       <main className="flex-1 py-10 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <Breadcrumbs items={[{ name: 'Aviation Runway Calculators', url: '/aviation' }]} />
+          <Breadcrumbs items={[{ name: 'Aviation Runway Calculators', url: '/aviation/' }]} />
 
           <div className="text-center max-w-3xl mx-auto space-y-4">
             <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200/60 text-xs font-semibold text-indigo-700">
@@ -170,7 +170,7 @@ export default function AviationHubPage() {
 
                     <h2 className="text-lg font-bold text-slate-900 mb-2">
                       <Link
-                        href={`/aviation/${tool.slug}`}
+                        href={`/aviation/${tool.slug}/`}
                         className="hover:text-indigo-600 transition-colors"
                       >
                         {tool.name}
@@ -184,7 +184,7 @@ export default function AviationHubPage() {
 
                   <div className="pt-4 border-t border-slate-100">
                     <Link
-                      href={`/aviation/${tool.slug}`}
+                      href={`/aviation/${tool.slug}/`}
                       className="inline-flex items-center text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition-colors"
                     >
                       <span>Open Aviation Calculator</span>

@@ -13,14 +13,22 @@ export default function Header() {
   const { locale, t } = useTranslation();
 
   const lp = (path: string) => {
+    if (path.startsWith('/#') || path.startsWith('#')) {
+      const hash = path.startsWith('/') ? path : `/${path}`;
+      if (!locale || locale === 'en') {
+        return hash;
+      }
+      return `/${locale}${hash}`;
+    }
     const clean = path.startsWith('/') ? path : `/${path}`;
+    const withSlash = clean.endsWith('/') ? clean : `${clean}/`;
     if (!locale || locale === 'en') {
-      return clean;
+      return withSlash;
     }
-    if (clean === `/${locale}` || clean.startsWith(`/${locale}/`)) {
-      return clean;
+    if (withSlash === `/${locale}/` || withSlash.startsWith(`/${locale}/`)) {
+      return withSlash;
     }
-    return `/${locale}${clean === '/' ? '' : clean}`;
+    return `/${locale}${withSlash === '/' ? '/' : withSlash}`.replace(/\/\//g, '/');
   };
 
   return (

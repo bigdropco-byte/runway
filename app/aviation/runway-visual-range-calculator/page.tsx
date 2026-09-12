@@ -49,10 +49,10 @@ const FAQS: FaqItem[] = [
 ];
 
 export default function RvrCalculatorPage() {
-  const pageUrl = `${SITE_URL}/aviation/runway-visual-range-calculator`;
+  const pageUrl = `${SITE_URL}/aviation/runway-visual-range-calculator/`;
   const webAppSchema = getWebApplicationSchema(pageUrl, 'Runway Visual Range (RVR) Calculator');
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Aviation Tools', url: `${SITE_URL}/aviation` },
+    { name: 'Aviation Tools', url: `${SITE_URL}/aviation/` },
     { name: 'RVR to Visibility Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);
@@ -68,7 +68,7 @@ export default function RvrCalculatorPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <Breadcrumbs
             items={[
-              { name: 'Aviation Tools', url: '/aviation' },
+              { name: 'Aviation Tools', url: '/aviation/' },
               { name: 'RVR to Visibility Calculator', url: pageUrl }
             ]}
           />
@@ -88,7 +88,7 @@ export default function RvrCalculatorPage() {
 
           <RvrCalculator />
 
-          <RelatedTools currentUrl="/aviation/runway-visual-range-calculator" category="aviation" />
+          <RelatedTools currentUrl="/aviation/runway-visual-range-calculator/" category="aviation" />
 
           <FaqAccordion faqs={FAQS} title="Runway Visual Range (RVR) FAQs" />
         </div>

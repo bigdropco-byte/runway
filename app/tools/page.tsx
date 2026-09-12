@@ -50,56 +50,56 @@ export const metadata: Metadata = {
 const CORE_FINANCIAL_TOOLS = [
   {
     name: 'Startup Runway Calculator',
-    url: '/tools/startup-runway-calculator',
+    url: '/tools/startup-runway-calculator/',
     description: 'Venture & seed stage cash forecasting with compound growth, hiring burn, and milestone timelines.',
     badge: 'Popular',
     icon: Sparkles
   },
   {
     name: 'Hiring Runway Calculator',
-    url: '/tools/hiring-runway-calculator',
+    url: '/tools/hiring-runway-calculator/',
     description: 'Model headcount salary additions and benefits overhead (1.15x–1.30x) to see exact runway reduction.',
     badge: 'Headcount',
     icon: Users
   },
   {
     name: 'Default Alive vs. Default Dead Calculator',
-    url: '/tools/default-alive-calculator',
+    url: '/tools/default-alive-calculator/',
     description: 'Paul Graham framework: verify if current revenue growth rate reaches profitability before cash runs out.',
     badge: 'YC Method',
     icon: HeartPulse
   },
   {
     name: 'SAFE & Dilution Runway Calculator',
-    url: '/tools/safe-dilution-runway-calculator',
+    url: '/tools/safe-dilution-runway-calculator/',
     description: 'Calculate capital needed for 18-month target runway and compute post-money founder equity dilution.',
     badge: 'Fundraising',
     icon: PieChart
   },
   {
     name: 'Cash Runway Calculator',
-    url: '/tools/cash-runway-calculator',
+    url: '/tools/cash-runway-calculator/',
     description: 'Calculate usable cash survival months with dedicated emergency reserve buffer sliders (0–50%).',
     badge: 'Liquidity',
     icon: DollarSign
   },
   {
     name: 'Burn Rate & Multiple Calculator',
-    url: '/tools/burn-rate-calculator',
+    url: '/tools/burn-rate-calculator/',
     description: 'Measure gross burn, net burn rate, cash depletion velocity %, and SaaS Burn Multiple efficiency.',
     badge: 'Metrics',
     icon: Flame
   },
   {
     name: 'Runway Calculator Excel Template',
-    url: '/tools/runway-calculator-excel',
+    url: '/tools/runway-calculator-excel/',
     description: 'Download a pre-built 24-month financial runway projection model spreadsheet with native formulas.',
     badge: 'Download',
     icon: FileSpreadsheet
   },
   {
     name: 'Runway Extension Solver',
-    url: '/tools/runway-extension-calculator',
+    url: '/tools/runway-extension-calculator/',
     description: 'Reverse goal solver: input your desired runway months to find exact dollar expense cuts or sales needed.',
     badge: 'Strategy',
     icon: Target
@@ -122,7 +122,7 @@ const DIRECTORY_FAQS: FaqItem[] = [
 ];
 
 export default function ToolsDirectoryPage() {
-  const pageUrl = `${SITE_URL}/tools`;
+  const pageUrl = `${SITE_URL}/tools/`;
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: 'Financial Tools Directory', url: pageUrl }
   ]);
@@ -135,7 +135,7 @@ export default function ToolsDirectoryPage() {
     })),
     ...ALL_NICHES.map((n) => ({
       name: `${n.name} Runway Calculator`,
-      url: `${SITE_URL}/tools/${n.slug}`,
+      url: `${SITE_URL}/tools/${n.slug}/`,
       description: n.intro
     }))
   ];
@@ -157,7 +157,7 @@ export default function ToolsDirectoryPage() {
 
       <main className="flex-1 py-10 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          <Breadcrumbs items={[{ name: 'Financial Tools Directory', url: '/tools' }]} />
+          <Breadcrumbs items={[{ name: 'Financial Tools Directory', url: '/tools/' }]} />
 
           {/* Header Hero */}
           <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -258,7 +258,7 @@ export default function ToolsDirectoryPage() {
 
                     <h3 className="text-lg font-bold text-slate-900 mb-2">
                       <Link
-                        href={`/tools/${niche.slug}`}
+                        href={`/tools/${niche.slug}/`}
                         className="hover:text-indigo-600 transition-colors"
                       >
                         {niche.name}
@@ -281,7 +281,7 @@ export default function ToolsDirectoryPage() {
 
                   <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                     <Link
-                      href={`/tools/${niche.slug}`}
+                      href={`/tools/${niche.slug}/`}
                       className="inline-flex items-center text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition-colors"
                     >
                       <span>Launch {niche.name} Calculator</span>
@@ -307,7 +307,7 @@ export default function ToolsDirectoryPage() {
               </p>
             </div>
             <Link
-              href="/aviation"
+              href="/aviation/"
               className="shrink-0 px-4 py-2.5 rounded-xl bg-white text-indigo-900 hover:bg-indigo-50 font-bold text-xs shadow-sm transition-colors flex items-center space-x-1.5"
             >
               <span>Explore Aviation Tools</span>

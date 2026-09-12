@@ -49,10 +49,10 @@ const FAQS: FaqItem[] = [
 ];
 
 export default function StartupRunwayPage() {
-  const pageUrl = `${SITE_URL}/tools/startup-runway-calculator`;
+  const pageUrl = `${SITE_URL}/tools/startup-runway-calculator/`;
   const webAppSchema = getWebApplicationSchema(pageUrl, 'Startup Runway Calculator');
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Tools Directory', url: `${SITE_URL}/tools` },
+    { name: 'Tools Directory', url: `${SITE_URL}/tools/` },
     { name: 'Startup Runway Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);
@@ -68,7 +68,7 @@ export default function StartupRunwayPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <Breadcrumbs
             items={[
-              { name: 'Tools Directory', url: '/tools' },
+              { name: 'Tools Directory', url: '/tools/' },
               { name: 'Startup Runway Calculator', url: pageUrl }
             ]}
           />
@@ -96,7 +96,7 @@ export default function StartupRunwayPage() {
             }}
           />
 
-          <RelatedTools currentUrl="/tools/startup-runway-calculator" category="financial" />
+          <RelatedTools currentUrl="/tools/startup-runway-calculator/" category="financial" />
 
           <FaqAccordion faqs={FAQS} title="Startup Runway Frequently Asked Questions" />
         </div>

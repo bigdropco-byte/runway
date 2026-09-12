@@ -49,10 +49,10 @@ const FAQS: FaqItem[] = [
 ];
 
 export default function RunwayExcelPage() {
-  const pageUrl = `${SITE_URL}/tools/runway-calculator-excel`;
+  const pageUrl = `${SITE_URL}/tools/runway-calculator-excel/`;
   const webAppSchema = getWebApplicationSchema(pageUrl, 'Runway Calculator Excel Generator');
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Tools Directory', url: `${SITE_URL}/tools` },
+    { name: 'Tools Directory', url: `${SITE_URL}/tools/` },
     { name: 'Runway Calculator Excel', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);
@@ -68,7 +68,7 @@ export default function RunwayExcelPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <Breadcrumbs
             items={[
-              { name: 'Tools Directory', url: '/tools' },
+              { name: 'Tools Directory', url: '/tools/' },
               { name: 'Runway Calculator Excel', url: pageUrl }
             ]}
           />
@@ -88,7 +88,7 @@ export default function RunwayExcelPage() {
 
           <RunwayExcelGenerator />
 
-          <RelatedTools currentUrl="/tools/runway-calculator-excel" category="financial" />
+          <RelatedTools currentUrl="/tools/runway-calculator-excel/" category="financial" />
 
           <FaqAccordion faqs={FAQS} title="Runway Excel Frequently Asked Questions" />
         </div>

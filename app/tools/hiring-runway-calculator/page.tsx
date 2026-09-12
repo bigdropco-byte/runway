@@ -49,10 +49,10 @@ const FAQS: FaqItem[] = [
 ];
 
 export default function HiringRunwayPage() {
-  const pageUrl = `${SITE_URL}/tools/hiring-runway-calculator`;
+  const pageUrl = `${SITE_URL}/tools/hiring-runway-calculator/`;
   const webAppSchema = getWebApplicationSchema(pageUrl, 'Hiring Runway Calculator');
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Tools Directory', url: `${SITE_URL}/tools` },
+    { name: 'Tools Directory', url: `${SITE_URL}/tools/` },
     { name: 'Hiring Runway Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);
@@ -68,7 +68,7 @@ export default function HiringRunwayPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <Breadcrumbs
             items={[
-              { name: 'Tools Directory', url: '/tools' },
+              { name: 'Tools Directory', url: '/tools/' },
               { name: 'Hiring Runway Calculator', url: pageUrl }
             ]}
           />
@@ -88,7 +88,7 @@ export default function HiringRunwayPage() {
 
           <HiringRunwayCalculator />
 
-          <RelatedTools currentUrl="/tools/hiring-runway-calculator" category="financial" />
+          <RelatedTools currentUrl="/tools/hiring-runway-calculator/" category="financial" />
 
           <FaqAccordion faqs={FAQS} title="Hiring & Headcount Runway FAQs" />
         </div>

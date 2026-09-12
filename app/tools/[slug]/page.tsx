@@ -60,10 +60,10 @@ export default async function NicheCalculatorPage({ params }: NichePageProps) {
     notFound();
   }
 
-  const pageUrl = `${SITE_URL}/tools/${niche.slug}`;
+  const pageUrl = `${SITE_URL}/tools/${niche.slug}/`;
   const webAppSchema = getWebApplicationSchema(pageUrl, `${niche.name} Runway Calculator`);
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Tools Directory', url: `${SITE_URL}/tools` },
+    { name: 'Tools Directory', url: `${SITE_URL}/tools/` },
     { name: `${niche.name} Calculator`, url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(niche.faqs);
@@ -85,8 +85,8 @@ export default async function NicheCalculatorPage({ params }: NichePageProps) {
           {/* Breadcrumbs */}
           <Breadcrumbs
             items={[
-              { name: 'Tools Directory', url: '/tools' },
-              { name: `${niche.name} Runway Calculator`, url: `/tools/${niche.slug}` }
+              { name: 'Tools Directory', url: '/tools/' },
+              { name: `${niche.name} Runway Calculator`, url: `/tools/${niche.slug}/` }
             ]}
           />
 
@@ -214,7 +214,7 @@ export default async function NicheCalculatorPage({ params }: NichePageProps) {
             </section>
 
             {/* Core Financial Tools Interlinking */}
-            <RelatedTools currentUrl={`/tools/${niche.slug}`} category="financial" />
+            <RelatedTools currentUrl={`/tools/${niche.slug}/`} category="financial" />
 
             {/* Related Niches Section */}
             {relatedNiches.length > 0 && (
@@ -228,7 +228,7 @@ export default async function NicheCalculatorPage({ params }: NichePageProps) {
                     return (
                       <Link
                         key={rel.slug}
-                        href={`/tools/${rel.slug}`}
+                        href={`/tools/${rel.slug}/`}
                         className="p-3.5 rounded-xl border border-slate-200 bg-white hover:border-indigo-400 hover:shadow-xs transition-all group"
                       >
                         <div className="text-xs font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">

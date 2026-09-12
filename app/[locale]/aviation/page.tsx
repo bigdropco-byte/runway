@@ -94,10 +94,24 @@ export default async function AviationHubPage({ params }: { params: Promise<{ lo
   const { locale } = await params;
   const t = getTranslations(locale);
   const lp = (path: string) => {
-    const clean = path.startsWith('/') ? path : '/' + path;
-    return '/' + locale + (clean === '/' ? '' : clean);
+    if (path.startsWith('/#') || path.startsWith('#')) {
+      const hash = path.startsWith('/') ? path : `/${path}`;
+      if (!locale || locale === 'en') {
+        return hash;
+      }
+      return `/${locale}${hash}`;
+    }
+    const clean = path.startsWith('/') ? path : `/${path}`;
+    const withSlash = clean.endsWith('/') ? clean : `${clean}/`;
+    if (!locale || locale === 'en') {
+      return withSlash;
+    }
+    if (withSlash === `/${locale}/` || withSlash.startsWith(`/${locale}/`)) {
+      return withSlash;
+    }
+    return `/${locale}${withSlash === '/' ? '/' : withSlash}`.replace(/\/\//g, '/');
   };
-  const pageUrl = `${SITE_URL}/aviation`;
+  const pageUrl = `${SITE_URL}/aviation/`;
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: 'Aviation Tools Hub', url: pageUrl }
   ]);
@@ -108,7 +122,7 @@ export default async function AviationHubPage({ params }: { params: Promise<{ lo
     'Suite of pilot and aerodrome calculators covering crosswinds, slope gradients, runway numbering, density altitude, RVR, and TALPA contaminated runway lengths.',
     AVIATION_TOOLS.map((t) => ({
       name: t.name,
-      url: `${SITE_URL}/aviation/${t.slug}`,
+      url: `${SITE_URL}/aviation/${t.slug}/`,
       description: t.description
     }))
   );
@@ -124,7 +138,7 @@ export default async function AviationHubPage({ params }: { params: Promise<{ lo
 
       <main className="flex-1 py-10 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <Breadcrumbs items={[{ name: 'Aviation Runway Calculators', url: '/aviation' }]} />
+          <Breadcrumbs items={[{ name: 'Aviation Runway Calculators', url: lp('/aviation') }]} />
 
           <div className="text-center max-w-3xl mx-auto space-y-4">
             <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200/60 text-xs font-semibold text-indigo-700">

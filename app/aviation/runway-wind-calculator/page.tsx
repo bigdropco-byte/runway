@@ -49,7 +49,7 @@ const FAQS: FaqItem[] = [
 ];
 
 export default function RunwayWindPage() {
-  const pageUrl = `${SITE_URL}/aviation/runway-wind-calculator`;
+  const pageUrl = `${SITE_URL}/aviation/runway-wind-calculator/`;
   const webAppSchema = getWebApplicationSchema(
     pageUrl,
     'Runway Wind Calculator',
@@ -57,7 +57,7 @@ export default function RunwayWindPage() {
     'AerospaceApplication'
   );
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: 'Aviation Tools', url: `${SITE_URL}/aviation` },
+    { name: 'Aviation Tools', url: `${SITE_URL}/aviation/` },
     { name: 'Runway Wind Calculator', url: pageUrl }
   ]);
   const faqSchema = getFaqPageSchema(FAQS);
@@ -73,7 +73,7 @@ export default function RunwayWindPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <Breadcrumbs
             items={[
-              { name: 'Aviation Tools', url: '/aviation' },
+              { name: 'Aviation Tools', url: '/aviation/' },
               { name: 'Runway Wind Calculator', url: pageUrl }
             ]}
           />
@@ -93,7 +93,7 @@ export default function RunwayWindPage() {
 
           <CrosswindCalculator />
 
-          <RelatedTools currentUrl="/aviation/runway-wind-calculator" category="aviation" />
+          <RelatedTools currentUrl="/aviation/runway-wind-calculator/" category="aviation" />
 
           <FaqAccordion faqs={FAQS} title="Runway Wind Frequently Asked Questions" />
         </div>
