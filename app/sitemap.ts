@@ -30,6 +30,19 @@ const SUBPATHS: { path: string; priority: number; changeFrequency: 'always' | 'h
   { path: '/aviation/contaminated-runway-calculator', priority: 0.9, changeFrequency: 'weekly' }
 ];
 
+function getLanguagesForSubpath(subpath: string): Record<string, string> {
+  const languages: Record<string, string> = {};
+  for (const locale of SUPPORTED_LOCALES) {
+    const code = locale.code;
+    const isEn = code === 'en';
+    languages[code] = isEn 
+      ? (subpath ? `${SITE_URL}${subpath}/` : `${SITE_URL}/`)
+      : `${SITE_URL}/${code}${subpath}/`;
+  }
+  languages['x-default'] = subpath ? `${SITE_URL}${subpath}/` : `${SITE_URL}/`;
+  return languages;
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date();
   const entries: MetadataRoute.Sitemap = [];
@@ -48,21 +61,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: pageUrl,
         lastModified: currentDate,
         changeFrequency: sub.changeFrequency,
-        priority: isEn ? sub.priority : Number((sub.priority * 0.95).toFixed(2))
+        priority: isEn ? sub.priority : Number((sub.priority * 0.95).toFixed(2)),
+        alternates: {
+          languages: getLanguagesForSubpath(sub.path)
+        }
       });
     }
 
     // Add 10 programmatic niche calculators
     for (const niche of ALL_NICHES) {
+      const nicheSubpath = `/tools/${niche.slug}`;
       const nicheUrl = isEn 
-        ? `${SITE_URL}/tools/${niche.slug}/` 
-        : `${SITE_URL}/${code}/tools/${niche.slug}/`;
+        ? `${SITE_URL}${nicheSubpath}/` 
+        : `${SITE_URL}/${code}${nicheSubpath}/`;
 
       entries.push({
         url: nicheUrl,
         lastModified: currentDate,
         changeFrequency: 'weekly',
-        priority: isEn ? 0.75 : 0.7
+        priority: isEn ? 0.75 : 0.7,
+        alternates: {
+          languages: getLanguagesForSubpath(nicheSubpath)
+        }
       });
     }
   }
