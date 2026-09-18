@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer';
 import RunwayCalculator from '@/components/calculator/RunwayCalculator';
 import FaqAccordion, { FaqItem } from '@/components/content/FaqAccordion';
 import GuideContent from '@/components/content/GuideContent';
+import HowItWorksVideo from '@/components/content/HowItWorksVideo';
 import JsonLd from '@/components/seo/JsonLd';
 import { 
   getLocalizedMetadata, 
@@ -14,6 +15,7 @@ import {
   getHowToSchema,
   getFaqPageSchema,
   getImageObjectSchema,
+  getVideoObjectSchema,
   SITE_URL 
 } from '@/lib/seo';
 import { getTranslations } from '@/i18n/getTranslations';
@@ -131,6 +133,11 @@ export default async function LocalizedHomePage({
           height: 682
         })}
       />
+      <JsonLd
+        data={getVideoObjectSchema({
+          embedUrl: locale === 'en' ? `${SITE_URL}/#how-it-works-video` : `${SITE_URL}/${locale}/#how-it-works-video`
+        })}
+      />
 
       <Header />
 
@@ -188,18 +195,8 @@ export default async function LocalizedHomePage({
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-4 sm:p-6 overflow-hidden">
-            <div className="relative w-full max-w-3xl mx-auto rounded-xl overflow-hidden shadow-inner border border-slate-100">
-              <img
-                src="/images/how-runway-calculator-works-step-by-step-guide.jpg"
-                alt="How Runway Calculator Works - Step-by-Step Financial Infographic showing cash balance, monthly gross expenses, net burn calculation, and cash depletion projection"
-                width={1024}
-                height={682}
-                className="w-full h-auto object-cover rounded-xl"
-                loading="lazy"
-              />
-            </div>
-          </div>
+          {/* Interactive Walkthrough Video Player with Key Moments & Infographic Tab */}
+          <HowItWorksVideo />
 
           {/* 6 Step Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

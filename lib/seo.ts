@@ -422,6 +422,72 @@ export function getImageObjectSchema(image: {
   };
 }
 
+export interface VideoClipItem {
+  name: string;
+  startOffset: number;
+  endOffset: number;
+  url: string;
+}
+
+export interface VideoObjectOptions {
+  name?: string;
+  description?: string;
+  thumbnailUrl?: string[];
+  uploadDate?: string;
+  duration?: string;
+  contentUrl?: string;
+  embedUrl?: string;
+  transcript?: string;
+  clips?: VideoClipItem[];
+}
+
+/**
+ * Generate Schema.org VideoObject JSON-LD with Key Moments (Clip schema)
+ * Complies with Google Search Central video structured data requirements.
+ */
+export function getVideoObjectSchema(options?: VideoObjectOptions) {
+  const name = options?.name || 'How Runway Calculator Works: Step-by-Step Cash Runway & Burn Rate Walkthrough';
+  const description = options?.description || 'Watch how to accurately forecast startup cash runway, calculate gross vs net monthly burn rate, and test scenario planning with Runway Calculator.';
+  const thumbnailUrl = options?.thumbnailUrl || [`${SITE_URL}/videos/how-runway-calculator-works-poster.jpg`];
+  const uploadDate = options?.uploadDate || '2026-09-18T08:00:00+00:00';
+  const duration = options?.duration || 'PT42S';
+  const contentUrl = options?.contentUrl || `${SITE_URL}/videos/how-runway-calculator-works.mp4`;
+  const embedUrl = options?.embedUrl || `${SITE_URL}/#how-it-works-video`;
+  const transcript = options?.transcript || 'Welcome to Runway Calculator: calculate your startup cash runway, burn rate, and solvency in minutes. Step 1: Enter your total liquid cash reserves, including bank balances and easily accessible treasury accounts. Step 2: Input your monthly gross expenses such as payroll and servers, alongside monthly collected cash revenue. Step 3: Our engine calculates net monthly burn by subtracting revenue from gross expenses to find your true cash drain. Step 4: Real-time runway forecasting reveals exact months of cash left and highlights your financial health zone. Step 5: Review the visual burn-down trajectory chart and pinpoint your projected zero-cash depletion date. Step 6: Model what-if scenarios such as hiring or expense cuts to extend your runway. 100% private at runwaycalculator.dev.';
+
+  const defaultClips: VideoClipItem[] = [
+    { name: 'Introduction & Overview', startOffset: 0, endOffset: 5, url: `${SITE_URL}/#how-it-works-video?t=0` },
+    { name: 'Step 1: Liquid Cash Reserves', startOffset: 5, endOffset: 11, url: `${SITE_URL}/#how-it-works-video?t=5` },
+    { name: 'Step 2: Monthly Expenses & Revenue', startOffset: 11, endOffset: 17, url: `${SITE_URL}/#how-it-works-video?t=11` },
+    { name: 'Step 3: Net Monthly Burn Calculation', startOffset: 17, endOffset: 24, url: `${SITE_URL}/#how-it-works-video?t=17` },
+    { name: 'Step 4: Real-Time Cash Runway Forecast', startOffset: 24, endOffset: 31, url: `${SITE_URL}/#how-it-works-video?t=24` },
+    { name: 'Step 5: Trajectory Chart & Milestones', startOffset: 31, endOffset: 37, url: `${SITE_URL}/#how-it-works-video?t=31` },
+    { name: 'Step 6: Scenario Planning & Extension', startOffset: 37, endOffset: 42, url: `${SITE_URL}/#how-it-works-video?t=37` },
+  ];
+
+  const clips = options?.clips || defaultClips;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name,
+    description,
+    thumbnailUrl,
+    uploadDate,
+    duration,
+    contentUrl,
+    embedUrl,
+    transcript,
+    hasPart: clips.map((clip) => ({
+      '@type': 'Clip',
+      name: clip.name,
+      startOffset: clip.startOffset,
+      endOffset: clip.endOffset,
+      url: clip.url
+    }))
+  };
+}
+
 /**
  * Generate localized page metadata with self-referencing canonical URL
  * and complete hreflang alternates for all 40 languages + x-default.
