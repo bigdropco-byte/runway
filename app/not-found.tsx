@@ -26,6 +26,14 @@ export default function NotFound() {
         window.location.replace(`${pathname}/${window.location.search}${window.location.hash}`);
         return;
       }
+
+      // 3. If path ends with .html, redirect to canonical trailing-slash path
+      if (pathname.endsWith(".html")) {
+        const cleanPath = pathname.replace(/\.html$/, "");
+        const target = cleanPath.endsWith("/") ? cleanPath : `${cleanPath}/`;
+        window.location.replace(target + window.location.search + window.location.hash);
+        return;
+      }
     }
   }, []);
 

@@ -51,16 +51,10 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        with:
-          # Automatically inject basePath in your Next.js configuration file and disable
-          # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
-          #
-          # You may remove this line if you want to manage the configuration yourself.
-          static_site_generator: next
       - name: Restore cache
         uses: actions/cache@v4
         with:
@@ -76,7 +70,16 @@ jobs:
       - name: Run unit tests
         run: npm test
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        run: npm run build
+      - name: Verify trailingSlash directory export
+        run: |
+          test -f ./out/da/index.html || { echo "ERROR: ./out/da/index.html missing! trailingSlash directory export failed."; exit 1; }
+          test -f ./out/da.html || { echo "ERROR: ./out/da.html missing!"; exit 1; }
+          test -f ./out/tools/cash-runway-calculator/index.html || { echo "ERROR: ./out/tools/cash-runway-calculator/index.html missing!"; exit 1; }
+          test -f ./out/tools/cash-runway-calculator.html || { echo "ERROR: ./out/tools/cash-runway-calculator.html missing!"; exit 1; }
+          test -f ./out/sk/privacy/index.html || { echo "ERROR: ./out/sk/privacy/index.html missing!"; exit 1; }
+          test -f ./out/CNAME || { echo "ERROR: ./out/CNAME missing!"; exit 1; }
+          echo "✓ All canonical directory paths and fallback files successfully verified!"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
