@@ -4,10 +4,59 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { Compass, Home, ArrowRight } from "lucide-react";
 
+const TOOL_ALIASES: Record<string, string> = {
+  'saas-runway-calculator': '/tools/runway-calculator-for-saas/',
+  'ecommerce-runway-calculator': '/tools/runway-calculator-for-ecommerce/',
+  'e-commerce-runway-calculator': '/tools/runway-calculator-for-ecommerce/',
+  'ai-startup-runway-calculator': '/tools/runway-calculator-for-startups/',
+  'startups-runway-calculator': '/tools/runway-calculator-for-startups/',
+  'freelance-runway-calculator': '/tools/runway-calculator-for-freelancers/',
+  'freelancers-runway-calculator': '/tools/runway-calculator-for-freelancers/',
+  'agency-runway-calculator': '/tools/runway-calculator-for-agencies/',
+  'agencies-runway-calculator': '/tools/runway-calculator-for-agencies/',
+  'consulting-runway-calculator': '/tools/runway-calculator-for-consulting/',
+  'founder-runway-calculator': '/tools/runway-calculator-for-founders/',
+  'founders-runway-calculator': '/tools/runway-calculator-for-founders/',
+  'small-business-runway-calculator': '/tools/runway-calculator-for-small-business/',
+  'bootstrapped-runway-calculator': '/tools/runway-calculator-for-bootstrapped/',
+  'nonprofit-runway-calculator': '/tools/runway-calculator-for-nonprofits/',
+  'non-profit-runway-calculator': '/tools/runway-calculator-for-nonprofits/',
+  'saas': '/tools/runway-calculator-for-saas/',
+  'ecommerce': '/tools/runway-calculator-for-ecommerce/',
+  'freelancer': '/tools/runway-calculator-for-freelancers/',
+  'freelancers': '/tools/runway-calculator-for-freelancers/',
+  'agency': '/tools/runway-calculator-for-agencies/',
+  'agencies': '/tools/runway-calculator-for-agencies/',
+  'consulting': '/tools/runway-calculator-for-consulting/',
+  'founder': '/tools/runway-calculator-for-founders/',
+  'founders': '/tools/runway-calculator-for-founders/',
+  'small-business': '/tools/runway-calculator-for-small-business/',
+  'bootstrapped': '/tools/runway-calculator-for-bootstrapped/',
+  'nonprofit': '/tools/runway-calculator-for-nonprofits/',
+  'nonprofits': '/tools/runway-calculator-for-nonprofits/',
+  'burn-rate': '/tools/burn-rate-calculator/',
+  'cash-runway': '/tools/cash-runway-calculator/',
+  'crosswind': '/aviation/crosswind-calculator/',
+  'runway-slope': '/aviation/runway-slope-calculator/',
+  'runway-number': '/aviation/runway-number-calculator/',
+  'runway-length': '/aviation/runway-length-calculator/',
+  'rvr': '/aviation/runway-visual-range-calculator/',
+  'runway-in-use': '/aviation/runway-in-use-calculator/',
+  'runway-wind': '/aviation/runway-wind-calculator/',
+};
+
 export default function NotFound() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const pathname = window.location.pathname;
+
+      // 0. Smart Alias Auto-Healing
+      const normalizedPath = pathname.replace(/\/$/, "").replace(/\.html$/, "").toLowerCase();
+      const lastSegment = normalizedPath.split("/").pop() || "";
+      if (TOOL_ALIASES[lastSegment]) {
+        window.location.replace(TOOL_ALIASES[lastSegment] + window.location.search + window.location.hash);
+        return;
+      }
 
       // 1. If user/bot accessed /en or /en/... redirect to root canonical path
       if (pathname === "/en" || pathname === "/en/") {
@@ -21,17 +70,17 @@ export default function NotFound() {
         return;
       }
 
-      // 2. If path lacks trailing slash and has no file extension (.png, .xml, etc.)
-      if (!pathname.endsWith("/") && !pathname.split("/").pop()?.includes(".")) {
-        window.location.replace(`${pathname}/${window.location.search}${window.location.hash}`);
-        return;
-      }
-
-      // 3. If path ends with .html, redirect to canonical trailing-slash path
+      // 2. If path ends with .html, redirect to canonical trailing-slash path
       if (pathname.endsWith(".html")) {
         const cleanPath = pathname.replace(/\.html$/, "");
         const target = cleanPath.endsWith("/") ? cleanPath : `${cleanPath}/`;
         window.location.replace(target + window.location.search + window.location.hash);
+        return;
+      }
+
+      // 3. If path lacks trailing slash and has no file extension (.png, .xml, etc.)
+      if (!pathname.endsWith("/") && !pathname.split("/").pop()?.includes(".")) {
+        window.location.replace(`${pathname}/${window.location.search}${window.location.hash}`);
         return;
       }
     }
