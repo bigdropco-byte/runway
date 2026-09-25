@@ -69,5 +69,38 @@ if (!fs.existsSync(cnamePath)) {
   console.log('Created out/CNAME');
 }
 
-console.log(`✓ Post-build complete: generated ${generatedCount} dual-fallback .html files.`);
+// Create static alias directories so common alternative paths return HTTP 200 directly
+const STATIC_ALIASES = [
+  { from: 'tools/runway-calculator-for-saas', to: 'tools/saas-runway-calculator' },
+  { from: 'tools/runway-calculator-for-ecommerce', to: 'tools/ecommerce-runway-calculator' },
+  { from: 'tools/runway-calculator-for-ecommerce', to: 'tools/e-commerce-runway-calculator' },
+  { from: 'tools/runway-calculator-for-startups', to: 'tools/ai-startup-runway-calculator' },
+  { from: 'tools/runway-calculator-for-startups', to: 'tools/startups-runway-calculator' },
+  { from: 'tools/runway-calculator-for-freelancers', to: 'tools/freelance-runway-calculator' },
+  { from: 'tools/runway-calculator-for-freelancers', to: 'tools/freelancers-runway-calculator' },
+  { from: 'tools/runway-calculator-for-agencies', to: 'tools/agency-runway-calculator' },
+  { from: 'tools/runway-calculator-for-agencies', to: 'tools/agencies-runway-calculator' },
+  { from: 'tools/runway-calculator-for-consulting', to: 'tools/consulting-runway-calculator' },
+  { from: 'tools/runway-calculator-for-founders', to: 'tools/founder-runway-calculator' },
+  { from: 'tools/runway-calculator-for-founders', to: 'tools/founders-runway-calculator' },
+  { from: 'tools/runway-calculator-for-small-business', to: 'tools/small-business-runway-calculator' },
+  { from: 'tools/runway-calculator-for-bootstrapped', to: 'tools/bootstrapped-runway-calculator' },
+  { from: 'tools/runway-calculator-for-nonprofits', to: 'tools/nonprofit-runway-calculator' },
+  { from: 'tools/runway-calculator-for-nonprofits', to: 'tools/non-profit-runway-calculator' },
+];
+
+for (const alias of STATIC_ALIASES) {
+  const sourceDir = path.join(OUT_DIR, alias.from);
+  const targetDir = path.join(OUT_DIR, alias.to);
+  if (fs.existsSync(sourceDir)) {
+    fs.cpSync(sourceDir, targetDir, { recursive: true });
+    const sourceHtml = `${sourceDir}.html`;
+    if (fs.existsSync(sourceHtml)) {
+      fs.copyFileSync(sourceHtml, `${targetDir}.html`);
+    }
+  }
+}
+
+console.log(`✓ Post-build complete: generated ${generatedCount} dual-fallback .html files and ${STATIC_ALIASES.length} static alias directories.`);
 console.log('✓ All routes now support both /path/ and /path.html with 100% 200 OK responses.');
+
